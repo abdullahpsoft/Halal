@@ -20,6 +20,31 @@ return response()->json($products, 401);
         //
     }
 
+    public function ean($ean)
+    {
+$product = Products::where('ean', '=', $ean)->firstOrFail();;
+
+return response()->json($product, 401);
+
+        //
+    }
+
+    public function cat($cat)
+    {
+$products = Products::where('sub_category_slug', '=', $cat)->get();
+return response()->json($products, 401);
+
+        //
+    }
+
+    public function show($id)
+    {
+  $product = Products::where('id', '=', $id)->firstOrFail();;
+
+  return response()->json($product, 401);
+
+        //
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -47,10 +72,7 @@ return response()->json($products, 401);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
