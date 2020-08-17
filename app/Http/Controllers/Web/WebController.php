@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin\Products;
 
 class WebController extends Controller
 {
@@ -14,6 +15,8 @@ class WebController extends Controller
      */
     public function index()
     {
+      $products = Products::orderBy('created_at', 'desc')->paginate(6);
+      return view('welcome', compact('products'));
         //
     }
 
@@ -46,7 +49,8 @@ class WebController extends Controller
      */
     public function show($id)
     {
-        //
+
+    //
     }
 
     /**

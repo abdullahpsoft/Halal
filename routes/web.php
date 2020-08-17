@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 Route::group(['prefix' => 'admin'], function () {
@@ -24,11 +24,17 @@ Route::group(['prefix' => 'admin'], function () {
 
 // Route::get('categories/{slug}', 'CategoriesController@index');
 
+Route::get('/', 'Web\WebController@index');//landing page
+Route::get('/product-detail/{id}', 'Web\ProductController@show');
+
+
+
+
+
 Route::get('categories/eat', 'Web\CategoryController@index');
 
 Route::get('products', 'Web\ProductController@index');
 
-Route::get('product-detail', 'Web\ProductController@show');
 
 Route::get('explore', 'Web\WebController@explore');
 

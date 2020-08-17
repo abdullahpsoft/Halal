@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin\Products;
 
 class ProductController extends Controller
 {
@@ -45,9 +46,13 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     // public function show($id)
-    public function show()
+    public function show($id)
     {
-        return view('products.show');
+
+$product = Products::find($id);
+
+    return view('products.show', compact('product'));
+        //
     }
 
     /**
