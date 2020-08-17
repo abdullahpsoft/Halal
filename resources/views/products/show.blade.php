@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="icon" href="img/favicon.png" type="image/png">
+	<title>Halal Check - About Us</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="vendors/linericon/style.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+	<link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css">
+	<link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
+	<link rel="stylesheet" href="vendors/jquery-ui/jquery-ui.css">
+	<link rel="stylesheet" href="vendors/animate-css/animate.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+	<!-- main css -->
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+	<!--================ Start Header Menu Area =================-->
+	<div class="menu-trigger">
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+	<header class="fixed-menu">
+		<span class="menu-close"><i class="fa fa-times"></i></span>
+		<div class="menu-header">
+			<div class="logo d-flex justify-content-center">
+				<img src="img/logo.svg" alt="">
+			</div>
+		</div>
+		<div class="nav-wraper">
+			<div class="navbar">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="index.html"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> home</a></li>
+					<li class="nav-item"><a class="nav-link " href="about-us.html"><i class="fa fa-question-circle" aria-hidden="true">&nbsp;</i>about us</a></li>
+					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>
+
+					<li class="nav-item submenu dropdown">
+						<a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true"
+						 aria-expanded="false"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Categories</a>
+						<ul class="dropdown-menu">
+							<li class="nav-item"><a class="nav-link" href="categories.html">Eat</a></li>
+							<li class="nav-item"><a class="nav-link" href="categories.html">Drink</a></li>
+							<li class="nav-item"><a class="nav-link" href="categories.html">Non-food</a></li>
+						</ul>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa fa-question-circle" aria-hidden="true">&nbsp;</i>contact</a></li>
+					<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
+
+				</ul>
+			</div>
+		</div>
+	</header>
+	<!--================ End Header Menu Area =================-->
+	<div class="site-main">
+		<!--================ Start Home Banner Area =================-->
+		<section class="home_banner_area common-banner">
+			<div class="banner_inner">
+				<div class="container-fluid no-padding">
+					<div class="row halfscreen">
+
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Start banner bottom -->
+		<div class="row banner-bottom common-bottom-banner align-items-center justify-content-center">
+			<div class="col-lg-8 offset-lg-4">
+				<div class="banner_content">
+					<div class="row d-flex align-items-center" style="background: white">
+						<div class="col-lg-7 col-md-12">
+							<h1>Product</h1>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+						</div>
+						<div class="col-lg-5 col-md-12">
+							<div class="page-link-wrap">
+								<div class="page_link">
+									<a href="index.html">Home</a>
+									<a href="product.html">Product</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End banner bottom -->
+
+		<div class="super_container">
+
+		    <div class="single_product">
+		        <div class="container-fluid" style=" background-color: #fff; padding: 11px;">
+		            <div class="row">
+		                
+		                <div class="col-lg-4 order-lg-2 order-1">
+		                    <div class="image_selected"><img src="img/product.jpg" alt=""></div>
+		                </div>
+		                <div class="col-lg-6 order-2">
+		                    <div class="product_description">
+		                        <nav>
+		                            <ol class="breadcrumb">
+		                                <li class="breadcrumb-item"><a href="#">HiPP GmbH & Co. Vertrieb KG</a></li>
+
+		                            </ol>
+		                        </nav>
+		                        <div class="product_name">Hipp Mama Still Juice Red Fruit</div>
+														<hr class="singleline">
+														<br><br>
+														<div class="row">
+																<div class="col-md-7">
+																		<div class="br-dashed">
+																				<div class="row">
+																						<div class="col-md-3 col-xs-3"> <img style="width: 50px" src="img/tick.png"> </div>
+																						<div class="col-md-9 col-xs-9">
+																								<div class="pr-info"> <span class="break-all">Alcohol: no  <p>free from alcoholic ingredients</p></span> </div>
+																						</div>
+																				</div>
+																		</div>
+																</div>
+																<div class="col-md-7"> </div>
+														</div>
+														<div class="row">
+																<div class="col-md-7">
+																		<div class="br-dashed">
+																				<div class="row">
+																						<div class="col-md-3 col-xs-3"> <img style="width: 50px" src="img/tick.png"> </div>
+																						<div class="col-md-9 col-xs-9">
+																								<div class="pr-info"> <span class="break-all">Animal additives: No  <p>free of animal components (eggs, milk, fish products excluded)</p></span> </div>
+																						</div>
+																				</div>
+																		</div>
+																</div>
+																<div class="col-md-7"> </div>
+														</div><br>
+													  <hr class="singleline">
+		                        <div> <span class="product_info">Barcode number: <b>4062300270954</b><span><br> <span class="product_info">Category: <b>Fruit and vegetable juices</b><span><br> <span class="product_info">Registered: <b> 3 days ago</b><span><br> <span class="product_info">Answer received on: <b>07/21/2020</b><span><br>  </div>
+
+		                        <hr class="singleline">
+
+
+		                    </div>
+		                </div>
+						<div class="col-lg-2 order-3">
+		                    <ul class="image_list">
+		                        <li data-image="img/product.jpg"><img src="img/generic-image-placeholder.png" alt=""></li>
+		                        <li data-image="img/product.jpg"><img src="img/generic-image-placeholder.png" alt=""></li>
+		                        <li data-image="img/product.jpg"><img src="img/generic-image-placeholder.png" alt=""></li>
+		                    </ul>
+		                </div>
+		            </div>
+
+
+		            <div class="row row-underline">
+		                <div class="col-md-6"> <span class=" deal-text">Manufacturer's Answer</span> </div>
+		                <div class="col-md-6"> <a href="#" data-abc="true"> <span class="ml-auto view-all"></span> </a> </div>
+		            </div>
+		            <div class="row">
+		                <div class="col-md-12">
+		                   <p>
+												 Dear Ms. F.,<br>
+
+												 nice of you to contact us.<br>
+
+												 Gelatin is not used as an ingredient in HiPP products. Gelatin is also not used as a possible clarifying agent in HiPP products.
+<br>
+												 I wish you and your family all the best! Kind
+<br>
+												 regards
+									<br>			 from the
+										<br>		 HiPP Parents Service Team
+										<br>		 ------------------------------
+										<br>		 Admin: The product is without added flavors and extracts.
+											 </p>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<!--================ Start Footer Area =================-->
+		<footer class="footer-area overlay">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-2 col-md-4 col-sm-6">
+						<div class="single-footer-widget">
+							<h6>Top Products</h6>
+							<div class="row">
+								<div class="col">
+									<ul class="list">
+										<li><a href="#">Managed Website</a></li>
+										<li><a href="#">Manage Reputation</a></li>
+										<li><a href="#">Power Tools</a></li>
+										<li><a href="#">Marketing Service</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-4 col-sm-6">
+						<div class="single-footer-widget">
+							<h6>Quick Links</h6>
+							<div class="row">
+								<div class="col">
+									<ul class="list">
+										<li><a href="#">Jobs</a></li>
+										<li><a href="#">Brand Assets</a></li>
+										<li><a href="#">Investor Relations</a></li>
+										<li><a href="#">Terms of Service</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-4 col-sm-6">
+						<div class="single-footer-widget">
+							<h6>Features</h6>
+							<div class="row">
+								<div class="col">
+									<ul class="list">
+										<li><a href="#">Jobs</a></li>
+										<li><a href="#">Brand Assets</a></li>
+										<li><a href="#">Investor Relations</a></li>
+										<li><a href="#">Terms of Service</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-4 col-sm-6">
+						<div class="single-footer-widget">
+							<h6>Resources</h6>
+							<div class="row">
+								<div class="col">
+									<ul class="list">
+										<li><a href="#">Guides</a></li>
+										<li><a href="#">Research</a></li>
+										<li><a href="#">Experts</a></li>
+										<li><a href="#">Agencies</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-8">
+						<div class="single-footer-widget">
+							<h6>Newsletter</h6>
+							<p>Stay update with our latest</p>
+							<div class="" id="mc_embed_signup">
+								<form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+								 method="get" class="form-inline">
+									<div class="d-flex flex-row">
+										<input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
+										 required="" type="email">
+										<button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+										<div style="position: absolute; left: -5000px;">
+											<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+										</div>
+									</div>
+									<div class="info"></div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row footer-bottom justify-content-between">
+					<div class="col-lg-6">
+						<p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+					</div>
+					<div class="col-lg-2">
+						<div class="social-icons">
+							<a href="#"><i class="fa fa-facebook"></i></a>
+							<a href="#"><i class="fa fa-twitter"></i></a>
+							<a href="#"><i class="fa fa-dribbble"></i></a>
+							<a href="#"><i class="fa fa-behance"></i></a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</footer>
+		<!--================ Start Footer Area =================-->
+	</div>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/stellar.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="vendors/lightbox/simpleLightbox.min.js"></script>
+	<script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
+	<script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+	<script src="vendors/jquery-ui/jquery-ui.js"></script>
+	<script src="js/jquery.ajaxchimp.min.js"></script>
+	<script src="vendors/counter-up/jquery.waypoints.min.js"></script>
+	<script src="vendors/counter-up/jquery.counterup.js"></script>
+	<script src="js/mail-script.js"></script>
+	<!--gmaps Js-->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+	<script src="js/gmaps.min.js"></script>
+	<script src="js/theme.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
