@@ -15,7 +15,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('products.index');
+
+      $products->paginate(5);
+
+
+return view('products.index', compact('products'));
     }
 
     /**
@@ -27,6 +31,18 @@ class ProductController extends Controller
     {
         //
     }
+
+    public function search(Request $req)
+    {
+      $products =  Products::query()
+   ->where('name', 'LIKE', "%{$req->search}%")
+   ->paginate(5);
+
+
+return view('products.index', compact('products'));
+        //
+    }
+
 
     /**
      * Store a newly created resource in storage.

@@ -27,7 +27,18 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/', 'Web\WebController@index');//landing page
 Route::get('/product-detail/{id}', 'Web\ProductController@show');
 
-
+Route::any ( '/search', function () {
+    $q = Request::get ( 'q' );
+    if($q != ""){
+    $products = App\Models\Admin\Products::where ( 'name', 'LIKE', '%' . $q . '%' )->paginate (12)->setPath ( '' );
+    $pagination = $products->appends ( array (
+                'q' => Request::get ( 'q' )
+        ) );
+    if (count ( $products ) > 0)
+        return view ( 'products.index',compact('products') )->withQuery ( $q );
+    }
+        return view ( 'products.index' )->withMessage ( 'No Details found. Try to search again !' );
+} );
 
 
 

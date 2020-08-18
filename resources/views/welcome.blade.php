@@ -159,16 +159,21 @@
 				</div>
 				<br>
 				<br>
+				<form action="/search" method="POST">
+					@csrf
 				<div class="row">
 					<div class="input-group">
-					    <input type="text" class="form-control" placeholder="Search Products here">
+
+					    <input type="text"  name="q"  id="q" class="form-control" placeholder="Search Products here">
 					    <div class="input-group-append">
-					      <button class="btn btn-secondary" type="button">
+					      <button class="btn btn-secondary" type="submit">
 					        <i class="fa fa-search"></i>
 					      </button>
 					    </div>
 					</div>
 				</div>
+			</form>
+
 
 			</div>
 		</div>
