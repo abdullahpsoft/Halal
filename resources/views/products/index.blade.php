@@ -55,7 +55,7 @@
 					<li class="nav-item"><a class="nav-link" href="explore.html"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>explore</a></li>
 					<li class="nav-item"><a class="nav-link" href="about-us.html"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>about us</a></li>
 					<li class="nav-item"><a class="nav-link" href="companies.html"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
-					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>					
+					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>
 					<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-phone" aria-hidden="true">&nbsp;</i>contact</a></li>
 					<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
 					<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-twitter" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-instagram" aria-hidden="true"></i></a></li>
@@ -110,24 +110,65 @@
 
             <div class="col">
                 <div class="row">
-                    <div class="col-12 col-md-6 col-lg-4">
+
+
+
+									@isset($products)
+                  @foreach($products as $product)
+										<div class="col-12 col-md-4 col-lg-3">
                         <a href="product-detail.html"><div class="card">
                             <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
                             <div class="card-body">
-                                <h4 class="card-title"><a href="product-detail.html" title="View Product">Product title</a></h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <div class="row">
-                                    <div class="col">
-                                        <img style="width: 50px" src="img/tick.png"><span class="break-all">Alcohol: no</span>
-                                    </div>
-                                    <div class="col">
-                                        <img style="width: 50px" src="img/tick.png"><span class="break-all">Additives: No</span>
-                                    </div>
-                                </div>
+                                <h4 class="card-title"><a href="product-detail.html" title="View Product">{{$product->name}}</a></h4>
+																@if($product->alcohol == 0 && $product->animal_additive == 0 )
+	 		 												<div class="row">
+	 		 													<p class="col-md-7" style="padding-left: 0px; color:green">Is Certified: </p><img style="color: green; width: 87px" src="img/certified-trans.png"></i>
+	 		 												</div>
+	 		                         @endif
+
+	 		 												@if($product->alcohol != 0 && $product->animal_additive == 0 )
+
+	 		 												<div class="row" style="padding-left: 0px;">
+	 		 													<p class="col-md-7" style="padding-left: 0px; color:red">Alcohol: yes</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="col-md-2"  src="img/prohibitted.jpeg"></img>
+	 		 													<!-- <i style="color: red; padding-top: 5px;padding-left:27px;" class="fa fa-exclamation-triangle col-md-3"></i> -->
+	 		 												</div>
+	 		 												<div class="row">
+	 		 													<p class="col-md-7" style="padding-left: 0px; color:green">Animal Product: no</p><i style="color: green; padding-top: 5px; padding-left: 17px;" class="fa fa-check-circle fa-2x col-md-3"></i>
+	 		 												</div>
+	 		 												@endif
+
+	 		 												@if($product->alcohol == 0 && $product->animal_additive != 0 )
+
+	 		 												<div class="row" style="padding-left: 0px;">
+	 		 													<p class="col-md-7" style="padding-left: 0px; color:red">Animal Product: yes</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="col-md-2" src="img/prohibitted.jpeg"></img>
+	 		 													<!-- <i style="color: red; padding-top: 5px;padding-left:27px;" class="fa fa-exclamation-triangle col-md-3"></i> -->
+	 		 												</div>
+	 		 												<div class="row">
+	 		 													<p class="col-md-7" style="padding-left: 0px; color:green">Alcohol: no</p><i style="color: green; padding-top: 5px; padding-left: 17px;" class="fa fa-check-circle fa-2x col-md-2"></i>
+	 		 												</div>
+	 		 												@endif
+
+	 		 												@if($product->alcohol != 0 && $product->animal_additive != 0 )
+
+	 		 												<div class="row" style="padding-left: 0px;">
+	 		 													<p class="col-md-7" style="padding-left: 0px; color:red">Animal Product: yes</p><img class="col-md-2" src="img/prohibitted.jpeg"></img>
+	 		 													<!-- <i style="color: red; padding-top: 5px;padding-left:27px;" class="fa fa-exclamation-triangle col-md-3"></i> -->
+	 		 												</div>
+	 		 												<div class="row" style="padding-left: 0px;">
+	 		 													<p class="col-md-7" style="padding-left: 0px; color:red">Alcohol: yes</p><img class="col-md-2" src="img/prohibitted.jpeg"></img>
+	 		 													<!-- <i style="color: red; padding-top: 5px;padding-left:27px;" class="fa fa-exclamation-triangle col-md-3"></i> -->
+	 		 												</div>
+
+	 		 												@endif
+
                             </div>
                         </div></a>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4">
+                   @endforeach
+									@endisset
+
+
+                    <!-- <div class="col-12 col-md-6 col-lg-4">
                       <a href="product-detail.html"><div class="card">
                           <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
                           <div class="card-body">
@@ -143,8 +184,8 @@
                               </div>
                           </div>
                       </div></a>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4">
+                    </div> -->
+                    <!-- <div class="col-12 col-md-6 col-lg-4">
                       <a href="product-detail.html"><div class="card">
                           <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
                           <div class="card-body">
@@ -160,8 +201,8 @@
                               </div>
                           </div>
                       </div></a>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4">
+                    </div> -->
+                    <!-- <div class="col-12 col-md-6 col-lg-4">
                       <a href="product-detail.html"><div class="card">
                           <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
                           <div class="card-body">
@@ -177,8 +218,8 @@
                               </div>
                           </div>
                       </div></a>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4">
+                    </div> -->
+                    <!-- <div class="col-12 col-md-6 col-lg-4">
                       <a href="product-detail.html"><div class="card">
                           <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
                           <div class="card-body">
@@ -194,8 +235,8 @@
                               </div>
                           </div>
                       </div></a>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4">
+                    </div> -->
+                    <!-- <div class="col-12 col-md-6 col-lg-4">
                       <a href="product-detail.html"><div class="card">
                           <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
                           <div class="card-body">
@@ -211,8 +252,10 @@
                               </div>
                           </div>
                       </div></a>
-                    </div>
-                    <div class="col-12" >
+                    </div> -->
+
+										{{ $products->render()  }}
+                    <!-- <div class="col-12" >
                         <nav aria-label="..." >
                             <ul class="pagination">
                                 <li class="page-item disabled">
@@ -228,7 +271,7 @@
                                 </li>
                             </ul>
                         </nav>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
