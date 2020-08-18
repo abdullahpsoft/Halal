@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -12,9 +13,11 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($slug)
     {
-        return view('categories.index');
+        $categories = DB::table('h_category')->get();
+        $sub_categories = DB::table('h_sub_categories')->where('category_slug', $slug)->get();
+        return view('categories.index', compact(['sub_categories', 'categories']));
     }
 
     /**

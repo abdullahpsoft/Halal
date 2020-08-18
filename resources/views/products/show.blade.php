@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="icon" href="img/favicon.png" type="image/png">
-	<title>Halal Check - About Us</title>
+	<title>Halal Check - Products</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="vendors/linericon/style.css">
@@ -49,9 +49,9 @@
 						<a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true"
 						 aria-expanded="false"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Categories</a>
 						<ul class="dropdown-menu">
-							<li class="nav-item"><a class="nav-link" href="categories.html">Eat</a></li>
-							<li class="nav-item"><a class="nav-link" href="categories.html">Drink</a></li>
-							<li class="nav-item"><a class="nav-link" href="categories.html">Non-food</a></li>
+							<li class="nav-item"><a class="nav-link" href="categories.html"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Eat</a></li>
+							<li class="nav-item"><a class="nav-link" href="categories.html"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Drink</a></li>
+							<li class="nav-item"><a class="nav-link" href="categories.html"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Non-food</a></li>
 						</ul>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa fa-question-circle" aria-hidden="true">&nbsp;</i>contact</a></li>

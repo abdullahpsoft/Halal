@@ -1895,6 +1895,30 @@ h6 {
   background: #f8b600;
   border: 1px solid transparent; }
 
+
+
+
+  .genric-btn.home {
+    color: #fff;
+    background: #2A2E43;
+    border: 1px solid transparent; }
+  
+  .genric-btn.home:hover {
+    color: #2A2E43;
+    border: 1px solid #2A2E43;
+    background: #fff; }
+  
+  .genric-btn.home-border {
+    color: #2A2E43;
+    border: 1px solid #2A2E43;
+    background: #fff; }
+  
+  .genric-btn.home-border:hover {
+    color: #fff;
+    background: #2A2E43;
+    border: 1px solid transparent; }  
+  
+
 .genric-btn.success {
   color: #fff;
   background: #4cd3e3;
@@ -3537,3 +3561,13 @@ footer a {
 /*---------------------------------------------------- */
 
 /*# sourceMappingURL=style.css.map */
+.desc{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  font-size: medium;
+}
+.top{
+  padding-top: 10px;
+}

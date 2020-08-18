@@ -24,9 +24,9 @@ Route::group(['prefix' => 'admin'], function () {
 
 // Route::get('categories/{slug}', 'CategoriesController@index');
 
-Route::get('categories/eat', 'Web\CategoryController@index');
+Route::get('categories/{slug}', 'Web\CategoryController@index');
 
-Route::get('products', 'Web\ProductController@index');
+Route::get('{slug}/{name}/products', 'Web\ProductController@index');
 
 Route::get('product-detail', 'Web\ProductController@show');
 

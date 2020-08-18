@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="icon" href="img/favicon.png" type="image/png">
-	<title>Halal Check - About Us</title>
+	<title>Halal Check Categories</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
 	<link rel="stylesheet" href="{{asset('vendors/linericon/style.css')}}">
@@ -43,17 +43,17 @@
 					<li class="nav-item"><a class="nav-link " href="about-us.html"><i class="fa fa-question-circle" aria-hidden="true">&nbsp;</i>about us</a></li>
 					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>
 
-					<li class="nav-item submenu dropdown">
+					<li class="nav-item submenu dropdown open">
 						<a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true"
 						 aria-expanded="false"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Categories</a>
 						<ul class="dropdown-menu">
-							<li class="nav-item"><a class="nav-link" href="blog.html">Eat</a></li>
-							<li class="nav-item"><a class="nav-link" href="single-blog.html">Drink</a></li>
-							<li class="nav-item"><a class="nav-link" href="single-blog.html">Non-food</a></li>
+							<li class="nav-item"><a class="nav-link" href="categories.html"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Eat</a></li>
+							<li class="nav-item"><a class="nav-link" href="categories.html"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Drink</a></li>
+							<li class="nav-item"><a class="nav-link" href="categories.html"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Non-food</a></li>
 						</ul>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa fa-question-circle" aria-hidden="true">&nbsp;</i>contact</a></li>
-					<li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
+					<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
 
 				</ul>
 			</div>
@@ -101,159 +101,24 @@
       </div>
   </section>
   <div class="row">
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn primary e-large">Category 1</a>
-
-      </div>
-    </div>
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn success e-large">Category 2</a>
-
-      </div>
-    </div>
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn warning e-large">Category 3</a>
-
-      </div>
-    </div>
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn info e-large">Category 4</a>
-
-      </div>
-    </div>
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn danger e-large">Category 5</a>
-
-      </div>
-    </div>
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn primary e-large">Category 6</a>
-
-      </div>
-    </div>
+    @foreach ($sub_categories as $category)   
+        <div class="col-lg-3 top">
+            <div class="button-group-area mt-40">
+                <a href="/{{$category->category_slug}}/{{$category->name}}/products" class="genric-btn home e-large desc">{{$category->name}}</a>
+            </div>
+        </div>
+        {{-- <div class="col-lg-2">
+            <div class="button-group-area mt-40">
+              <a href="product.html" class="genric-btn primary e-large">Category 1</a>
+      
+            </div>
+        </div> --}}
+    @endforeach
+    
   </div><br>
 
-  <div class="row">
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn primary e-large">Category 1</a>
-
-      </div>
-    </div>
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn success e-large">Category 2</a>
-
-      </div>
-    </div>
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn warning e-large">Category 3</a>
-
-      </div>
-    </div>
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn info e-large">Category 4</a>
-
-      </div>
-    </div>
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn danger e-large">Category 5</a>
-
-      </div>
-    </div>
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn primary e-large">Category 6</a>
-
-      </div>
-    </div>
-  </div><br>
-
-  <div class="row">
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn primary e-large">Category 1</a>
-
-      </div>
-    </div>
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn success e-large">Category 2</a>
-
-      </div>
-    </div>
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn warning e-large">Category 3</a>
-
-      </div>
-    </div>
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="#" class="genric-btn info e-large">Category 4</a>
-
-      </div>
-    </div>
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn danger e-large">Category 5</a>
-
-      </div>
-    </div>
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn primary e-large">Category 6</a>
-
-      </div>
-    </div>
-  </div><br>
-  <div class="row">
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn primary e-large">Category 1</a>
-
-      </div>
-    </div>
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn success e-large">Category 2</a>
-
-      </div>
-    </div>
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn warning e-large">Category 3</a>
-
-      </div>
-    </div>
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn info e-large">Category 4</a>
-
-      </div>
-    </div>
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn danger e-large">Category 5</a>
-
-      </div>
-    </div>
-    <div class="col-lg-2">
-      <div class="button-group-area mt-40">
-        <a href="product.html" class="genric-btn primary e-large">Category 6</a>
-
-      </div>
-    </div>
-  </div>
+  <br>
+  
   <br><br>
 </div>
 
