@@ -41,21 +41,26 @@
 		<div class="nav-wraper">
 			<div class="navbar">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="index.html"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> home</a></li>
-					<li class="nav-item"><a class="nav-link " href="about-us.html"><i class="fa fa-question-circle" aria-hidden="true">&nbsp;</i>about us</a></li>
-					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>
-
+					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> home</a></li>
 					<li class="nav-item submenu dropdown">
-						<a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true"
+						<a href="#" class="nav-link active dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 						 aria-expanded="false"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Categories</a>
 						<ul class="dropdown-menu">
-							<li class="nav-item"><a class="nav-link" href="categories.html"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Eat</a></li>
-							<li class="nav-item"><a class="nav-link" href="categories.html"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Drink</a></li>
-							<li class="nav-item"><a class="nav-link" href="categories.html"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Non-food</a></li>
+							@foreach ($categories as $category)
+								<li class="nav-item"><a class="nav-link" href="/categories/{{$category->slug}}"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>{{$category->name}}</a>	</li>	
+							@endforeach
+							{{-- <li class="nav-item"><a class="nav-link" href="categories/eat"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Eat</a>	</li>
+							<li class="nav-item"><a class="nav-link" href="categories/drink"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Drink</a></li>
+							<li class="nav-item"><a class="nav-link" href="categories/nonfood"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Non-food</a></li> --}}
 						</ul>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa fa-question-circle" aria-hidden="true">&nbsp;</i>contact</a></li>
-					<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
+					<li class="nav-item"><a class="nav-link" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>explore</a></li>
+					<li class="nav-item"><a class="nav-link" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>about us</a></li>
+					<li class="nav-item"><a class="nav-link" href="/companies"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
+					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>					
+					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-phone" aria-hidden="true">&nbsp;</i>contact</a></li>
+					<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
+					<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-twitter" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-instagram" aria-hidden="true"></i></a></li>
 
 				</ul>
 			</div>
@@ -64,7 +69,7 @@
 	<!--================ End Header Menu Area =================-->
 	<div class="site-main">
 		<!--================ Start Home Banner Area =================-->
-		<section class="home_banner_area common-banner">
+		{{-- <section class="home_banner_area common-banner">
 			<div class="banner_inner">
 				<div class="container-fluid no-padding">
 					<div class="row halfscreen">
@@ -72,9 +77,9 @@
 					</div>
 				</div>
 			</div>
-		</section>
+		</section> --}}
 		<!-- Start banner bottom -->
-		<div class="row banner-bottom common-bottom-banner align-items-center justify-content-center">
+		{{-- <div class="row banner-bottom common-bottom-banner align-items-center justify-content-center">
 			<div class="col-lg-8 offset-lg-4">
 				<div class="banner_content">
 					<div class="row d-flex align-items-center" style="background: white">
@@ -93,7 +98,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> --}}
 		<!-- End banner bottom -->
 
 		<div class="super_container">
@@ -408,23 +413,23 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/popper.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/stellar.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="/js/jquery-3.2.1.min.js"></script>
+	<script src="/js/popper.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/stellar.js"></script>
+	<script src="/js/jquery.magnific-popup.min.js"></script>
 	<script src="vendors/lightbox/simpleLightbox.min.js"></script>
 	<script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
 	<script src="vendors/owl-carousel/owl.carousel.min.js"></script>
 	<script src="vendors/jquery-ui/jquery-ui.js"></script>
-	<script src="js/jquery.ajaxchimp.min.js"></script>
+	<script src="/js/jquery.ajaxchimp.min.js"></script>
 	<script src="vendors/counter-up/jquery.waypoints.min.js"></script>
 	<script src="vendors/counter-up/jquery.counterup.js"></script>
-	<script src="js/mail-script.js"></script>
+	<script src="/js/mail-script.js"></script>
 	<!--gmaps Js-->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-	<script src="js/gmaps.min.js"></script>
-	<script src="js/theme.js"></script>
+	<script src="/js/gmaps.min.js"></script>
+	<script src="/js/theme.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>

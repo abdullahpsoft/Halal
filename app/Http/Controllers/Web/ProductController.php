@@ -18,9 +18,9 @@ class ProductController extends Controller
     {
         $categories = DB::table('h_category')->get();
         $sub_category = DB::table('h_sub_categories')->where('name', $name)->get();
-        $products = DB::table('h_products')->where('sub_category_slug', $sub_category[0]->sub_category_slug)->get();
-        dd($products);
-        return view('products.index', compact(['categories', 'products']));
+        $products = DB::table('h_products')->where('sub_category_slug', $sub_category[0]->sub_category_slug)->paginate(12);
+        // dd($products);
+        return view('products.display', compact(['categories', 'products', 'name']));
     }
 
     /**
@@ -35,12 +35,13 @@ class ProductController extends Controller
 
     public function search(Request $req)
     {
+      $categories = DB::table('h_category')->get();
       $products =  Products::query()
    ->where('name', 'LIKE', "%{$req->search}%")
    ->paginate(5);
 
 
-return view('products.index', compact('products'));
+return view('products.index', compact('products','categories'));
         //
     }
 
@@ -65,10 +66,10 @@ return view('products.index', compact('products'));
     // public function show($id)
     public function show($id)
     {
+    $categories = DB::table('h_category')->get();
+    $product = Products::find($id);
 
-$product = Products::find($id);
-
-    return view('products.show', compact('product'));
+    return view('products.show', compact('product', 'categories'));
         //
     }
 

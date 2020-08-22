@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="vendors/animate-css/animate.css">
 	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
-
+  
 	<!-- main css -->
 	<link rel="stylesheet" href="css/style.css">
 	<style>
@@ -56,7 +56,7 @@
 </style>
 </head>
 
-<body>
+<body class="container-fluid">
 
 	<!--================ Start Header Menu Area =================-->
 	<div class="menu-trigger">
@@ -74,21 +74,24 @@
 		<div class="nav-wraper">
 			<div class="navbar">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link active" href="index.html"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> home</a></li>
+					<li class="nav-item"><a class="nav-link active" href="/"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> home</a></li>
 					<li class="nav-item submenu dropdown">
 						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 						 aria-expanded="false"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Categories</a>
 						<ul class="dropdown-menu">
-							<li class="nav-item"><a class="nav-link" href="categories/eat"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Eat</a>	</li>
+							@foreach ($categories as $category)
+								<li class="nav-item"><a class="nav-link" href="categories/{{$category->slug}}"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>{{$category->name}}</a>	</li>	
+							@endforeach
+							{{-- <li class="nav-item"><a class="nav-link" href="categories/eat"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Eat</a>	</li>
 							<li class="nav-item"><a class="nav-link" href="categories/drink"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Drink</a></li>
-							<li class="nav-item"><a class="nav-link" href="categories/nonfood"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Non-food</a></li>
+							<li class="nav-item"><a class="nav-link" href="categories/nonfood"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Non-food</a></li> --}}
 						</ul>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="explore.html"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>explore</a></li>
-					<li class="nav-item"><a class="nav-link" href="about-us.html"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>about us</a></li>
-					<li class="nav-item"><a class="nav-link" href="companies.html"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
-					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>
-					<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-phone" aria-hidden="true">&nbsp;</i>contact</a></li>
+					<li class="nav-item"><a class="nav-link" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>explore</a></li>
+					<li class="nav-item"><a class="nav-link" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>about us</a></li>
+					<li class="nav-item"><a class="nav-link" href="/companies"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
+					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>					
+					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-phone" aria-hidden="true">&nbsp;</i>contact</a></li>
 					<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
 					<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-twitter" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-instagram" aria-hidden="true"></i></a></li>
 
@@ -126,55 +129,53 @@
 			</div>
 		</section>
 		<!-- Start banner bottom -->
-
+		
 		<!-- End banner bottom -->
 		<!--================ End Home Banner Area =================-->
 
 		<!--================ Start Breakfast Area =================-->
 		<div class="breakfast-area section_gap_top">
 			<div class="container">
-
-				<div class="row col-md-12">
-					<div class="col-md-1" style="padding-left: 0px">
+				<div class="row">
+					<div class="col-md-3" style="padding-left: 0px">
 						<h3>Filters:</h3>
 					</div>
-					<div class="checkbox col-md-2" style="padding-left: 15px;">
+				</div>
+				
+				<div class="row col-sm-12">					
+					<div class="checkbox col-sm-2" style="width: 50% !important;">
 						<label><input type="checkbox" value="">&nbsp;All Products</label>
 					</div>
-					<div class="checkbox col-md-1" style="padding-left: 0px;">
+					<div class="checkbox col-sm-2" style="width: 50% !important;">
 						<label><input type="checkbox" value="">&nbsp;Shop</label>
 					</div>
-					<div class="checkbox col-md-2" style="padding-left: 25px;">
-						<label><input type="checkbox" value="">&nbsp;Harmless</label>
+					<div class="checkbox col-sm-2" style="width: 50% !important;">
+						<label><input type="checkbox" value="">&nbsp;Harmless&nbsp;&nbsp;&nbsp;&nbsp;</label>
 					</div>
-					<div class="checkbox col-md-2" style="padding-left: 08px;">
+					<div class="checkbox col-sm-2" style="width: 50% !important;">
 						<label><input type="checkbox" value="">&nbsp;Controversial</label>
 					</div>
-					<div class="checkbox col-md-2">
-						<label><input type="checkbox" value="">&nbsp;Unknown</label>
+					<div class="checkbox col-sm-2" style="width: 50% !important;">
+						<label><input type="checkbox" value="">&nbsp;Unknown&nbsp;&nbsp;&nbsp;&nbsp;</label>
 					</div>
-					<div class="checkbox col-md-2">
+					<div class="checkbox col-sm-2" style="width: 50% !important;">
 						<label><input type="checkbox" value="">&nbsp;Certified</label>
 					</div>
-				</div>
-				<br>
-				<br>
+				</div>  
+				
 				<form action="/search" method="POST">
-					@csrf
-				<div class="row">
+				@csrf
+				<div class="row col-md-12">
 					<div class="input-group">
-
-					    <input type="text"  name="q"  id="q" class="form-control" placeholder="Search Products here">
+					    <input type="text" name="q" id="q"class="form-control" placeholder="Search Products here">
 					    <div class="input-group-append">
 					      <button class="btn btn-secondary" type="submit">
 					        <i class="fa fa-search"></i>
 					      </button>
 					    </div>
-					</div>
-				</div>
-			</form>
-
-
+					</div> 
+				</form>
+			</div>
 			</div>
 		</div>
 				<section class="section_gap_top food-gallery-area">
@@ -189,72 +190,100 @@
 					<div class="container-fluid no-padding">
 						<div class="row owl-carousel active-food-gallery">
 							<!-- single gallery item -->
-                @isset($products)
+							@isset($products)
+                				@foreach($products as $product)
+									<div class="single-gallery-item">
+										<div class="container">
+											<a href="product-detail/{{$product->id}}">
+												<div class="card">
+													<img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+													<div class="card-body" style="height:200px;">
+														<h4 class="card-title" style="height: 50px;"><a href="product-detail/{{$product->id}}"  class="c-title" title="View Product">{{$product->name}}</a></h4>
+											  			@if($product->alcohol == 0 && $product->animal_additive == 0 )
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Alcohol: no</label>
+																</div>	
+																<div style="padding-left:85%; position:absolute; padding-top:5px">
+																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
+																</div>
+															</div>
 
-                @foreach($products as $product)
-							<div class="single-gallery-item">
-								<div class="container">
-									<a href="product-detail.html">
-										<div class="card">
-											<img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-											<div class="card-body">
-												<h4 class="card-title"><a href="product-detail.html" title="View Product">{{$product->name}}</a></h4>
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Animal Product: no</label>
+																</div>	
+																<div style="padding-left:85%; position:absolute; padding-top:5px">
+																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
+																</div>
+															</div>
+                        								@endif
+														@if($product->alcohol != 0 && $product->animal_additive == 0 )
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Alcohol: yes</label>
+																</div>
+																<div style="padding-left:85%; position:absolute;">
+																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
+																</div>
+															</div>
 
-											  @if($product->alcohol == 0 && $product->animal_additive == 0 )
-												<div class="row">
-													<p class="col-md-7" style="padding-left: 0px; color:green">Is Certified: </p><img style="color: green; width: 87px" src="img/certified-trans.png"></i>
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Animal Product: no</label>
+																</div>	
+																<div style="padding-left:85%; position:absolute; padding-top:5px">
+																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
+																</div>
+															</div>
+														@endif
+														@if($product->alcohol == 0 && $product->animal_additive != 0 )
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Alcohol: no</label>
+																</div>	
+																<div style="padding-left:85%; position:absolute; padding-top:5px">
+																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
+																</div>
+															</div>
+														
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Animal Product: yes</label>
+																</div>	
+														
+																<div style="padding-left:85%; position:absolute;">
+																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
+																</div>
+															</div>															
+														@endif
+														@if($product->alcohol != 0 && $product->animal_additive != 0 )																														
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Alcohol: yes</label>
+																</div>
+																<div style="padding-left:85%; position:absolute;">
+																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
+																</div>
+															</div>
+
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Animal Product: yes</label>
+																</div>	
+														
+																<div style="padding-left:85%; position:absolute;">
+																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
+																</div>
+															</div>
+														@endif
+													</div>
 												</div>
-                        @endif
-
-												@if($product->alcohol != 0 && $product->animal_additive == 0 )
-
-												<div class="row" style="padding-left: 0px;">
-													<p class="col-md-9" style="padding-left: 0px; color:red">Alcohol: yes</p><img class="col-md-3" src="img/prohibitted.jpeg"></img>
-													<!-- <i style="color: red; padding-top: 5px;padding-left:27px;" class="fa fa-exclamation-triangle col-md-3"></i> -->
-												</div>
-												<div class="row">
-													<p class="col-md-9" style="padding-left: 0px; color:green">Animal Product: no</p><i style="color: green; padding-top: 5px; padding-left: 17px;" class="fa fa-check-circle fa-2x col-md-3"></i>
-												</div>
-												@endif
-
-												@if($product->alcohol == 0 && $product->animal_additive != 0 )
-
-												<div class="row" style="padding-left: 0px;">
-													<p class="col-md-9" style="padding-left: 0px; color:red">Animal Product: yes</p><img class="col-md-3" src="img/prohibitted.jpeg"></img>
-													<!-- <i style="color: red; padding-top: 5px;padding-left:27px;" class="fa fa-exclamation-triangle col-md-3"></i> -->
-												</div>
-												<div class="row">
-													<p class="col-md-9" style="padding-left: 0px; color:green">Alcohol: no</p><i style="color: green; padding-top: 5px; padding-left: 17px;" class="fa fa-check-circle fa-2x col-md-3"></i>
-												</div>
-												@endif
-
-												@if($product->alcohol != 0 && $product->animal_additive != 0 )
-
-												<div class="row" style="padding-left: 0px;">
-													<p class="col-md-9" style="padding-left: 0px; color:red">Animal Product: yes</p><img class="col-md-3" src="img/prohibitted.jpeg"></img>
-													<!-- <i style="color: red; padding-top: 5px;padding-left:27px;" class="fa fa-exclamation-triangle col-md-3"></i> -->
-												</div>
-												<div class="row" style="padding-left: 0px;">
-													<p class="col-md-9" style="padding-left: 0px; color:red">Alcohol: yes</p><img class="col-md-3" src="img/prohibitted.jpeg"></img>
-													<!-- <i style="color: red; padding-top: 5px;padding-left:27px;" class="fa fa-exclamation-triangle col-md-3"></i> -->
-												</div>
-
-												@endif
-
-											</div>
+											</a>
 										</div>
-									</a>
-								</div>
-							</div>
-							@endforeach
+									</div>
+								@endforeach
 							@endisset
-
-
-
-
-
-
-
 						</div>
 					</div>
 					<br>
@@ -271,161 +300,118 @@
 					<div class="container-fluid no-padding">
 						<div class="row owl-carousel active-food-gallery">
 							<!-- single gallery item -->
-							<div class="single-gallery-item">
-								<div class="container">
-									<a href="product-detail.html">
-										<div class="card">
-											<img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-											<div class="card-body">
-												<h4 class="card-title"><a href="product-detail.html" title="View Product">Product title</a></h4>
-												<!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-												<div class="row" style="padding-left: 0px;">
-													<p class="col-md-9" style="padding-left: 0px; color:red">Alcohol: yes</p><img class="col-md-3" src="img/prohibitted.jpeg"></img>
+							@isset($products)
+								@foreach($products as $product)
+									<div class="single-gallery-item">
+										<div class="container">
+											<a href="product-detail/{{$product->id}}">
+												<div class="card">
+													<img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+													<div class="card-body" style="height:200px;">
+														<h4 class="card-title" style="height: 50px;"><a href="product-detail/{{$product->id}}" class="c-title" title="View Product">{{$product->name}}</a></h4>
+														@if($product->alcohol == 0 && $product->animal_additive == 0 )
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Alcohol: no</label>
+																</div>	
+																<div style="padding-left:85%; position:absolute; padding-top:5px">
+																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
+																</div>
+															</div>
+
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Animal Product: no</label>
+																</div>	
+																<div style="padding-left:85%; position:absolute; padding-top:5px">
+																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
+																</div>
+															</div>
+                        								@endif
+														@if($product->alcohol != 0 && $product->animal_additive == 0 )
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Alcohol: yes</label>
+																</div>
+																<div style="padding-left:85%; position:absolute;">
+																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
+																</div>
+															</div>
+
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Animal Product: no</label>
+																</div>	
+																<div style="padding-left:85%; position:absolute; padding-top:5px">
+																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
+																</div>
+															</div>
+														@endif
+														@if($product->alcohol == 0 && $product->animal_additive != 0 )
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Alcohol: no</label>
+																</div>	
+																<div style="padding-left:85%; position:absolute; padding-top:5px">
+																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
+																</div>
+															</div>
+														
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Animal Product: yes</label>
+																</div>	
+														
+																<div style="padding-left:85%; position:absolute;">
+																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
+																</div>
+															</div>															
+														@endif
+														@if($product->alcohol != 0 && $product->animal_additive != 0 )																														
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Alcohol: yes</label>
+																</div>
+																<div style="padding-left:85%; position:absolute;">
+																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
+																</div>
+															</div>
+
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Animal Product: yes</label>
+																</div>	
+														
+																<div style="padding-left:85%; position:absolute;">
+																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
+																</div>
+															</div>
+														@endif
+													</div>
 												</div>
-												<!-- <div class="row"> -->
-													<!-- <p class="col-md-9" style="padding-left: 0px; color:orange">Is Certified: Contrversal</p><i style="color: orange; padding-top: 5px;" class="fa fa-exclamation-triangle col-md-3"></i>			 -->
-												<!-- </div> -->
-												<div class="row">
-													<p class="col-md-9" style="padding-left: 0px; color:green">Animal Product: no</p><i style="color: green; padding-top: 5px; padding-left: 17px;" class="fa fa-check-circle fa-2x col-md-3"></i>
-												</div>
-											</div>
+											</a>
 										</div>
-									</a>
-								</div>
-							</div>
-							<!-- single gallery item -->
-							<div class="single-gallery-item">
-								<div class="container">
-									<a href="product-detail.html">
-										<div class="card">
-											<img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-											<div class="card-body">
-												<h4 class="card-title"><a href="product-detail.html" title="View Product">Product title</a></h4>
-												<!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-												<div class="row" style="padding-left: 0px;">
-													<p class="col-md-9" style="padding-left: 0px; color:green">Alcohol: no</p><i style="color: green; padding-top: 5px; padding-left: 17px;" class="fa fa-check-circle fa-2x col-md-3"></i>
-												</div>
-												<!-- <div class="row"> -->
-													<!-- <p class="col-md-9" style="padding-left: 0px; color:orange">Is Certified: Contrversal</p><i style="color: orange; padding-top: 5px;" class="fa fa-exclamation-triangle col-md-3"></i>			 -->
-												<!-- </div> -->
-												<div class="row">
-													<p class="col-md-9" style="padding-left: 0px; color:red">Animal Product: yes</p><img class="col-md-3" src="img/prohibitted.jpeg"></img>
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<!-- single gallery item -->
-							<div class="single-gallery-item">
-								<div class="container">
-									<a href="product-detail.html">
-										<div class="card">
-											<img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-											<div class="card-body">
-												<h4 class="card-title"><a href="product-detail.html" title="View Product">Product title</a></h4>
-												<!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-												<!-- <div class="row col-md-12" style="padding-left: 0px;">													 -->
-													<!-- <p class="col-md-9" style="padding-left: 0px; color:red">Alcohol: yes</p><i style="color: red; padding-top: 5px;padding-left:27px;" class="fa fa-circle-o col-md-3"></i> -->
-												<!-- </div> -->
-												<div class="row">
-													<p class="col-md-7" style="padding-left: 0px; color:green">Is Certified: </p><img style="color: green; width: 87px" src="img/certified-trans.png"></i>
-												</div>
-												<!-- <div class="row"> -->
-													<!-- <p class="col-md-9" style="padding-left: 0px; color:green">Animal Product: no</p><i style="color: green; padding-top: 5px;" class="fa fa-check-circle col-md-3"></i>													 -->
-												<!-- </div> -->
-											</div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<!-- single gallery item -->
-							<div class="single-gallery-item">
-								<div class="container">
-									<a href="product-detail.html">
-										<div class="card">
-											<img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-											<div class="card-body">
-												<h4 class="card-title"><a href="product-detail.html" title="View Product">Product title</a></h4>
-												<!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-												<div class="row" style="padding-left: 0px;">
-													<p class="col-md-9" style="padding-left: 0px; color:red">Alcohol: yes</p><img class="col-md-3" src="img/prohibitted.jpeg"></img>
-												</div>
-												<!-- <div class="row"> -->
-													<!-- <p class="col-md-9" style="padding-left: 0px; color:orange">Is Certified: Contrversal</p><i style="color: orange; padding-top: 5px;" class="fa fa-exclamation-triangle col-md-3"></i>			 -->
-												<!-- </div> -->
-												<div class="row">
-													<p class="col-md-9" style="padding-left: 0px; color:green">Animal Product: no</p><i style="color: green; padding-top: 5px; padding-left: 17px;" class="fa fa-check-circle fa-2x col-md-3"></i>
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<!-- single gallery item -->
-							<div class="single-gallery-item">
-								<div class="container">
-									<a href="product-detail.html">
-										<div class="card">
-											<img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-											<div class="card-body">
-												<h4 class="card-title"><a href="product-detail.html" title="View Product">Product title</a></h4>
-												<!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-												<div class="row" style="padding-left: 0px;">
-													<p class="col-md-9" style="padding-left: 0px; color:green">Alcohol: no</p><i style="color: green; padding-top: 5px; padding-left: 17px;" class="fa fa-check-circle fa-2x col-md-3"></i>
-												</div>
-												<!-- <div class="row"> -->
-													<!-- <p class="col-md-9" style="padding-left: 0px; color:orange">Is Certified: Contrversal</p><i style="color: orange; padding-top: 5px;" class="fa fa-exclamation-triangle col-md-3"></i>			 -->
-												<!-- </div> -->
-												<div class="row">
-													<p class="col-md-9" style="padding-left: 0px; color:red">Animal Product: yes</p><img class="col-md-3" src="img/prohibitted.jpeg"></img>
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-							</div>
-							<!-- single gallery item -->
-							<div class="single-gallery-item">
-								<div class="container">
-									<a href="product-detail.html">
-										<div class="card">
-											<img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-											<div class="card-body">
-												<h4 class="card-title"><a href="product-detail.html" title="View Product">Product title</a></h4>
-												<!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-												<!-- <div class="row col-md-12" style="padding-left: 0px;">													 -->
-													<!-- <p class="col-md-9" style="padding-left: 0px; color:red">Alcohol: yes</p><i style="color: red; padding-top: 5px;padding-left:27px;" class="fa fa-circle-o col-md-3"></i> -->
-												<!-- </div> -->
-												<div class="row">
-													<p class="col-md-7" style="padding-left: 0px; color:green">Is Certified: </p><img style="color: green; width: 87px" src="img/certified-trans.png"></i>
-												</div>
-												<!-- <div class="row"> -->
-													<!-- <p class="col-md-9" style="padding-left: 0px; color:green">Animal Product: no</p><i style="color: green; padding-top: 5px;" class="fa fa-check-circle col-md-3"></i>													 -->
-												<!-- </div> -->
-											</div>
-										</div>
-									</a>
-								</div>
-							</div>
+									</div>
+								@endforeach
+							@endisset
 						</div>
 					</div>
 				</section>
 		<!--================ Start Breakfast Area =================-->
-
+			
 		<!--================ End Breakfast Area =================-->
 
 		<!--================ Start Lunch Area =================-->
-
+		
 		<!--================ End Lunch Area =================-->
 
 		<!--================ Start Food Gallery Area =================-->
-
+		
 		<!--================ End Food Gallery Area =================-->
 <br>
 
 		<!--================ Start Reservstion Area =================-->
-
+		
 		<!--================ End Reservstion Area =================-->
 
 		<!--================ Start Chef Area =================-->
@@ -492,7 +478,7 @@
 		<section class="brands-area">
 			<div class="container">
 				<div class="row text-center">
-					<div class="col">
+					<div class="col top">
 						<div class="counter">
 							<!-- <i class="fa fa-users fa-2x"></i> -->
 							<img src="img/user-icon.png" style="height:50px; width:75px;">
@@ -501,7 +487,7 @@
 							<p class="count-text ">Visitors On Pages</p>
 						</div>
 					</div>
-					<div class="col">
+					<div class="col top">
 						<div class="counter">
 							<!-- <i class="fa fa-apple fa-2x"></i> -->
 							<img src="img/certified-trans.png" style="height:50px; width:50px;">
@@ -510,7 +496,7 @@
 							<p class="count-text ">Verified Products</p>
 						</div>
 					</div>
-					<div class="col">
+					<div class="col top">
 						<div class="counter">
 							<!-- <i class="fa fa-android fa-2x"></i> -->
 							<img src="img/download-icon.png" style="height:50px; width:50px;">
@@ -519,7 +505,7 @@
 							<p class="count-text ">Downloads</p>
 						</div>
 					</div>
-					<div class="col">
+					<div class="col top">
 						<div class="counter">
 							<!-- <i class="fa fa-facebook-square fa-2x"></i> -->
 							<img src="img/social-media.png" style="height:50px; width:75px;">
@@ -724,7 +710,7 @@
 (function ($) {
 	$.fn.countTo = function (options) {
 		options = options || {};
-
+		
 		return $(this).each(function () {
 			// set options for current element
 			var settings = $.extend({}, $.fn.countTo.defaults, {
@@ -734,58 +720,58 @@
 				refreshInterval: $(this).data('refresh-interval'),
 				decimals:        $(this).data('decimals')
 			}, options);
-
+			
 			// how many times to update the value, and how much to increment the value on each update
 			var loops = Math.ceil(settings.speed / settings.refreshInterval),
 				increment = (settings.to - settings.from) / loops;
-
+			
 			// references & variables that will change with each update
 			var self = this,
 				$self = $(this),
 				loopCount = 0,
 				value = settings.from,
 				data = $self.data('countTo') || {};
-
+			
 			$self.data('countTo', data);
-
+			
 			// if an existing interval can be found, clear it first
 			if (data.interval) {
 				clearInterval(data.interval);
 			}
 			data.interval = setInterval(updateTimer, settings.refreshInterval);
-
+			
 			// initialize the element with the starting value
 			render(value);
-
+			
 			function updateTimer() {
 				value += increment;
 				loopCount++;
-
+				
 				render(value);
-
+				
 				if (typeof(settings.onUpdate) == 'function') {
 					settings.onUpdate.call(self, value);
 				}
-
+				
 				if (loopCount >= loops) {
 					// remove the interval
 					$self.removeData('countTo');
 					clearInterval(data.interval);
 					value = settings.to;
-
+					
 					if (typeof(settings.onComplete) == 'function') {
 						settings.onComplete.call(self, value);
 					}
 				}
 			}
-
+			
 			function render(value) {
 				var formattedValue = settings.formatter.call(self, value, settings);
 				$self.html(formattedValue);
 			}
 		});
 	};
-
+	
 	$.fn.countTo.defaults = {
 		from: 0,               // the number the element should start at
 		to: 0,                 // the number the element should end at
@@ -796,7 +782,7 @@
 		onUpdate: null,        // callback method for every time the element is updated
 		onComplete: null       // callback method for when the element finishes updating
 	};
-
+	
 	function formatter(value, settings) {
 		return value.toFixed(settings.decimals);
 	}
@@ -809,10 +795,10 @@ jQuery(function ($) {
 	  return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
 	}
   });
-
+  
   // start all the timers
-  $('.timer').each(count);
-
+  $('.timer').each(count);  
+  
   function count(options) {
 	var $this = $(this);
 	options = $.extend({}, options || {}, $this.data('countToOptions') || {});

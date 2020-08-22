@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index($slug)
     {
         $categories = DB::table('h_category')->get();
-        $sub_categories = DB::table('h_sub_categories')->where('category_slug', $slug)->get();
+        $sub_categories = DB::table('h_sub_categories')->where('category_slug', $slug)->orderBy('name')->get();
         return view('categories.index', compact(['sub_categories', 'categories']));
     }
 
