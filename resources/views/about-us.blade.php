@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="container-fluid">
 
 	<!--================ Start Header Menu Area =================-->
 	<div class="menu-trigger">

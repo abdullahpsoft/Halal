@@ -57,7 +57,7 @@
 </head>
 
 <body class="container-fluid">
-
+	
 	<!--================ Start Header Menu Area =================-->
 	<div class="menu-trigger">
 		<span></span>
@@ -175,6 +175,11 @@
 					    </div>
 					</div> 
 				</form>
+				@if (session('alert'))
+    				<div class="col-md-12 alert alert-danger" style="text-align: center">
+        				{{ session('alert') }}
+    				</div>
+				@endif
 			</div>
 			</div>
 		</div>

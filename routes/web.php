@@ -30,16 +30,25 @@ Route::get('/product-detail/{id}', 'Web\ProductController@show');
 
 Route::any ( '/search', function () {
     $q = Request::get ( 'q' );
+    if($q == "")
+    {
+        return redirect()->back()->with('alert', 'Please Enter Something To Search');
+    }
     if($q != ""){
     $categories = DB::table('h_category')->get();    
     $products = App\Models\Admin\Products::where ( 'name', 'LIKE', '%' . $q . '%' )->paginate (12)->setPath ( '' );
     $pagination = $products->appends ( array (
                 'q' => Request::get ( 'q' )
         ) );
-    if (count ( $products ) > 0)
+        
+    if (count ( $products ) > 0){
         return view ( 'products.index',compact('products','categories') )->withQuery ( $q );
     }
-        return view ( 'products.index',compact('products','categories') )->withMessage ( 'No Details found. Try to search again !' );
+    else
+        return view ( 'products.index',compact('products','categories'),['successMsg'=>'No Details found. Try to search again !']);
+        //  )->with('alert','No Details found. Try to search again !' );
+}
+    
 } );
 
 
