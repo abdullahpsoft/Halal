@@ -16,10 +16,9 @@ class ProductController extends Controller
     public function index()
     {
 
-      $products->paginate(5);
 
 
-return view('products.index', compact('products'));
+return view('products.index');
     }
 
     /**
@@ -32,16 +31,7 @@ return view('products.index', compact('products'));
         //
     }
 
-    public function search(Request $req)
-    {
-      $products =  Products::query()
-   ->where('name', 'LIKE', "%{$req->search}%")
-   ->paginate(5);
 
-
-return view('products.index', compact('products'));
-        //
-    }
 
 
     /**
