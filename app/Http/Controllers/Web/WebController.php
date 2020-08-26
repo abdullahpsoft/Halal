@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Products;
+use Illuminate\Support\Facades\DB;
 
 class WebController extends Controller
 {
@@ -15,8 +16,9 @@ class WebController extends Controller
      */
     public function index()
     {
-      $products = Products::orderBy('created_at', 'desc')->paginate(6);
-      return view('welcome', compact('products'));
+        $categories = DB::table('h_category')->get();
+        $products = Products::orderBy('created_at', 'desc')->paginate(6);
+        return view('welcome', compact('products','categories'));
         //
     }
 
@@ -89,14 +91,17 @@ class WebController extends Controller
 
     public function explore()
     {
-        return view('explore');
+        $categories = DB::table('h_category')->get();
+        return view('explore', compact(['categories']));
     }
     public function companies()
     {
-        return view('companies');
+        $categories = DB::table('h_category')->get();
+        return view('companies', compact(['categories']));
     }
     public function aboutUs()
     {
-        return view('about-us');
+        $categories = DB::table('h_category')->get();
+        return view('about-us', compact(['categories']));
     }
 }

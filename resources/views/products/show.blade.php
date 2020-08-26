@@ -5,8 +5,8 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" href="{{asset('/img/favicon.png')}}" type="image/png">
-	<title>Halal Check - About Us</title>
+	<link rel="icon" href="img/favicon.png" type="image/png">
+	<title>Halal Check - Products</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
 	<link rel="stylesheet" href="{{asset('vendors/linericon/style.css')}}">
@@ -41,21 +41,26 @@
 		<div class="nav-wraper">
 			<div class="navbar">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="index.html"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> home</a></li>
-					<li class="nav-item"><a class="nav-link " href="about-us.html"><i class="fa fa-question-circle" aria-hidden="true">&nbsp;</i>about us</a></li>
-					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>
-
+					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> home</a></li>
 					<li class="nav-item submenu dropdown">
-						<a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true"
+						<a href="#" class="nav-link active dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 						 aria-expanded="false"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Categories</a>
 						<ul class="dropdown-menu">
-							<li class="nav-item"><a class="nav-link" href="categories.html">Eat</a></li>
-							<li class="nav-item"><a class="nav-link" href="categories.html">Drink</a></li>
-							<li class="nav-item"><a class="nav-link" href="categories.html">Non-food</a></li>
+							@foreach ($categories as $category)
+								<li class="nav-item"><a class="nav-link" href="/categories/{{$category->slug}}"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>{{$category->name}}</a>	</li>	
+							@endforeach
+							{{-- <li class="nav-item"><a class="nav-link" href="categories/eat"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Eat</a>	</li>
+							<li class="nav-item"><a class="nav-link" href="categories/drink"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Drink</a></li>
+							<li class="nav-item"><a class="nav-link" href="categories/nonfood"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Non-food</a></li> --}}
 						</ul>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa fa-question-circle" aria-hidden="true">&nbsp;</i>contact</a></li>
-					<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
+					<li class="nav-item"><a class="nav-link" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>explore</a></li>
+					<li class="nav-item"><a class="nav-link" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>about us</a></li>
+					<li class="nav-item"><a class="nav-link" href="/companies"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
+					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>					
+					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-phone" aria-hidden="true">&nbsp;</i>contact</a></li>
+					<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
+					<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-twitter" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-instagram" aria-hidden="true"></i></a></li>
 
 				</ul>
 			</div>
@@ -64,7 +69,7 @@
 	<!--================ End Header Menu Area =================-->
 	<div class="site-main">
 		<!--================ Start Home Banner Area =================-->
-		<section class="home_banner_area common-banner">
+		{{-- <section class="home_banner_area common-banner">
 			<div class="banner_inner">
 				<div class="container-fluid no-padding">
 					<div class="row halfscreen">
@@ -72,9 +77,9 @@
 					</div>
 				</div>
 			</div>
-		</section>
+		</section> --}}
 		<!-- Start banner bottom -->
-		<div class="row banner-bottom common-bottom-banner align-items-center justify-content-center">
+		{{-- <div class="row banner-bottom common-bottom-banner align-items-center justify-content-center">
 			<div class="col-lg-8 offset-lg-4">
 				<div class="banner_content">
 					<div class="row d-flex align-items-center" style="background: white">
@@ -93,7 +98,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> --}}
 		<!-- End banner bottom -->
 
 		<div class="super_container">
@@ -109,7 +114,7 @@
 		                    <div class="product_description">
 		                        <nav>
 		                            <ol class="breadcrumb">
-		                                <li class="breadcrumb-item"><a href="#">{{$product->name}}</a></li>
+		                                <li class="breadcrumb-item"><a href="#">{{$product->title}}</a></li>
 
 		                            </ol>
 		                        </nav>
@@ -120,139 +125,166 @@
 														@if($product->alcohol == 0 && $product->animal_additive == 0 )
 
 														<div class="row">
-																<div class="col-md-7">
-																		<div class="br-dashed">
-																				<div class="row">
-																						<div class="col-md-3 col-xs-3"> <img style="width: 50px" src="/img/tick.png"> </div>
-																						<div class="col-md-9 col-xs-9">
-																								<div class="pr-info"> <span class="break-all">Alcohol: no  <p>free from alcoholic ingredients</p></span> </div>
-																						</div>
-																				</div>
+															<div class="col-md-7">
+																<div class="br-dashed">
+																	<div class="row">
+																		<div class="col-md-3 col-xs-3"> 
+                                                                            <i style="color: green;max-width: 30px !important;max-height: 30px !important; margin:0px;" class="fa fa-check-circle fa-2x"></i>
+                                                                        </div>
+																		<div class="col-md-9 col-xs-9">
+																			<div class="pr-info"> 
+                                                                                <span class="break-all">Alcohol: no  <p>free from alcoholic ingredients</p></span> 
+                                                                            </div>
 																		</div>
+																	</div>
 																</div>
-																<p class="" style="padding-left: 0px; color:green"> </p><img style="color: green; width: 87px" src="/img/certified-trans.png"></i>
-																<div class="col-md-7"> </div>
+															</div>
+															{{-- <p class="" style="padding-left: 0px; color:green"> </p><img style="color: green; width: 87px" src="/img/certified-trans.png"></i> --}}
+															<div class="col-md-7"> </div>
 														</div>
 
 														<div class="row">
-																<div class="col-md-7">
-																		<div class="br-dashed">
-																				<div class="row">
-																						<div class="col-md-3 col-xs-3"> <img style="width: 50px" src="/img/tick.png"> </div>
-																						<div class="col-md-9 col-xs-9">
-																								<div class="pr-info"> <span class="break-all">Animal additives: No  <p>free of animal components (eggs, milk, fish products excluded)</p></span> </div>
-																						</div>
-																				</div>
-																		</div>
-																</div>
-																<div class="col-md-7"> </div>
-														</div>
+															<div class="col-md-7">
+																<div class="br-dashed">
+																	<div class="row">
+																		<div class="col-md-3 col-xs-3"> 
+                                                                            <i style="color: green;max-width: 30px !important;max-height: 30px !important; margin:0px;" class="fa fa-check-circle fa-2x"></i>
+                                                                        </div>
+			    														<div class="col-md-9 col-xs-9">
+				    														<div class="pr-info"> 
+                                                                                <span class="break-all">Animal additives: No  <p>free of animal components (eggs, milk, fish products excluded)</p></span> 
+                                                                            </div>
+							    										</div>
+								    								</div>
+									    						</div>
+										    				</div>
+											    			<div class="col-md-7"> </div>
+													    </div>
 														<br>
 
 														@endif
 
 														@if($product->alcohol != 0 && $product->animal_additive == 0 )
 														<div class="row">
-																<div class="col-md-7">
-																		<div class="br-dashed">
-																				<div class="row">
-																						<div class="col-md-3 col-xs-3"> <img style="width: 50px" src="/img/prohibitted.jpeg"> </div>
-																						<div class="col-md-9 col-xs-9">
-																								<div class="pr-info"> <span class="break-all">Alcohol: yes  <p></p></span> </div>
-																						</div>
-																				</div>
+															<div class="col-md-7">
+																<div class="br-dashed">
+																	<div class="row">
+																		<div class="col-md-3 col-xs-3"> 
+                                                                            <img style="max-width: 25px !important; max-height: 40px !important;" src="/img/prohibitted.jpeg">
+                                                                        </div>
+																		<div class="col-md-9 col-xs-9">
+                                                                            <div class="pr-info"> 
+                                                                                <span class="break-all">Alcohol: yes  <p></p></span> 
+                                                                            </div>
 																		</div>
+																	</div>
 																</div>
-																<div class="col-md-7"> </div>
+															</div>
+															<div class="col-md-7"> </div>
 														</div>
 
 														<div class="row">
-																<div class="col-md-7">
-																		<div class="br-dashed">
-																				<div class="row">
-																						<div class="col-md-3 col-xs-3"> <img style="width: 50px" src="/img/tick.png"> </div>
-																						<div class="col-md-9 col-xs-9">
-																								<div class="pr-info"> <span class="break-all">Animal additives: No  <p>free of animal components (eggs, milk, fish products excluded)</p></span> </div>
-																						</div>
-																				</div>
+															<div class="col-md-7">
+																<div class="br-dashed">
+																	<div class="row">
+																		<div class="col-md-3 col-xs-3"> 
+                                                                            <i style="color: green;max-width: 30px !important;max-height: 30px !important; margin:0px;" class="fa fa-check-circle fa-2x"></i>
+                                                                        </div>
+																		<div class="col-md-9 col-xs-9">
+																			<div class="pr-info"> 
+                                                                                <span class="break-all">Animal additives: No  <p>free of animal components (eggs, milk, fish products excluded)</p></span> 
+                                                                            </div>
 																		</div>
+																	</div>
 																</div>
-																<div class="col-md-7"> </div>
+															</div>
+															<div class="col-md-7"> </div>
 														</div>
 														<br>
 														@endif
 
 														@if($product->alcohol == 0 && $product->animal_additive != 0 )
 														<div class="row">
-																<div class="col-md-7">
-																		<div class="br-dashed">
-																				<div class="row">
-																						<div class="col-md-3 col-xs-3"> <img style="width: 50px" src="/img/tick.png"> </div>
-																						<div class="col-md-9 col-xs-9">
-																								<div class="pr-info"> <span class="break-all">Alcohol: no  <p>free from alcoholic ingredients</p></span> </div>
-																						</div>
-																				</div>
+															<div class="col-md-7">
+																<div class="br-dashed">
+																	<div class="row">
+																		<div class="col-md-3 col-xs-3"> 
+                                                                            <i style="color: green;max-width: 30px !important;max-height: 30px !important; margin:0px;" class="fa fa-check-circle fa-2x"></i> 
+                                                                        </div>
+																		<div class="col-md-9 col-xs-9">
+																			<div class="pr-info"> 
+                                                                                <span class="break-all">Alcohol: no  <p>free from alcoholic ingredients</p></span> 
+                                                                            </div>
 																		</div>
+																	</div>
 																</div>
-																<div class="col-md-7"> </div>
+															</div>
+															<div class="col-md-7"> </div>
 														</div>
 
 														<div class="row">
-																<div class="col-md-7">
-																		<div class="br-dashed">
-																				<div class="row">
-																						<div class="col-md-3 col-xs-3"> <img style="width: 50px" src="/img/prohibitted.jpeg"> </div>
-																						<div class="col-md-9 col-xs-9">
-																								<div class="pr-info"> <span class="break-all">Animal additives: Yes  <p></p></span> </div>
-																						</div>
-																				</div>
+															<div class="col-md-7">
+																<div class="br-dashed">
+																	<div class="row">
+																		<div class="col-md-3 col-xs-3"> 
+                                                                            <img style="max-width: 25px !important; max-height: 40px !important;" src="/img/prohibitted.jpeg"> 
+                                                                        </div>
+																		<div class="col-md-9 col-xs-9">
+                                                                            <div class="pr-info"> 
+                                                                                <span class="break-all">
+                                                                                    Animal additives: Yes  <p></p>
+                                                                                </span> 
+                                                                            </div>
 																		</div>
-																</div>
-																<div class="col-md-7"> </div>
+                                                                    </div>																	
+                                                                </div>
+															</div>
+															<div class="col-md-7"> 
+                                                            </div>
 														</div>
 														<br>
-
 														@endif
 
 														@if($product->alcohol != 0 && $product->animal_additive != 0 )
 														<div class="row">
-																<div class="col-md-7">
-																		<div class="br-dashed">
-																				<div class="row">
-																						<div class="col-md-3 col-xs-3"> <img style="width: 50px" src="/img/prohibitted.jpeg"> </div>
-																						<div class="col-md-9 col-xs-9">
-																								<div class="pr-info"> <span class="break-all">Alcohol: yes  <p></p></span> </div>
-																						</div>
-																				</div>
+															<div class="col-md-7">
+												    			<div class="br-dashed">
+																	<div class="row">
+                                                                        <div class="col-md-3 col-xs-3">
+                                                                            <img style="max-width: 25px !important; max-height: 40px !important;" src="/img/prohibitted.jpeg">
+                                                                        </div>
+																		<div class="col-md-9 col-xs-9">																					
+                                                                            <div class="pr-info">
+                                                                                <span class="break-all">Alcohol: yes  <p></p></span> 
+                                                                            </div>
 																		</div>
+																	</div>
 																</div>
-																<div class="col-md-7"> </div>
+															</div>
+															<div class="col-md-7"> </div>
 														</div>
-
-
-
 
 														<div class="row">
-																<div class="col-md-7">
-																		<div class="br-dashed">
-																				<div class="row">
-																						<div class="col-md-3 col-xs-3"> <img style="width: 50px" src="/img/prohibitted.jpeg"> </div>
-																						<div class="col-md-9 col-xs-9">
-																								<div class="pr-info"> <span class="break-all">Animal additives: Yes  <p></p></span> </div>
-																						</div>
-																				</div>
+															<div class="col-md-7">
+																<div class="br-dashed">
+																	<div class="row">
+																		<div class="col-md-3 col-xs-3"> 
+                                                                            <img style="max-width: 25px !important; max-height: 40px !important;" src="/img/prohibitted.jpeg">
+                                                                        </div>
+																		<div class="col-md-9 col-xs-9">
+																			<div class="pr-info"> 
+                                                                                <span class="break-all">Animal additives: Yes  <p></p></span> 
+                                                                            </div>
 																		</div>
-																</div>
-																<div class="col-md-7"> </div>
+																	</div>
+										    					</div>
+															</div>
+															<div class="col-md-7"> </div>
 														</div>
 														<br>
-
-
 														@endif
-
-
-														<br>
-
+                                                        
+                                                        <br>
 													  <hr class="singleline">
 		                        <div> <span class="product_info">Barcode number: <b>{{$product->ean}}</b><span><br>
 															<span class="product_info">Category: <b>{{$product->sub_category_slug}}</b><span><br>
@@ -280,8 +312,8 @@
 		            </div>
 		            <div class="row">
 		                <div class="col-md-12">
-		                   <p>
-												 Dear Ms. F.,<br>
+                            <pre>{{$product->man_reply}}
+												 {{-- Dear Ms. F.,<br>
 
 												 nice of you to contact us.<br>
 
@@ -293,8 +325,8 @@
 									<br>			 from the
 										<br>		 HiPP Parents Service Team
 										<br>		 ------------------------------
-										<br>		 Admin: The product is without added flavors and extracts.
-											 </p>
+										<br>		 Admin: The product is without added flavors and extracts. --}}
+											 </pre>
 		                </div>
 		            </div>
 		        </div>
@@ -408,23 +440,23 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/popper.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/stellar.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="/js/jquery-3.2.1.min.js"></script>
+	<script src="/js/popper.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/stellar.js"></script>
+	<script src="/js/jquery.magnific-popup.min.js"></script>
 	<script src="vendors/lightbox/simpleLightbox.min.js"></script>
 	<script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
 	<script src="vendors/owl-carousel/owl.carousel.min.js"></script>
 	<script src="vendors/jquery-ui/jquery-ui.js"></script>
-	<script src="js/jquery.ajaxchimp.min.js"></script>
+	<script src="/js/jquery.ajaxchimp.min.js"></script>
 	<script src="vendors/counter-up/jquery.waypoints.min.js"></script>
 	<script src="vendors/counter-up/jquery.counterup.js"></script>
-	<script src="js/mail-script.js"></script>
+	<script src="/js/mail-script.js"></script>
 	<!--gmaps Js-->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-	<script src="js/gmaps.min.js"></script>
-	<script src="js/theme.js"></script>
+	<script src="/js/gmaps.min.js"></script>
+	<script src="/js/theme.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>

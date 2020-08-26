@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Admin\Products;
 
 class ProductController extends Controller
@@ -13,12 +14,20 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($slug,$name)
     {
+<<<<<<< HEAD
 
 
 
 return view('products.index');
+=======
+        $categories = DB::table('h_category')->get();
+        $sub_category = DB::table('h_sub_categories')->where('name', $name)->get();
+        $products = DB::table('h_products')->where('sub_category_slug', $sub_category[0]->sub_category_slug)->paginate(12);
+        // dd($products);
+        return view('products.display', compact(['categories', 'products', 'name']));
+>>>>>>> eac7c758b308ad9392989ac10d72c32a0d7c31a1
     }
 
     /**
@@ -31,7 +40,21 @@ return view('products.index');
         //
     }
 
+<<<<<<< HEAD
 
+=======
+    public function search(Request $req)
+    {
+      $categories = DB::table('h_category')->get();
+      $products =  Products::query()
+   ->where('name', 'LIKE', "%{$req->search}%")
+   ->paginate(5);
+
+
+return view('products.index', compact('products','categories'));
+        //
+    }
+>>>>>>> eac7c758b308ad9392989ac10d72c32a0d7c31a1
 
 
     /**
@@ -54,10 +77,10 @@ return view('products.index');
     // public function show($id)
     public function show($id)
     {
+    $categories = DB::table('h_category')->get();
+    $product = Products::find($id);
 
-$product = Products::find($id);
-
-    return view('products.show', compact('product'));
+    return view('products.show', compact('product', 'categories'));
         //
     }
 
