@@ -47,7 +47,7 @@
 						 aria-expanded="false"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Categories</a>
 						<ul class="dropdown-menu">
 							@foreach ($categories as $category)
-								<li class="nav-item"><a class="nav-link" href="/categories/{{$category->slug}}"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>{{$category->name}}</a>	</li>	
+								<li class="nav-item"><a class="nav-link" href="/categories/{{$category->slug}}"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>{{$category->name}}</a>	</li>
 							@endforeach
 							{{-- <li class="nav-item"><a class="nav-link" href="categories/eat"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Eat</a>	</li>
 							<li class="nav-item"><a class="nav-link" href="categories/drink"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Drink</a></li>
@@ -57,7 +57,7 @@
 					<li class="nav-item"><a class="nav-link" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>explore</a></li>
 					<li class="nav-item"><a class="nav-link" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>about us</a></li>
 					<li class="nav-item"><a class="nav-link" href="/companies"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
-					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>					
+					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>
 					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-phone" aria-hidden="true">&nbsp;</i>contact</a></li>
 					<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
 					<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-twitter" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-instagram" aria-hidden="true"></i></a></li>
@@ -108,7 +108,7 @@
 		            <div class="row">
 
 		                <div class="col-lg-4 order-lg-2 order-1">
-		                    <div class="image_selected"><img src="/img/product.jpg" alt=""></div>
+		                    <div class="image_selected"><img src="http://lara.halalcheck.net/img/fotos/big/{{$product->image}}" alt=""></div>
 		                </div>
 		                <div class="col-lg-6 order-2">
 		                    <div class="product_description">
@@ -128,12 +128,12 @@
 															<div class="col-md-7">
 																<div class="br-dashed">
 																	<div class="row">
-																		<div class="col-md-3 col-xs-3"> 
+																		<div class="col-md-3 col-xs-3">
                                                                             <i style="color: green;max-width: 30px !important;max-height: 30px !important; margin:0px;" class="fa fa-check-circle fa-2x"></i>
                                                                         </div>
 																		<div class="col-md-9 col-xs-9">
-																			<div class="pr-info"> 
-                                                                                <span class="break-all">Alcohol: no  <p>free from alcoholic ingredients</p></span> 
+																			<div class="pr-info">
+                                                                                <span class="break-all">Alcohol: no  <p>free from alcoholic ingredients</p></span>
                                                                             </div>
 																		</div>
 																	</div>
@@ -147,12 +147,12 @@
 															<div class="col-md-7">
 																<div class="br-dashed">
 																	<div class="row">
-																		<div class="col-md-3 col-xs-3"> 
+																		<div class="col-md-3 col-xs-3">
                                                                             <i style="color: green;max-width: 30px !important;max-height: 30px !important; margin:0px;" class="fa fa-check-circle fa-2x"></i>
                                                                         </div>
 			    														<div class="col-md-9 col-xs-9">
-				    														<div class="pr-info"> 
-                                                                                <span class="break-all">Animal additives: No  <p>free of animal components (eggs, milk, fish products excluded)</p></span> 
+				    														<div class="pr-info">
+                                                                                <span class="break-all">Animal additives: No  <p>free of animal components (eggs, milk, fish products excluded)</p></span>
                                                                             </div>
 							    										</div>
 								    								</div>
@@ -169,12 +169,12 @@
 															<div class="col-md-7">
 																<div class="br-dashed">
 																	<div class="row">
-																		<div class="col-md-3 col-xs-3"> 
+																		<div class="col-md-3 col-xs-3">
                                                                             <img style="max-width: 25px !important; max-height: 40px !important;" src="/img/prohibitted.jpeg">
                                                                         </div>
 																		<div class="col-md-9 col-xs-9">
-                                                                            <div class="pr-info"> 
-                                                                                <span class="break-all">Alcohol: yes  <p></p></span> 
+                                                                            <div class="pr-info">
+                                                                                <span class="break-all">Alcohol: yes  <p></p></span>
                                                                             </div>
 																		</div>
 																	</div>
@@ -187,12 +187,12 @@
 															<div class="col-md-7">
 																<div class="br-dashed">
 																	<div class="row">
-																		<div class="col-md-3 col-xs-3"> 
+																		<div class="col-md-3 col-xs-3">
                                                                             <i style="color: green;max-width: 30px !important;max-height: 30px !important; margin:0px;" class="fa fa-check-circle fa-2x"></i>
                                                                         </div>
 																		<div class="col-md-9 col-xs-9">
-																			<div class="pr-info"> 
-                                                                                <span class="break-all">Animal additives: No  <p>free of animal components (eggs, milk, fish products excluded)</p></span> 
+																			<div class="pr-info">
+                                                                                <span class="break-all">Animal additives: No  <p>free of animal components (eggs, milk, fish products excluded)</p></span>
                                                                             </div>
 																		</div>
 																	</div>
@@ -208,12 +208,12 @@
 															<div class="col-md-7">
 																<div class="br-dashed">
 																	<div class="row">
-																		<div class="col-md-3 col-xs-3"> 
-                                                                            <i style="color: green;max-width: 30px !important;max-height: 30px !important; margin:0px;" class="fa fa-check-circle fa-2x"></i> 
+																		<div class="col-md-3 col-xs-3">
+                                                                            <i style="color: green;max-width: 30px !important;max-height: 30px !important; margin:0px;" class="fa fa-check-circle fa-2x"></i>
                                                                         </div>
 																		<div class="col-md-9 col-xs-9">
-																			<div class="pr-info"> 
-                                                                                <span class="break-all">Alcohol: no  <p>free from alcoholic ingredients</p></span> 
+																			<div class="pr-info">
+                                                                                <span class="break-all">Alcohol: no  <p>free from alcoholic ingredients</p></span>
                                                                             </div>
 																		</div>
 																	</div>
@@ -226,20 +226,20 @@
 															<div class="col-md-7">
 																<div class="br-dashed">
 																	<div class="row">
-																		<div class="col-md-3 col-xs-3"> 
-                                                                            <img style="max-width: 25px !important; max-height: 40px !important;" src="/img/prohibitted.jpeg"> 
+																		<div class="col-md-3 col-xs-3">
+                                                                            <img style="max-width: 25px !important; max-height: 40px !important;" src="/img/prohibitted.jpeg">
                                                                         </div>
 																		<div class="col-md-9 col-xs-9">
-                                                                            <div class="pr-info"> 
+                                                                            <div class="pr-info">
                                                                                 <span class="break-all">
                                                                                     Animal additives: Yes  <p></p>
-                                                                                </span> 
+                                                                                </span>
                                                                             </div>
 																		</div>
-                                                                    </div>																	
+                                                                    </div>
                                                                 </div>
 															</div>
-															<div class="col-md-7"> 
+															<div class="col-md-7">
                                                             </div>
 														</div>
 														<br>
@@ -253,9 +253,9 @@
                                                                         <div class="col-md-3 col-xs-3">
                                                                             <img style="max-width: 25px !important; max-height: 40px !important;" src="/img/prohibitted.jpeg">
                                                                         </div>
-																		<div class="col-md-9 col-xs-9">																					
+																		<div class="col-md-9 col-xs-9">
                                                                             <div class="pr-info">
-                                                                                <span class="break-all">Alcohol: yes  <p></p></span> 
+                                                                                <span class="break-all">Alcohol: yes  <p></p></span>
                                                                             </div>
 																		</div>
 																	</div>
@@ -268,12 +268,12 @@
 															<div class="col-md-7">
 																<div class="br-dashed">
 																	<div class="row">
-																		<div class="col-md-3 col-xs-3"> 
+																		<div class="col-md-3 col-xs-3">
                                                                             <img style="max-width: 25px !important; max-height: 40px !important;" src="/img/prohibitted.jpeg">
                                                                         </div>
 																		<div class="col-md-9 col-xs-9">
-																			<div class="pr-info"> 
-                                                                                <span class="break-all">Animal additives: Yes  <p></p></span> 
+																			<div class="pr-info">
+                                                                                <span class="break-all">Animal additives: Yes  <p></p></span>
                                                                             </div>
 																		</div>
 																	</div>
@@ -283,11 +283,11 @@
 														</div>
 														<br>
 														@endif
-                                                        
+
                                                         <br>
 													  <hr class="singleline">
 		                        <div> <span class="product_info">Barcode number: <b>{{$product->ean}}</b><span><br>
-															<span class="product_info">Category: <b>{{$product->sub_category_slug}}</b><span><br>
+															<span class="product_info">Category: <b>{{$subCategory->name}}</b><span><br>
 																 <span class="product_info">Registered: <b> {{$product->created_at}}</b><span><br>
 																	 <span class="product_info">Answer received on: <b>LOOK FOR</b><span><br>  </div>
 

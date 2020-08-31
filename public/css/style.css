@@ -112,8 +112,8 @@ button:focus {
   padding-bottom: 150px; }
       @media (max-width: 991px) {
       .section_gap_bottom {
-        padding-bottom: 80px; } 
-}      
+        padding-bottom: 80px; }
+}
 
 .no-padding {
   padding: 0; }
@@ -522,9 +522,11 @@ button:focus {
         .banner-bottom .banner_content .banner-btn .primary-btn {
           padding: 0 30px; } }
 .counter {
-    background-color:#f5f5f5;
+    
+    background-color:#2a2e43;
     padding: 20px 0;
     border-radius: 5px;
+    color: white;
 }
 
 .count-title {
@@ -1910,22 +1912,22 @@ h6 {
     color: #fff;
     background: #2A2E43;
     border: 1px solid transparent; }
-  
+
   .genric-btn.home:hover {
     color: #2A2E43;
     border: 1px solid #2A2E43;
     background: #fff; }
-  
+
   .genric-btn.home-border {
     color: #2A2E43;
     border: 1px solid #2A2E43;
     background: #fff; }
-  
+
   .genric-btn.home-border:hover {
     color: #fff;
     background: #2A2E43;
-    border: 1px solid transparent; }  
-  
+    border: 1px solid transparent; }
+
 
 .genric-btn.success {
   color: #fff;

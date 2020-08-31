@@ -45,7 +45,7 @@
 						 aria-expanded="false"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Categories</a>
 						<ul class="dropdown-menu">
 							@foreach ($categories as $category)
-								<li class="nav-item"><a class="nav-link" href="/categories/{{$category->slug}}"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>{{$category->name}}</a>	</li>	
+								<li class="nav-item"><a class="nav-link" href="/categories/{{$category->slug}}"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>{{$category->name}}</a>	</li>
 							@endforeach
 							{{-- <li class="nav-item"><a class="nav-link" href="categories/eat"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Eat</a>	</li>
 							<li class="nav-item"><a class="nav-link" href="categories/drink"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Drink</a></li>
@@ -55,7 +55,7 @@
 					<li class="nav-item"><a class="nav-link" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>explore</a></li>
 					<li class="nav-item"><a class="nav-link" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>about us</a></li>
 					<li class="nav-item"><a class="nav-link" href="/companies"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
-					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>					
+					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>
 					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-phone" aria-hidden="true">&nbsp;</i>contact</a></li>
 					<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
 					<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-twitter" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-instagram" aria-hidden="true"></i></a></li>
@@ -66,7 +66,7 @@
 	</header>
 	<!--================ End Header Menu Area =================-->
 	<div class="site-main">
-        
+
 		<!--================ Start Home Banner Area =================-->
 		{{-- <section class="home_banner_area common-banner">
 			<div class="banner_inner">
@@ -122,8 +122,8 @@
                 <h3>Filters:</h3>
             </div>
         </div>
-        
-        <div class="row col-sm-12">					
+
+        <div class="row col-sm-12">
             <div class="checkbox col-sm-2" style="width: 50% !important;">
                 <label><input type="checkbox" value="">&nbsp;All Products</label>
             </div>
@@ -142,8 +142,8 @@
             <div class="checkbox col-sm-2" style="width: 50% !important;">
                 <label><input type="checkbox" value="">&nbsp;Certified</label>
             </div>
-        </div>  
-        
+        </div>
+
         <form action="/search" method="POST">
         @csrf
         <div class="row col-md-12">
@@ -154,7 +154,7 @@
                     <i class="fa fa-search"></i>
                   </button>
                 </div>
-            </div> 
+            </div>
         </form>
     </div>
 
@@ -167,15 +167,20 @@
 						    <div class="col-12 col-md-4 col-lg-3" style="padding-top: 15px;">
                                 <a href="product-detail/{{$product->id}}">
                                     <div class="card">
-                                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+																			@if($product->image != null)
+																			<img class="card-img-top" src="http://lara.halalcheck.net/img/fotos/thumb/{{$product->image}}" style="  height:189px;" alt="Card image cap">
+																			@endif
+																			@if($product->image == null)
+																			<img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" style="  height:189px;" alt="Card image cap">
+																			@endif
                                         <div class="card-body" style="height: 200px;">
                                             <h4 class="card-title" style="height: 50px;"><a href="product-detail/{{$product->id}}" class="c-title" title="View Product">{{$product->name}}</a></h4>
-                                            
+
                                             @if($product->alcohol == 0 && $product->animal_additive == 0 )
 															<div class="row" style="">
 																<div>
 																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Alcohol: no</label>
-																</div>	
+																</div>
 																<div style="padding-left:85%; position:absolute; padding-top:5px">
 																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
 																</div>
@@ -184,7 +189,7 @@
 															<div class="row" style="">
 																<div>
 																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Animal Product: no</label>
-																</div>	
+																</div>
 																<div style="padding-left:85%; position:absolute; padding-top:5px">
 																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
 																</div>
@@ -203,7 +208,7 @@
 															<div class="row" style="">
 																<div>
 																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Animal Product: no</label>
-																</div>	
+																</div>
 																<div style="padding-left:85%; position:absolute; padding-top:5px">
 																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
 																</div>
@@ -213,23 +218,23 @@
 															<div class="row" style="">
 																<div>
 																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Alcohol: no</label>
-																</div>	
+																</div>
 																<div style="padding-left:85%; position:absolute; padding-top:5px">
 																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
 																</div>
 															</div>
-														
+
 															<div class="row" style="">
 																<div>
 																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Animal Product: yes</label>
-																</div>	
-														
+																</div>
+
 																<div style="padding-left:85%; position:absolute;">
 																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
 																</div>
-															</div>															
+															</div>
 														@endif
-														@if($product->alcohol != 0 && $product->animal_additive != 0 )																														
+														@if($product->alcohol != 0 && $product->animal_additive != 0 )
 															<div class="row" style="">
 																<div>
 																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Alcohol: yes</label>
@@ -242,8 +247,8 @@
 															<div class="row" style="">
 																<div>
 																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Animal Product: yes</label>
-																</div>	
-														
+																</div>
+
 																<div style="padding-left:85%; position:absolute;">
 																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
 																</div>
@@ -255,10 +260,10 @@
                                 </a>
                             </div>
                         @endforeach
-                    @endisset                    
+                    @endisset
 
                     {{ $products->render()  }}
-                    
+
                 </div>
                 <br>
             </div>
