@@ -298,9 +298,9 @@
 		                </div>
 						<div class="col-lg-2 order-3">
 		                    <ul class="image_list">
+		                        <!-- <li data-image="/img/product.jpg"><img src="img/generic-image-placeholder.png" alt=""></li>
 		                        <li data-image="/img/product.jpg"><img src="img/generic-image-placeholder.png" alt=""></li>
-		                        <li data-image="/img/product.jpg"><img src="img/generic-image-placeholder.png" alt=""></li>
-		                        <li data-image="/img/product.jpg"><img src="img/generic-image-placeholder.png" alt=""></li>
+		                        <li data-image="/img/product.jpg"><img src="img/generic-image-placeholder.png" alt=""></li> -->
 		                    </ul>
 		                </div>
 		            </div>
