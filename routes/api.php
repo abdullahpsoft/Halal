@@ -18,7 +18,33 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::any ( '/search', function (Request $request) {
+    // $q = Request::get ( 'q' );
+    $q = $request->q;
+    if($q == "")
+    {
+      return response()->json(NULL, 401);
+        // return redirect()->back()->with('alert', 'Please Enter Something To Search');
+    }
+    if($q != ""){
+    $categories = DB::table('h_category')->get();
+    $products = App\Models\Admin\Products::where ( 'name', 'LIKE', '%' . $q . '%' )->paginate (12)->setPath ( '' );
+    $pagination = $products->appends ( array (
+                'q' => $request->q
+                // Request::get ( 'q' )
+        ) );
 
+    if (count ( $products ) > 0){
+
+        return response()->json($products, 401);
+    }
+    else
+
+        return response()->json(NULL, 401);
+        //  )->with('alert','No Details found. Try to search again !' );
+}
+
+} );
 
 
 
