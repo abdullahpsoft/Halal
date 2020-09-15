@@ -19,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['prefix' => 'admin'], function () {
+   Route::get('posts/publish','Voyager\PostController@publish')->name('posts.publish');
+   Route::get('products/manufacturer','Voyager\ManufacturerController@index');
+
+
     Voyager::routes();
 });
 

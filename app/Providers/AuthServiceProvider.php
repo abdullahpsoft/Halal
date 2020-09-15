@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
+use Illuminate\Support\Facades\Auth;
+
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,7 +27,13 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-        Passport::routes(); 
+        Passport::routes();
+        Gate::define('approve_user', function($user) {
+
+               return Auth::user()->hasRole('super-user');
+           });
+
+
         //
     }
 }
