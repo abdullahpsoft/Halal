@@ -37,7 +37,7 @@
         <div id="adminmenu">
 
         @if (Auth::user()->hasRole('system'))
-          <admin-menu :items="{{ menu('admin', '_json') }}"></admin-menu>
+          <admin-menu :items="{{ menu('system') }}"></admin-menu>
         @endif
 
         @if (Auth::user()->hasRole('super-admin'))
