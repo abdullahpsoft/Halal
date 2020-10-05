@@ -44,6 +44,10 @@
         {{ menu('super-admin', 'super') }}
         @endif
 
+        @if (Auth::user()->hasRole('super-analyst'))
+        {{ menu('super-analyst', 'super') }}
+        @endif
+
         @if (Auth::user()->hasRole('super-user'))
         {{ menu('super-user', 'super') }}
         @endif

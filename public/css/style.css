@@ -424,6 +424,12 @@ button:focus {
   height:75%;
   width:100%;
 } */
+.hidden {
+  display: none;
+}
+.display {
+  display: block;
+}
 .home_banner_area {
   z-index: 1;
   /* background: url(../img/banner/home-banner.jpg) no-repeat scroll center center; */
@@ -3571,7 +3577,14 @@ footer a {
 /*---------------------------------------------------- */
 
 /*# sourceMappingURL=style.css.map */
-.desc{
+.desc-m{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: medium;
+}
+.desc-i{
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 1;

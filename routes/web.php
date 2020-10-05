@@ -20,6 +20,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin'], function () {
    Route::get('posts/publish','Voyager\PostController@publish')->name('posts.publish');
+
+   Route::get('posts/publish/admin','Voyager\PostController@publishadmin')->name('posts.publishadmin');
+
+
    Route::get('products/manufacturer','Voyager\ManufacturerController@index');
    Route::get('products/manufacturer/create','Voyager\ManufacturerController@create');
    Route::post('products/manufacturer','Voyager\ManufacturerController@store');
@@ -32,6 +36,20 @@ Route::group(['prefix' => 'admin'], function () {
    Route::get('products/user/edit/{id}','Voyager\UserController@edit');
    Route::post('products/users/{id}','Voyager\UserController@update');
 
+
+   Route::get('request/manufacturer','Voyager\RequestController@index');
+
+   Route::get('request/manufacturer/create','Voyager\RequestController@create');
+
+   Route::get('request/manufacturer/edit/{id}','Voyager\RequestController@edit');
+
+   Route::post('request/manufacturer','Voyager\RequestController@mail');
+ Route::post('request/manufacturer/{id}','Voyager\RequestController@update');
+
+
+
+ Route::get('request/super/edit/{id}','Voyager\RequestController@publish');
+ Route::get('request/super/view/{id}','Voyager\RequestController@view');
 
     Voyager::routes();
 });
@@ -64,7 +82,7 @@ Route::any ( '/search', function () {
 }
 
 } );
-
+Route::get('/categories', 'Web\CategoryController@categories');
 
 
 // Route::get('categories/eat', 'Web\CategoryController@index');
@@ -77,3 +95,8 @@ Route::get('explore', 'Web\WebController@explore');
 Route::get('companies', 'Web\WebController@companies');
 
 Route::get('about-us', 'Web\WebController@aboutUs');
+
+//new commit
+Route::any('/search-in-sub_cat/{name}', 'Web\ProductController@searchInSubCat');
+Route::post('/register-company', 'Web\WebController@registerCompany');
+

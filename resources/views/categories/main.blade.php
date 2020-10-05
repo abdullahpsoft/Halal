@@ -8,7 +8,7 @@
 	<link rel="icon" href="img/favicon.png" type="image/png">
 	<title>Halal Check</title>
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link rel="stylesheet" href="vendors/linericon/style.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/magnific-popup.css">
@@ -18,40 +18,10 @@
 	<link rel="stylesheet" href="vendors/jquery-ui/jquery-ui.css">
 	<link rel="stylesheet" href="vendors/animate-css/animate.css">
 	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+  
 	<!-- main css -->
-	<link rel="stylesheet" href="css/style.css">
-	<style>
-.container {
-  position: relative;
-
-}
-
-.middle {
-  transition: .5s ease;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.container:hover .image {
-  opacity: 0.3;
-}
-
-.container:hover .middle {
-  opacity: 1;
-}
-
-.text {
-  background-color: #2A2E43;
-  color: white;
-  font-size: 16px;
-  padding: 16px 32px;
-}
-</style>
+	<link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -66,24 +36,24 @@
 		<span class="menu-close"><i class="fa fa-times"></i></span>
 		<div class="menu-header">
 			<div class="logo d-flex justify-content-center">
-				<img src="img/logo.svg" alt="">
+				<img src="/img/logo.svg" alt="">
 			</div>
 		</div>
 		<div class="nav-wraper">
 			<div class="navbar">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> home</a></li>
-					<li class="nav-item"><a class="nav-link" href="/categories"><i class="fa fa-home" aria-hidden="true">&nbsp;</i>categories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/categories"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Categories</a></li>
 					{{-- <li class="nav-item submenu dropdown">
-						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+						<a href="#" class="nav-link active dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 						 aria-expanded="false"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Categories</a>
-						<ul class="dropdown-menu">
+						<ul class="dropdown-menu"> 
 							@foreach ($categories as $category)
-								<li class="nav-item"><a class="nav-link" href="categories/{{$category->slug}}"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>{{$category->name}}</a>	</li>	
+								<li class="nav-item"><a class="nav-link" href="/categories/{{$category->slug}}"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>{{$category->name}}</a>	</li>	
 							@endforeach
 						</ul>
 					</li> --}}
-					<li class="nav-item"><a class="nav-link active" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>explore</a></li>
+					<li class="nav-item"><a class="nav-link" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>explore</a></li>
 					<li class="nav-item"><a class="nav-link" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>about us</a></li>
 					<li class="nav-item"><a class="nav-link" href="/companies"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
 					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>					
@@ -96,111 +66,69 @@
 		</div>
 	</header>
 	<!--================ End Header Menu Area =================-->
-
 	<div class="site-main">
 		<!--================ Start Home Banner Area =================-->
-		<section class="home_banner_area">
+		{{-- <section class="home_banner_area common-banner">
 			<div class="banner_inner">
 				<div class="container-fluid no-padding">
-				
-				<img src="img/slider/01x.jpg" class="col-md-12">
-				
-					<!-- <div style="height: 600px"> -->
-					<!-- <div class="row halfscreen"> -->
-					
-					<!-- </div> -->
+					<div class="row halfscreen">
 
-					<!-- </div> -->
+					</div>
 				</div>
 			</div>
-		</section>
+		</section> --}}
 		<!-- Start banner bottom -->
-		<br>
+		{{-- <div class="row banner-bottom common-bottom-banner align-items-center justify-content-center">
+			<div class="col-lg-8 offset-lg-4">
+				<div class="banner_content">
+					<div class="row d-flex align-items-center" style="background: white">
+						<div class="col-lg-7 col-md-12">
+							<h1>Categories</h1>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+						</div>
+						<div class="col-lg-5 col-md-12">
+							<div class="page-link-wrap">
+								<div class="page_link">
+									<a href="index.html">Home</a>
+									<a href="categories.html">Categories</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> --}}
 		<!-- End banner bottom -->
-		<div class="breakfast-area">
-			<div class="container">
-				<div class="row align-items-center justify-content-center">
-					<div class="col-lg-5">
-						<div class="left-content">
-							<h1>What is Halal Check? </h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore
-								magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore
-								magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-							<a href="#" class="primary-btn">Search Products</a>
-						</div>
-					</div>
-					<div class="col-lg-6 offset-lg-1">
-						<div class="right-img">
-							<img style="height: 600px;" class="img1 img-fluid" src="img/food/food1.jpg" alt="">
-							<img style="height: 300px;" class="img2 img-fluid" src="img/food/food2.png" alt="">
-						</div>
-					</div>
-				</div>
-			</div>	
-		</div>	
-		<!--================ End Breakfast Area =================-->
 
-		<!--================ Start Lunch Area =================-->
-		<div class="breakfast-area lunch-area">
-			<div class="container">
-				<div class="row align-items-center justify-content-center">
-					<div class="col-lg-6 ">
-						<div class="right-img">
-							<img style="height: 600px;" class="img1 img-fluid" src="img/food/food3.jpg" alt="">
-						</div>
-					</div>
-					<div class="col-lg-5 offset-lg-1">
-						<div class="left-content">
-							<h1>The term <i>Halal</i> </h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore
-								magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore
-								magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-						<a href="#" class="primary-btn">Search Categories</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="breakfast-area">
-			<div class="container">
-				<div class="row align-items-center justify-content-center">
-					<div class="col-lg-5">
-
-						<div class="left-content">
-							<h1>Why an Islam-compliant diet? </h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore
-								magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore
-								magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-								<a href="#" class="primary-btn">See More</a>
-						</div>
-					</div>
-					<div class="col-lg-6 offset-lg-1">
-						<div class="right-img">
-							<img style="height: 600px;" class="img1 img-fluid" src="img/food/non-food1.jpg" alt="">
-							<img style="height: 300px;" class="img2 img-fluid" src="img/food/non-food2.png" alt="">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<br><br>
-		<!--================ End Lunch Area =================-->
-
+<div class="container-fluid">
+  <section class="jumbotron text-center">
+      <div class="container">
+          <h1 class="jumbotron-heading">PLEASE SELECT CATEGORY</h1>
+      </div>
+  </section>
+  <div class="row">
+    @foreach ($categories as $category)   
+        <div class="col-lg-3 top">
+            <div class="button-group-area mt-40">
+                <a href="/categories/{{$category->slug}}" class="genric-btn home e-large desc-m"><i class="fa fa-spoon fa-3x" aria-hidden="true"></i><br>{{$category->name}}</a>
+            </div>
+        </div>
+        {{-- <div class="col-lg-2">
+            <div class="button-group-area mt-40">
+              <a href="product.html" class="genric-btn primary e-large">Category 1</a>
+      
+            </div>
+        </div> --}}
+    @endforeach
     
-    <!--================ Start Footer Area =================-->
+  </div><br>
+
+  <br>
+  
+  <br><br>
+</div>
+
+		<!--================ Start Footer Area =================-->
 		<footer class="footer-area overlay">
 			<div class="container">
 				<div class="row">
@@ -302,25 +230,29 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				</div>
 
 			</div>
-        </footer>
-    </div>
-    <script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/popper.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/stellar.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
+		</footer>
+		<!--================ Start Footer Area =================-->
+	</div>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="/js/jquery-3.2.1.min.js"></script>
+	<script src="/js/popper.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/stellar.js"></script>
+	<script src="/js/jquery.magnific-popup.min.js"></script>
 	<script src="vendors/lightbox/simpleLightbox.min.js"></script>
 	<script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
 	<script src="vendors/owl-carousel/owl.carousel.min.js"></script>
 	<script src="vendors/jquery-ui/jquery-ui.js"></script>
-	<script src="js/jquery.ajaxchimp.min.js"></script>
+	<script src="/js/jquery.ajaxchimp.min.js"></script>
 	<script src="vendors/counter-up/jquery.waypoints.min.js"></script>
 	<script src="vendors/counter-up/jquery.counterup.js"></script>
-	<script src="js/mail-script.js"></script>
+	<script src="/js/mail-script.js"></script>
 	<!--gmaps Js-->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-	<script src="js/gmaps.min.js"></script>
-	<script src="js/theme.js"></script>
+	<script src="/js/gmaps.min.js"></script>
+	<script src="/js/theme.js"></script>
 </body>
 
 </html>

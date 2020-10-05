@@ -75,24 +75,22 @@
 			<div class="navbar">
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link active" href="/"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> home</a></li>
-					<li class="nav-item submenu dropdown">
+					<li class="nav-item"><a class="nav-link" href="/categories"><i class="fa fa-list" aria-hidden="true">&nbsp;</i> Categories</a></li>
+					{{-- <li class="nav-item submenu dropdown">
 						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 						 aria-expanded="false"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Categories</a>
 						<ul class="dropdown-menu">
 							@foreach ($categories as $category)
 								<li class="nav-item"><a class="nav-link" href="categories/{{$category->slug}}"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>{{$category->name}}</a>	</li>
 							@endforeach
-							{{-- <li class="nav-item"><a class="nav-link" href="categories/eat"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Eat</a>	</li>
-							<li class="nav-item"><a class="nav-link" href="categories/drink"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Drink</a></li>
-							<li class="nav-item"><a class="nav-link" href="categories/nonfood"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Non-food</a></li> --}}
 						</ul>
-					</li>
+					</li> --}}
 					<li class="nav-item"><a class="nav-link" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>explore</a></li>
 					<li class="nav-item"><a class="nav-link" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>about us</a></li>
 					<li class="nav-item"><a class="nav-link" href="/companies"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
 					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>
 					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-phone" aria-hidden="true">&nbsp;</i>contact</a></li>
-					<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
+					<li class="nav-item"><a class="nav-link" href="/admin"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
 					<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-twitter" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-instagram" aria-hidden="true"></i></a></li>
 
 				</ul>
@@ -142,7 +140,49 @@
 					</div>
 				</div>
 
-				<div class="row col-sm-12">
+				{{-- <div class="row col-md-12"> --}}
+				<form action="/search" method="POST">
+					@csrf
+					<div class="row col-md-12">
+						<select class="col-md-2" id="filter1" name="filter1" onchange="check()">
+							<option value="">Select Filter:</option>
+							<option value="All Products">All Products</option>
+							<option value="Shops">Shops</option>
+							<option value="Harmless">Harmless</option>
+							<option value="Controversial">Controversial</option>
+							<option value="Unknown">Unkonwn</option>
+							<option value="Certified">Certified</option>
+							
+						</select>
+
+						<div class="col-md-2 hidden" id="d2" name="d2">
+							<select class="" id="filter2" name="filter2">
+								<option value="">Select Store:</option>
+								<option value="">Store1</option>
+								<option value="">Store2</option>
+								<option value="">Store3</option>
+								<option value="">Store4</option>
+								<option value="">Store5</option>
+								<option value="">Store6</option>
+								
+							</select>
+						</div>
+						
+					
+						<div class="col-md-6">				
+							<div class="input-group">
+								<input type="text" name="q" id="q"class="form-control" placeholder="Search Products here">
+								<div class="input-group-append">
+									<button class="btn btn-secondary" type="submit">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+				
+				{{-- <div class="row col-sm-12">
 					<div class="checkbox col-sm-2" style="width: 50% !important;">
 						<label><input type="checkbox" value="">&nbsp;All Products</label>
 					</div>
@@ -174,7 +214,7 @@
 					      </button>
 					    </div>
 					</div>
-				</form>
+				</form> --}}
 				@if (session('alert'))
     				<div class="col-md-12 alert alert-danger" style="text-align: center">
         				{{ session('alert') }}
@@ -723,6 +763,28 @@
 
 </html>
 <script>
+function check() {
+	var val = document.getElementById('filter1').value;
+	// var val2 = document.getElementById('filter2');
+ 	if(val=='Shops') {
+		$(document).ready(function() {
+    		$("div#d2").removeClass("hidden");
+			$("div#d2").addClass("display");
+		});
+	 }
+		else {
+			$(document).ready(function() {
+    		$("div#d2").removeClass("display");
+			$("div#d2").addClass("hidden");
+		});
+		}
+  			
+    			
+  					  
+} 
+	
+
+
 (function ($) {
 	$.fn.countTo = function (options) {
 		options = options || {};

@@ -18,11 +18,12 @@ class ProductController extends Controller
      */
     public function index($slug,$name)
     {
+        $q = '';
         $categories = DB::table('h_category')->get();
         $sub_category = DB::table('h_sub_categories')->where('name', $name)->get();
         $products = DB::table('h_products')->where('sub_category_slug', $sub_category[0]->sub_category_slug)->paginate(12);
         // dd($products);
-        return view('products.display', compact(['categories', 'products', 'name']));
+        return view('products.display', compact(['categories', 'products', 'name','q']));
     }
 
     /**
@@ -111,4 +112,27 @@ return view('products.index', compact('products','categories'));
     {
         //
     }
+
+    //new ocicommit
+    public function searchInSubCat(Request $request, $name)
+    {
+        $q = $request->q;
+        if($q == "")
+        {
+            return redirect()->back()->with('alert', 'Please Enter Something To Search');
+        }
+        if($q != ""){
+            $categories = DB::table('h_category')->get();
+            $products = Products::where ( 'sub_category', $name)
+                                    ->where('name', 'LIKE', '%' . $q . '%')
+                                    ->paginate (12);
+            $pagination = $products->appends ( array ('q' => $q ) );
+
+            if (count ( $products ) > 0){
+                return view ( 'products.display',compact('products','categories','name','q') )->withQuery ( $q );
+            }
+            else
+                return view ( 'products.display',compact('products','categories','name','q'),['successMsg'=>'No Details found. Try to search again !']);
+            }
+        }
 }

@@ -48,11 +48,24 @@ Route::any ( '/search', function (Request $request) {
 
 
 
-//****************** All the routes for API are below this line ****************
+//****** All the routes for API are below this line ******
 Route::get('get-products', 'Api\ProductController@index');
+
+Route::get('new-products', 'Api\ProductController@new');
+
+Route::get('recommended-products', 'Api\ProductController@recommended');
+
+Route::get('news', 'Api\ProductController@news');
+
+Route::get('faqs', 'Api\ProductController@faqs');
 
 Route::get('get-products-ean/{ean}', 'Api\ProductController@ean');
 
 Route::get('get-products-category/{cat}', 'Api\ProductController@cat');
 
 Route::get('get-products-id/{id}', 'Api\ProductController@show');
+
+//new comits
+Route::get('get-category', 'Api\ProductController@getCategory');
+
+Route::get('get-subcategory/{cat}', 'Api\ProductController@getSubCategory');

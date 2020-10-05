@@ -17,7 +17,8 @@ class CategoryController extends Controller
     {
         $categories = DB::table('h_category')->get();
         $sub_categories = DB::table('h_sub_categories')->where('category_slug', $slug)->orderBy('name')->get();
-        return view('categories.index', compact(['sub_categories', 'categories']));
+        $category = DB::table('h_category')->where('slug', $slug)->first();
+        return view('categories.index', compact(['sub_categories', 'categories', 'category']));
     }
 
     /**
@@ -47,9 +48,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function categories()
     {
-        //
+        // dd("HELLO");
+        $categories = DB::table('h_category')->get();
+        // $sub_categories = DB::table('h_sub_categories')->where('category_slug', $slug)->orderBy('name')->get();
+        return view('categories.main', compact(['categories']));
     }
 
     /**

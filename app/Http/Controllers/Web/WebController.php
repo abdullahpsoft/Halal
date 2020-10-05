@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Admin\Products;
 use Illuminate\Support\Facades\DB;
 
+
+use App\Models\Admin\Manufacturer;//new commit
+use App\User;//new commit
+use Illuminate\Support\Facades\Hash;//new commit
+
 class WebController extends Controller
 {
     /**
@@ -103,5 +108,31 @@ class WebController extends Controller
     {
         $categories = DB::table('h_category')->get();
         return view('about-us', compact(['categories']));
+    }
+    //new commit
+    public function registerCompany(Request $request)
+    {
+      $company = new Manufacturer;
+      $company->Name = $request->name;
+      $company->Email = $request->email;
+      $company->contact_person = $request->contact_person;
+      $company->phone = $request->phone;
+      $company->address = $request->address;
+      $company->city = $request->city;
+      $company->state = $request->state;
+      $company->zip = $request->zip;
+      $company->country = $request->country;
+      $company->save();
+
+      $user = new User;
+      $user->name = $request->name;
+      $user->email = $request->email;
+      $user->role_id = 5;
+      $password = Hash::make($request->password);
+      $user->password = $password;
+      $user->save();
+
+      return redirect('/');
+
     }
 }

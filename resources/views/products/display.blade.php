@@ -43,24 +43,22 @@
 			<div class="navbar">
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> home</a></li>
-					<li class="nav-item submenu dropdown">
+					<li class="nav-item"><a class="nav-link active" href="/categories"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Categories</a></li>
+					{{-- <li class="nav-item submenu dropdown">
 						<a href="#" class="nav-link active dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 						 aria-expanded="false"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Categories</a>
 						<ul class="dropdown-menu">
 							@foreach ($categories as $category)
 								<li class="nav-item"><a class="nav-link" href="/categories/{{$category->slug}}"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>{{$category->name}}</a>	</li>
 							@endforeach
-							{{-- <li class="nav-item"><a class="nav-link" href="categories/eat"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Eat</a>	</li>
-							<li class="nav-item"><a class="nav-link" href="categories/drink"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Drink</a></li>
-							<li class="nav-item"><a class="nav-link" href="categories/nonfood"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Non-food</a></li> --}}
 						</ul>
-					</li>
+					</li> --}}
 					<li class="nav-item"><a class="nav-link" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>explore</a></li>
 					<li class="nav-item"><a class="nav-link" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>about us</a></li>
 					<li class="nav-item"><a class="nav-link" href="/companies"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
 					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>
 					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-phone" aria-hidden="true">&nbsp;</i>contact</a></li>
-					<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
+					<li class="nav-item"><a class="nav-link" href="/admin"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
 					<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-twitter" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-instagram" aria-hidden="true"></i></a></li>
 
 				</ul>
@@ -104,12 +102,32 @@
 
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">{{$name}}</h1>
+			<h1 class="jumbotron-heading">{{$name}}</h1>
+			@if(!empty($successMsg))
+            <div class="alert alert-danger"> {{ $successMsg }}</div>
+            @endif
+            @if (session('alert'))
+    			<div class="col-md-12 alert alert-danger" style="text-align: center">
+        			{{ session('alert') }}
+    			</div>
+			@endif
         </div>
     </section>
 
     <div class="container">
         <div class="row">
+		<form action="/search-in-sub_cat/{{$name}}" method="POST">
+				@csrf
+				<div class="row col-md-12">
+					<div class="input-group">
+						<input type="text" name="q" id="q"class="form-control" @if($q== "") placeholder="Search Products here" @else placeholder={{$q}} @endif>
+						<div class="input-group-append">
+						  <button class="btn btn-secondary" type="submit">
+							<i class="fa fa-search"></i>
+						  </button>
+						</div>
+					</div>
+				</form>
             <div class="col">
                 <div class="row">
 					@isset($products)

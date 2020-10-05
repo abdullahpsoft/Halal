@@ -73,24 +73,22 @@
 			<div class="navbar">
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> home</a></li>
-					<li class="nav-item submenu dropdown">
+					<li class="nav-item"><a class="nav-link" href="/categories"><i class="fa fa-home" aria-hidden="true">&nbsp;</i>categories</a></li>
+					{{-- <li class="nav-item submenu dropdown">
 						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 						 aria-expanded="false"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Categories</a>
 						<ul class="dropdown-menu">
 							@foreach ($categories as $category)
 								<li class="nav-item"><a class="nav-link" href="categories/{{$category->slug}}"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>{{$category->name}}</a>	</li>	
 							@endforeach
-							{{-- <li class="nav-item"><a class="nav-link" href="categories/eat"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Eat</a>	</li>
-							<li class="nav-item"><a class="nav-link" href="categories/drink"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Drink</a></li>
-							<li class="nav-item"><a class="nav-link" href="categories/nonfood"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Non-food</a></li> --}}
 						</ul>
-					</li>
+					</li> --}}
 					<li class="nav-item"><a class="nav-link" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>explore</a></li>
 					<li class="nav-item"><a class="nav-link" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>about us</a></li>
 					<li class="nav-item"><a class="nav-link active" href="/companies"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
 					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>					
 					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-phone" aria-hidden="true">&nbsp;</i>contact</a></li>
-					<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
+					<li class="nav-item"><a class="nav-link" href="/admin"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
 					<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-twitter" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-instagram" aria-hidden="true"></i></a></li>
 
 				</ul>
@@ -130,50 +128,56 @@
 		<section class="reservation-area section_gap_top">
 			<div class="container">
 				<div class="row align-items-center justify-content-center">
-					<div class="col-lg-6 offset-lg-6">
+					<div class="col-lg-6 offset-lg-6" style="height:auto">
 						<div class="contact-form-section">
 							<h1>Sign-Up Here!</h1>
-							<form class="contact-form-area contact-page-form contact-form text-right" id="myForm" action="mail.html" method="post">
+							<form method="POST" action="/register-company" class="contact-form-area contact-page-form contact-form text-right">
+								@csrf
 								<div class="form-group col-md-12">
-									<input type="text" class="form-control" id="name" name="name" placeholder="Name" onfocus="this.placeholder = ''"
-									 onblur="this.placeholder = 'Name'">
+									<input type="text" class="form-control" id="name" name="name" placeholder="Enter Company Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Company Name'" style="padding: unset" required>
 								</div>
 								<div class="form-group col-md-12">
-									<input type="email" class="form-control" id="email" name="email" placeholder="Email Address" onfocus="this.placeholder = ''"
-									 onblur="this.placeholder = 'Email Address'">
+									<input type="email" class="form-control" id="email" name="email" placeholder="Enter Company Email Address" onfocus="this.placeholder = ''"
+									 onblur="this.placeholder = 'Enter Company Email Address'" style="padding: unset" required>
 								</div>
 								<div class="form-group col-md-12">
-									<input type="text" class="form-control" id="subject" name="subject" placeholder="Phone Number" onfocus="this.placeholder = ''"
-									 onblur="this.placeholder = 'Phone Number'">
+									<input type="password" class="form-control" id="password" name="passsword" placeholder="Set Your Password" onfocus="this.placeholder = ''"
+									 onblur="this.placeholder = 'Set Your Password'" style="padding: unset" required>
 								</div>
 								<div class="form-group col-md-12">
-									<div class="form-select">
-										<select>
-											<option value="1">Number of people</option>
-											<option value="1">Number of people</option>
-											<option value="1">Number of people</option>
-											<option value="1">Number of people</option>
-											<option value="1">Number of people</option>
-										</select>
-									</div>
+									<input type="text" class="form-control" id="contact_person" name="contact_person" placeholder="Enter Company Contact Person Name" onfocus="this.placeholder = ''"
+									 onblur="this.placeholder = 'Enter Company Conatact Person Name'" style="padding: unset" required>
 								</div>
 								<div class="form-group col-md-12">
-									<input type="text" class="form-control" id="datepicker" name="text" placeholder="Select Date & Time" onfocus="this.placeholder = ''"
-									 onblur="this.placeholder = 'Select Date & Time'">
+									<input type="number" class="form-control" id="phone" name="phone" placeholder="Enter Company Phone Number" onfocus="this.placeholder = ''"
+									 onblur="this.placeholder = 'Enter Company Phone Number'" style="padding: unset" required>
 								</div>
 								<div class="form-group col-md-12">
-									<div class="form-select">
-										<select>
-											<option value="1">Select event</option>
-											<option value="1">Select event Dhaka</option>
-											<option value="1">Select event Dilli</option>
-											<option value="1">Select event Newyork</option>
-											<option value="1">Select event Islamabad</option>
-										</select>
-									</div>
+									<input type="text" class="form-control" id="address" name="address" placeholder="Address" onfocus="this.placeholder = ''"
+									 onblur="this.placeholder = 'Address'" style="padding: unset" required>
+								</div>
+								<div class="row col-md-12">
+								<div class="form-group col-6">
+									<input type="text" class="form-control" id="city" name="city" placeholder="City" onfocus="this.placeholder = ''"
+									 onblur="this.placeholder = 'City'" style="padding: unset" required>
+								</div>
+								<div class="form-group col-6">
+									<input type="text" class="form-control" id="state" name="state" placeholder="State" onfocus="this.placeholder = ''"
+									 onblur="this.placeholder = 'State'" style="padding: unset" required>
+								</div>
+								</div>
+								<div class="row col-md-12">
+								<div class="form-group col-6">
+									<input type="text" class="form-control" id="zip" name="zip" placeholder="Zip Code" onfocus="this.placeholder = ''"
+									 onblur="this.placeholder = 'Zip Code'" style="padding: unset" required>
+								</div>
+								<div class="form-group col-6">
+									<input type="text" class="form-control" id="country" name="country" placeholder="Country" onfocus="this.placeholder = ''"
+									 onblur="this.placeholder = 'Country'" style="padding: unset" required>
+								</div>
 								</div>
 								<div class="col-lg-12 text-center">
-									<button class="primary-btn text-uppercase">SIGNUP</button>
+									<button type="submit" class="primary-btn text-uppercase" value="SIGNUP">Sign Up</button>
 								</div>
 							</form>
 						</div>

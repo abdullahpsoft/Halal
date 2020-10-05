@@ -14,7 +14,8 @@ class ManufacturerController extends Controller
       $id = Auth::user()->id;
       $products = Products::where('manufacturer_id',$id)->get();
 
-      return view('vendor.voyager.manufacturer.browse',compact(['products']));
+
+      return view('vendor.voyager.manufacturer.index',compact(['products']));
 
     }
     public function create(){
@@ -40,7 +41,7 @@ class ManufacturerController extends Controller
       $id = Auth::user()->id;
       $products = Products::where('manufacturer_id',$id)->get();
 
-      return view('vendor.voyager.manufacturer.browse',compact(['products']));
+      return view('vendor.voyager.manufacturer.index',compact(['products']));
 
     }
 
@@ -69,7 +70,7 @@ class ManufacturerController extends Controller
       $id = Auth::user()->id;
       $products = Products::where('manufacturer_id',$id)->get();
 
-      return view('vendor.voyager.manufacturer.browse',compact(['products']));
+      return view('vendor.voyager.manufacturer.index',compact(['products']));
     }
 
     //

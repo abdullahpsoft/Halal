@@ -5,17 +5,17 @@ namespace TCG\Voyager\Actions;
 use TCG\Voyager\Actions\AbstractAction;
 use Illuminate\Support\Facades\Auth;
 
-class ApproveAction extends AbstractAction
+class PublishAction extends AbstractAction
 {
     public function getTitle()
     {
-  return $this->data->{'active'}=="Approved"?'Pending':'Approve';
+  return $this->data->{'published'}=="unpublished"?'Publish Me':'Unpublish Me';
     }
 
     public function getIcon()
     {
       // Action icon which display in left of button based on current status
-        return $this->data->{'active'}=="Approved"?'voyager-x':'voyager-external';
+        return $this->data->{'published'}=="unpublished"?'voyager-external ':'voyager-x';
     }
 
     public function getPolicy()
@@ -32,12 +32,12 @@ class ApproveAction extends AbstractAction
     public function shouldActionDisplayOnDataType()
     {
 
-        return $this->dataType->slug == 'h-products' && Auth::user()->hasRole('super-user');
+        return $this->dataType->slug == 'h-products' && Auth::user()->hasRole('super-admin');
 
     }
     public function getDefaultRoute()
     {
       // URL for action button when click
-     return route('posts.publish', array("id"=>$this->data->{$this->data->getKeyName()}));
+     return route('posts.publishadmin', array("id"=>$this->data->{$this->data->getKeyName()}));
     }
 }
