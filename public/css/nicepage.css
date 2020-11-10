@@ -1,0 +1,51 @@
+.column-team {
+    float: left;
+    width: 25%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+  
+  @media screen and (max-width: 650px) {
+    .column-team {
+      width: 100%;
+      display: block;
+    }
+  }
+  
+  .card-team {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  .display-team{
+      height: 50%;
+      width: 100%;
+  }
+  
+  .container-team {
+    padding: 0 16px;
+  }
+  
+  .container-team::after, .row-team::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .title-team {
+    color: grey;
+  }
+  
+  .button-team {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .button-team:hover {
+    background-color: #555;
+  }

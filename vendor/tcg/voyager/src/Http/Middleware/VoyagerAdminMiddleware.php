@@ -3,8 +3,8 @@
 namespace TCG\Voyager\Http\Middleware;
 
 use Closure;
+use http\Client\Request;
 use Illuminate\Support\Facades\Auth;
-
 class VoyagerAdminMiddleware
 {
     /**
@@ -25,6 +25,7 @@ class VoyagerAdminMiddleware
 
             return $user->hasPermission('browse_admin') ? $next($request) : redirect('/');
         }
+
 
         $urlLogin = route('voyager.login');
 

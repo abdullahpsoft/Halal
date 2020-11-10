@@ -42,11 +42,12 @@
 
           <label class="control-label"
           for="product">Product Name</label>
-          <select class=" form-control" name="product" disabled>
-            <option value="">{{$reqi->product_name}}</option>
+          <select id="product_name" class=" form-control" name="product" disabled>
+            <option value="{{$reqi->product_name}}">{{$reqi->product_name}}</option>
           </select>
 
         </div>
+{{--            <input type="text" id="product_ean" value="" hidden>--}}
         <!-- GET THE DISPLAY OPTIONS -->
 
         <div class="form-group col-md-12 "

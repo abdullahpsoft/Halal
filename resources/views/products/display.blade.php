@@ -68,38 +68,7 @@
 	<!--================ End Header Menu Area =================-->
 	<div class="site-main">
 		<!--================ Start Home Banner Area =================-->
-		{{-- <section class="home_banner_area common-banner">
-			<div class="banner_inner">
-				<div class="container-fluid no-padding">
-					<div class="row halfscreen">
-
-					</div>
-				</div>
-			</div>
-		</section> --}}
-		<!-- Start banner bottom -->
-		{{-- <div class="row banner-bottom common-bottom-banner align-items-center justify-content-center">
-			<div class="col-lg-8 offset-lg-4">
-				<div class="banner_content">
-					<div class="row d-flex align-items-center" style="background: white">
-						<div class="col-lg-7 col-md-12">
-							<h1>Products</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-						</div>
-						<div class="col-lg-5 col-md-12">
-							<div class="page-link-wrap">
-								<div class="page_link">
-									<a href="index.html">Home</a>
-									<a href="categories.html">Products</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> --}}
-		<!-- End banner bottom -->
-
+		
     <section class="jumbotron text-center">
         <div class="container">
 			<h1 class="jumbotron-heading">{{$name}}</h1>
@@ -115,19 +84,38 @@
     </section>
 
     <div class="container">
-        <div class="row">
-		<form action="/search-in-sub_cat/{{$name}}" method="POST">
-				@csrf
-				<div class="row col-md-12">
-					<div class="input-group">
-						<input type="text" name="q" id="q"class="form-control" @if($q== "") placeholder="Search Products here" @else placeholder={{$q}} @endif>
-						<div class="input-group-append">
-						  <button class="btn btn-secondary" type="submit">
-							<i class="fa fa-search"></i>
-						  </button>
+        
+			<div class="row">
+                <div class="col-md-2" style="padding-left: 0px">
+                    <h3>Filters:</h3>
+                </div>
+            	<div class="col-md-10">
+			
+					<form action="/search-in-sub_cat/{{$name}}" method="POST">
+						@csrf
+						<div class="row col-md-12">
+							<select class="col-md-2" id="filter1" name="filter1">
+								<option value="">Select Filter:</option>
+								<option value="All Products">All Products</option>						
+								<option value="Harmless">Harmless</option>
+								<option value="Controversial">Controversial</option>
+								<option value="Unknown">Unkonwn</option>
+								<option value="Certified">Certified</option>						
+							</select>
+							{{-- <div class="col-md-1"></div> --}}
+							<div class="input-group col-md-10">
+								<input type="text" name="q" id="q"class="form-control" @if($q== "") placeholder="Search Products here" @else placeholder={{$q}} @endif>
+								<div class="input-group-append">
+								<button class="btn btn-secondary" type="submit">
+									<i class="fa fa-search"></i>
+								</button>
+								</div>
+							</div>
 						</div>
-					</div>
-				</form>
+					</form>
+				</div>
+			</div>
+		<div class="row">
             <div class="col">
                 <div class="row">
 					@isset($products)
@@ -139,89 +127,47 @@
                                       <img class="card-img-top" src="http://lara.halalcheck.net/img/fotos/thumb/{{$product->image}}" style="  height:189px;" alt="Card image cap">
                                       @endif
                                       @if($product->image == null)
-                                      <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" style="  height:189px;" alt="Card image cap">
+                                      <img class="card-img-top" src="/img/placeholder-product.jpg" style="  height:189px;" alt="Card image cap">
                                       @endif
                                         <div class="card-body" style="height: 200px;">
                                             <h4 class="card-title" style="height: 50px;"><a href="/product-detail/{{$product->id}}" class="c-title" title="View Product">{{$product->name}}</a></h4>
+                                            <div class="row" style="">																
+												@if($product->alcohol == 0)
+													<label for="image1" style="padding-left: 0px; color:green">Alcohol: No</label>
+													<img src="/img/no.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">																
+												@endif
+												@if($product->alcohol == 1)
+													<label for="image1" style="padding-left: 0px; color: red">Alcohol: Yes</label>
+													<img src="/img/yes.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
+												@endif
+												@if($product->alcohol == 2)
+													<label for="image1" style="padding-left: 0px; color: orange">Alcohol: Controversial</label>
+													<img src="/img/controversial.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
+												@endif
+												@if($product->alcohol == 3)
+													<label for="image1" style="padding-left: 0px; color: #25b7d3">Alcohol: No Information</label>
+													<img src="/img/unknown.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
+												@endif
+											</div>
 
-                                            @if($product->alcohol == 0 && $product->animal_additive == 0 )
-															<div class="row" style="">
-																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Alcohol: no</label>
-																</div>
-																<div style="padding-left:85%; position:absolute; padding-top:5px">
-																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
-																</div>
-															</div>
-
-															<div class="row" style="">
-																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Animal Product: no</label>
-																</div>
-																<div style="padding-left:85%; position:absolute; padding-top:5px">
-																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
-																</div>
-															</div>
-                        								@endif
-														@if($product->alcohol != 0 && $product->animal_additive == 0 )
-															<div class="row" style="">
-																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Alcohol: yes</label>
-																</div>
-																<div style="padding-left:85%; position:absolute;">
-																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="/img/prohibitted.jpeg"/>
-																</div>
-															</div>
-
-															<div class="row" style="">
-																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Animal Product: no</label>
-																</div>
-																<div style="padding-left:85%; position:absolute; padding-top:5px">
-																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
-																</div>
-															</div>
-														@endif
-														@if($product->alcohol == 0 && $product->animal_additive != 0 )
-															<div class="row" style="">
-																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Alcohol: no</label>
-																</div>
-																<div style="padding-left:85%; position:absolute; padding-top:5px">
-																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
-																</div>
-															</div>
-
-															<div class="row" style="">
-																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Animal Product: yes</label>
-																</div>
-
-																<div style="padding-left:85%; position:absolute;">
-																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="/img/prohibitted.jpeg"/>
-																</div>
-															</div>
-														@endif
-														@if($product->alcohol != 0 && $product->animal_additive != 0 )
-															<div class="row" style="">
-																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Alcohol: yes</label>
-																</div>
-																<div style="padding-left:85%; position:absolute;">
-																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="/img/prohibitted.jpeg"/>
-																</div>
-															</div>
-
-															<div class="row" style="">
-																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Animal Product: yes</label>
-																</div>
-
-																<div style="padding-left:85%; position:absolute;">
-																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="/img/prohibitted.jpeg"/>
-																</div>
-															</div>
-														@endif
+											<div class="row" style="">
+												@if($product->animal_additive == 0)
+													<label for="image1" style="padding-left: 0px; color:green">Animal Add: No</label>
+													<img src="/img/no.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">																
+												@endif
+												@if($product->animal_additive == 1)
+													<label for="image1" style="padding-left: 0px; color: red">Animal Add: Yes</label>
+													<img src="/img/yes.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
+												@endif
+												@if($product->animal_additive == 2)
+													<label for="image1" style="padding-left: 0px; color: orange">Animal Add: Controversial</label>
+													<img src="/img/controversial.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
+												@endif
+												@if($product->animal_additive == 3)
+													<label for="image1" style="padding-left: 0px; color: #25b7d3">Animal Add: No Information</label>
+													<img src="/img/unknown.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
+												@endif
+											</div>
 
                                         </div>
                                     </div>
@@ -230,13 +176,17 @@
                         @endforeach
                     @endisset
 
-                    {{ $products->render()  }}
+					{{-- {{ $products->appends(Request::all())->links()  }} --}}
 
                 </div>
             </div>
 
-        </div>
-    </div>
+		</div>
+		{{-- @if(count($products)>0)
+    		<p class="text-center mt-4 mb-5"><button class="load-more btn btn-dark" data-totalResult="{{$products_count}}">Load More</button></p>
+    	@endif --}}
+	</div>
+	
 <br>
 		<!--================ Start Footer Area =================-->
 		<footer class="footer-area overlay">
@@ -346,25 +296,25 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="/js/jquery-3.2.1.min.js"></script>
-	<script src="/js/popper.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/stellar.js"></script>
-	<script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/stellar.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="vendors/lightbox/simpleLightbox.min.js"></script>
 	<script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
 	<script src="vendors/owl-carousel/owl.carousel.min.js"></script>
 	<script src="vendors/jquery-ui/jquery-ui.js"></script>
-	<script src="/js/jquery.ajaxchimp.min.js"></script>
+	<script src="js/jquery.ajaxchimp.min.js"></script>
 	<script src="vendors/counter-up/jquery.waypoints.min.js"></script>
 	<script src="vendors/counter-up/jquery.counterup.js"></script>
-	<script src="/js/mail-script.js"></script>
+	<script src="js/mail-script.js"></script>
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<!--gmaps Js-->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-	<script src="/js/gmaps.min.js"></script>
-	<script src="/js/theme.js"></script>
+	<script src="js/gmaps.min.js"></script>
+	<script src="js/theme.js"></script>
 </body>
 
 </html>

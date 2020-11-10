@@ -46,7 +46,7 @@
 }
 
 .text {
-  background-color: #2A2E43;
+  background-color: #2E9AC8;
   color: white;
   font-size: 16px;
   padding: 16px 32px;
@@ -79,14 +79,14 @@
 						 aria-expanded="false"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Categories</a>
 						<ul class="dropdown-menu">
 							@foreach ($categories as $category)
-								<li class="nav-item"><a class="nav-link" href="categories/{{$category->slug}}"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>{{$category->name}}</a>	</li>	
+								<li class="nav-item"><a class="nav-link" href="categories/{{$category->slug}}"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>{{$category->name}}</a>	</li>
 							@endforeach
 						</ul>
 					</li> --}}
 					<li class="nav-item"><a class="nav-link" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>explore</a></li>
 					<li class="nav-item"><a class="nav-link" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>about us</a></li>
 					<li class="nav-item"><a class="nav-link active" href="/companies"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
-					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>					
+					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>
 					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-phone" aria-hidden="true">&nbsp;</i>contact</a></li>
 					<li class="nav-item"><a class="nav-link" href="/admin"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
 					<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-twitter" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-instagram" aria-hidden="true"></i></a></li>
@@ -102,12 +102,12 @@
 		<section class="home_banner_area">
 			<div class="banner_inner">
 				<div class="container-fluid no-padding">
-				
+
 				<img src="img/slider/01x.jpg" class="col-md-12">
-				
+
 					<!-- <div style="height: 600px"> -->
 					<!-- <div class="row halfscreen"> -->
-					
+
 					<!-- </div> -->
 
 					<!-- </div> -->
@@ -141,7 +141,7 @@
 									 onblur="this.placeholder = 'Enter Company Email Address'" style="padding: unset" required>
 								</div>
 								<div class="form-group col-md-12">
-									<input type="password" class="form-control" id="password" name="passsword" placeholder="Set Your Password" onfocus="this.placeholder = ''"
+									<input type="password" class="form-control" id="password" name="password" placeholder="Set Your Password" onfocus="this.placeholder = ''"
 									 onblur="this.placeholder = 'Set Your Password'" style="padding: unset" required>
 								</div>
 								<div class="form-group col-md-12">
@@ -287,7 +287,7 @@
 							</div>
 						</div>
 					</div>
-	
+
 				</div>
 			</footer>
 
@@ -309,7 +309,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="js/gmaps.min.js"></script>
 	<script src="js/theme.js"></script>
-	
+
 	</body>
 
 </html>

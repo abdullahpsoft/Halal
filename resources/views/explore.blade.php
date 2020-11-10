@@ -9,6 +9,8 @@
 	<title>Halal Check</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/slideshow.css">
+	<link rel="stylesheet" href="css/nicepage.css">
 	<link rel="stylesheet" href="vendors/linericon/style.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/magnific-popup.css">
@@ -46,7 +48,7 @@
 }
 
 .text {
-  background-color: #2A2E43;
+  background-color: #2E9AC8;
   color: white;
   font-size: 16px;
   padding: 16px 32px;
@@ -73,16 +75,7 @@
 			<div class="navbar">
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> home</a></li>
-					<li class="nav-item"><a class="nav-link" href="/categories"><i class="fa fa-home" aria-hidden="true">&nbsp;</i>categories</a></li>
-					{{-- <li class="nav-item submenu dropdown">
-						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-						 aria-expanded="false"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Categories</a>
-						<ul class="dropdown-menu">
-							@foreach ($categories as $category)
-								<li class="nav-item"><a class="nav-link" href="categories/{{$category->slug}}"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>{{$category->name}}</a>	</li>	
-							@endforeach
-						</ul>
-					</li> --}}
+					<li class="nav-item"><a class="nav-link" href="/categories"><i class="fa fa-home" aria-hidden="true">&nbsp;</i>categories</a></li>					
 					<li class="nav-item"><a class="nav-link active" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>explore</a></li>
 					<li class="nav-item"><a class="nav-link" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>about us</a></li>
 					<li class="nav-item"><a class="nav-link" href="/companies"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
@@ -101,16 +94,8 @@
 		<!--================ Start Home Banner Area =================-->
 		<section class="home_banner_area">
 			<div class="banner_inner">
-				<div class="container-fluid no-padding">
-				
-				<img src="img/slider/01x.jpg" class="col-md-12">
-				
-					<!-- <div style="height: 600px"> -->
-					<!-- <div class="row halfscreen"> -->
-					
-					<!-- </div> -->
-
-					<!-- </div> -->
+				<div class="container-fluid no-padding">				
+					<img src="img/slider/01x.jpg" class="col-md-12">
 				</div>
 			</div>
 		</section>
@@ -119,85 +104,315 @@
 		<!-- End banner bottom -->
 		<div class="breakfast-area">
 			<div class="container">
-				<div class="row align-items-center justify-content-center">
-					<div class="col-lg-5">
-						<div class="left-content">
-							<h1>What is Halal Check? </h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore
-								magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore
-								magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-							<a href="#" class="primary-btn">Search Products</a>
+				<section class="section_gap_top food-gallery-area">
+					<div class="main_title">
+						<h1>Most Scanned Products</h1>						
+					</div>
+					<div class="container-fluid no-padding">
+						<div class="row owl-carousel active-food-gallery">
+							<!-- single gallery item -->
+							@isset($products)
+								@foreach($products as $product)
+									<div class="single-gallery-item">
+										<div class="container">
+											<a href="product-detail/{{$product->id}}">
+												<div class="card">
+													@if($product->image != null)
+														<img class="card-img-top" src="http://lara.halalcheck.net/img/fotos/thumb/{{$product->image}}" style="  height:189px;" alt="Card image cap">
+													@endif
+													@if($product->image == null)
+														<img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" style="  height:189px;" alt="Card image cap">
+													@endif
+
+													<div class="card-body">
+														<h4 class="card-title" style="height: 50px;"><a href="product-detail/{{$product->id}}"  class="c-title" title="View Product">{{$product->name}}</a></h4>
+														@if($product->alcohol == 0 && $product->animal_additive == 0 )
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Alcohol: no</label>
+																</div>
+																<div style="padding-left:85%; position:absolute; padding-top:5px">
+																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
+																</div>
+															</div>
+
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Animal Product: no</label>
+																</div>
+																<div style="padding-left:85%; position:absolute; padding-top:5px">
+																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
+																</div>
+															</div>
+														@endif
+														@if($product->alcohol != 0 && $product->animal_additive == 0 )
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Alcohol: yes</label>
+																</div>
+																<div style="padding-left:85%; position:absolute;">
+																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
+																</div>
+															</div>
+
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Animal Product: no</label>
+																</div>
+																<div style="padding-left:85%; position:absolute; padding-top:5px">
+																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
+																</div>
+															</div>
+														@endif
+														@if($product->alcohol == 0 && $product->animal_additive != 0 )
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Alcohol: no</label>
+																</div>
+																<div style="padding-left:85%; position:absolute; padding-top:5px">
+																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
+																</div>
+															</div>
+
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Animal Product: yes</label>
+																</div>
+
+																<div style="padding-left:85%; position:absolute;">
+																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
+																</div>
+															</div>
+														@endif
+														@if($product->alcohol != 0 && $product->animal_additive != 0 )
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Alcohol: yes</label>
+																</div>
+																<div style="padding-left:85%; position:absolute;">
+																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
+																</div>
+															</div>
+
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Animal Product: yes</label>
+																</div>
+
+																<div style="padding-left:85%; position:absolute;">
+																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
+																</div>
+															</div>
+														@endif
+													</div>
+												</div>
+											</a>
+										</div>
+									</div>
+								@endforeach
+							@endisset
 						</div>
 					</div>
-					<div class="col-lg-6 offset-lg-1">
-						<div class="right-img">
-							<img style="height: 600px;" class="img1 img-fluid" src="img/food/food1.jpg" alt="">
-							<img style="height: 300px;" class="img2 img-fluid" src="img/food/food2.png" alt="">
+					<br><br><br>
+					<div class="main_title">
+						<h1>Most Viewed Products</h1>						
+					</div>
+					<div class="container-fluid no-padding">
+						<div class="row owl-carousel active-food-gallery">
+							<!-- single gallery item -->
+							@isset($products)
+								@foreach($products as $product)
+									<div class="single-gallery-item">
+										<div class="container">
+											<a href="product-detail/{{$product->id}}">
+												<div class="card">
+													@if($product->image != null)
+														<img class="card-img-top" src="http://lara.halalcheck.net/img/fotos/thumb/{{$product->image}}" style="  height:189px;" alt="Card image cap">
+													@endif
+													@if($product->image == null)
+														<img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" style="  height:189px;" alt="Card image cap">
+													@endif
+
+													<div class="card-body">
+														<h4 class="card-title" style="height: 50px;"><a href="product-detail/{{$product->id}}"  class="c-title" title="View Product">{{$product->name}}</a></h4>
+														@if($product->alcohol == 0 && $product->animal_additive == 0 )
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Alcohol: no</label>
+																</div>
+																<div style="padding-left:85%; position:absolute; padding-top:5px">
+																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
+																</div>
+															</div>
+
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Animal Product: no</label>
+																</div>
+																<div style="padding-left:85%; position:absolute; padding-top:5px">
+																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
+																</div>
+															</div>
+														@endif
+														@if($product->alcohol != 0 && $product->animal_additive == 0 )
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Alcohol: yes</label>
+																</div>
+																<div style="padding-left:85%; position:absolute;">
+																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
+																</div>
+															</div>
+
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Animal Product: no</label>
+																</div>
+																<div style="padding-left:85%; position:absolute; padding-top:5px">
+																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
+																</div>
+															</div>
+														@endif
+														@if($product->alcohol == 0 && $product->animal_additive != 0 )
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Alcohol: no</label>
+																</div>
+																<div style="padding-left:85%; position:absolute; padding-top:5px">
+																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
+																</div>
+															</div>
+
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Animal Product: yes</label>
+																</div>
+
+																<div style="padding-left:85%; position:absolute;">
+																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
+																</div>
+															</div>
+														@endif
+														@if($product->alcohol != 0 && $product->animal_additive != 0 )
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Alcohol: yes</label>
+																</div>
+																<div style="padding-left:85%; position:absolute;">
+																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
+																</div>
+															</div>
+
+															<div class="row" style="">
+																<div>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Animal Product: yes</label>
+																</div>
+
+																<div style="padding-left:85%; position:absolute;">
+																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
+																</div>
+															</div>
+														@endif
+													</div>
+												</div>
+											</a>
+										</div>
+									</div>
+								@endforeach
+							@endisset
 						</div>
 					</div>
+					<br><br><br>
+					<div class="main_title">
+						<h1>News Section</h1>						
+					</div>
+					<div class="slideshow-container-news">
+						@foreach ($news as $news)													
+							<div class="mySlides-news">
+								<p>{{$news->Title}}</p>
+								<p>BY</p>
+								<p>{{$news->Author}}</p>
+								<q>{{$news->Summary}}</q>						  	
+							</div>						
+							<a class="prev-news" onclick="plusSlides(-1)">❮</a>
+							<a class="next-news" onclick="plusSlides(1)">❯</a>
+						@endforeach
+					</div>
+					
+				</section>
+				<div class="main_title">
+					<h1>Meet Our Team</h1>						
+				</div>
+				<div class="row-team" style="padding-bottom: 50px;">
+					<div class="column-team">
+					  <div class="card-team">
+						<img src="img/team/team1.jpg" alt="Jane" style="width:100%;height:300px">
+						<div class="container-team">
+						  <h2>Isa Malikoc</h2>
+						  <p class="title-team">CEO & Founder</p>
+						  <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+						  <p>example@example.com</p>
+
+						</div>
+					  </div>
+					</div>
+
+					<div class="column-team">
+						<div class="card-team">
+						  <img src="img/team/team3.jpg" alt="Jane" style="width:100%;height:300px">
+						  <div class="container-team">
+							<h2>Dilara Faslak</h2>
+							<p class="title-team">Founder</p>
+							<p>Some text that describes me lorem ipsum ipsum lorem.</p>
+							<p>example@example.com</p>
+  
+						  </div>
+						</div>
+					</div>
+				  
+					<div class="column-team">
+					  <div class="card-team">
+						<img src="img/team/team2.jpg" alt="Mike" style="width:100%;height:300px">
+						<div class="container-team">
+						  <h2>Rumeysa</h2>
+						  <p class="title-team">Art Director</p>
+						  <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+						  <p>example@example.com</p>
+
+						</div>
+					  </div>
+					</div>
+					
+					<div class="column-team">
+					  <div class="card-team">
+						<img src="img/team/team3.jpg" alt="John" style="width:100%;height:300px">
+						<div class="container-team">
+						  <h2>Feyza</h2>
+						  <p class="title-team">Designer</p>
+						  <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+						  <p>example@example.com</p>
+
+						</div>
+					  </div>
+					</div>
+				</div>
+				<br><br><br>
+				<div class="main_title">
+					<h1>FAQ's Section</h1>						
+				</div>
+				<div>
+					@foreach ($faqs as $faq)
+						
+					<h4>{{$faq->Question}}</h4>
+					<p>{{$faq->Answer}}</p>
+					
+					@endforeach
 				</div>
 			</div>	
 		</div>	
 		<!--================ End Breakfast Area =================-->
 
-		<!--================ Start Lunch Area =================-->
-		<div class="breakfast-area lunch-area">
-			<div class="container">
-				<div class="row align-items-center justify-content-center">
-					<div class="col-lg-6 ">
-						<div class="right-img">
-							<img style="height: 600px;" class="img1 img-fluid" src="img/food/food3.jpg" alt="">
-						</div>
-					</div>
-					<div class="col-lg-5 offset-lg-1">
-						<div class="left-content">
-							<h1>The term <i>Halal</i> </h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore
-								magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore
-								magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-						<a href="#" class="primary-btn">Search Categories</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="breakfast-area">
-			<div class="container">
-				<div class="row align-items-center justify-content-center">
-					<div class="col-lg-5">
-
-						<div class="left-content">
-							<h1>Why an Islam-compliant diet? </h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore
-								magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore
-								magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-								<a href="#" class="primary-btn">See More</a>
-						</div>
-					</div>
-					<div class="col-lg-6 offset-lg-1">
-						<div class="right-img">
-							<img style="height: 600px;" class="img1 img-fluid" src="img/food/non-food1.jpg" alt="">
-							<img style="height: 300px;" class="img2 img-fluid" src="img/food/non-food2.png" alt="">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<br><br>
-		<!--================ End Lunch Area =================-->
+		
 
     
     <!--================ Start Footer Area =================-->
@@ -321,6 +536,37 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="js/gmaps.min.js"></script>
 	<script src="js/theme.js"></script>
+	<script>
+		var slideIndex = 1;
+		showSlides(slideIndex);
+
+		function plusSlides(n) {
+  			showSlides(slideIndex += n);
+		}
+		function plusFaqSlides(n) {
+  			showSlides(slideIndex += n);
+		}
+
+		function currentSlide(n) {
+		showSlides(slideIndex = n);
+		}
+
+		function showSlides(n) {
+		var i;
+		var slides = document.getElementsByClassName("mySlides-news");
+		var dots = document.getElementsByClassName("dot-news");
+		if (n > slides.length) {slideIndex = 1}    
+		if (n < 1) {slideIndex = slides.length}
+		for (i = 0; i < slides.length; i++) {
+			slides[i].style.display = "none";  
+		}
+		for (i = 0; i < dots.length; i++) {
+			dots[i].className = dots[i].className.replace(" active-news", "");
+		}
+		slides[slideIndex-1].style.display = "block";  
+		dots[slideIndex-1].className += " active-news";
+		}
+	</script>
 </body>
 
 </html>

@@ -46,10 +46,67 @@ Route::any ( '/search', function (Request $request) {
 
 } );
 
+Route::any ( '/search/{name}', function (Request $request, $name) {
+    // $q = Request::get ( 'q' );
+    $filter = $request->filter;
+    // $q = $request->q;
+    
+    // if($q == "")
+    // {
+    //   return response()->json(NULL, 401);
+    //     // return redirect()->back()->with('alert', 'Please Enter Something To Search');
+    // }
+    // if($q != ""){
+        $categories = DB::table('h_category')->get();
+        if($filter == "All Products"){
+            $products = App\Models\Admin\Products::where ( 'sub_category', $name)
+            // ->where('name', 'LIKE', '%' . $q . '%')
+            ->paginate (12)
+            ->setPath ( '' );
+        }
+        elseif($filter == "Harmless"){
+            $products = App\Models\Admin\Products::where ( 'sub_category', $name)
+            // ->where ( 'name', 'LIKE', '%' . $q . '%' )
+            ->where('alcohol_status','no')
+            ->where('animal_additive_status','no')
+            ->paginate (12)->setPath ( '' );
+        }
+        elseif($filter == "Controversial"){
+            $products = App\Models\Admin\Products::where ( 'sub_category', $name)
+            // ->where ( 'name', 'LIKE', '%' . $q . '%' )
+            ->where('alcohol_status','controversial')
+            ->orWhere('animal_additive_status','controversial')
+            ->paginate (12)->setPath ( '' );
+        }
+        elseif($filter == "Certified"){
+            $products = App\Models\Admin\Products::where ( 'sub_category', $name)
+            // ->where ( 'name', 'LIKE', '%' . $q . '%' )
+            ->where('certified','yes')
+            ->paginate (12)->setPath ( '' );
+        }
+        $pagination = $products->appends ( array (
+                // 'q' => $request->q
+                // Request::get ( 'q' )
+        ) );
 
+    if (count ( $products ) > 0){
 
-//****** All the routes for API are below this line ******
+        return response()->json($products, 401);
+    }
+    else
+
+        return response()->json(NULL, 401);
+        //  )->with('alert','No Details found. Try to search again !' );
+}
+
+ );
+
+//****************** All the routes for API are below this line ****************
 Route::get('get-products', 'Api\ProductController@index');
+
+Route::get('get-category', 'Api\ProductController@getCategory');
+
+Route::get('get-subcategory/{cat}', 'Api\ProductController@getSubCategory');
 
 Route::get('new-products', 'Api\ProductController@new');
 
@@ -65,7 +122,6 @@ Route::get('get-products-category/{cat}', 'Api\ProductController@cat');
 
 Route::get('get-products-id/{id}', 'Api\ProductController@show');
 
-//new comits
-Route::get('get-category', 'Api\ProductController@getCategory');
+Route::post('product-request', 'Api\ProductController@newrequest');
 
-Route::get('get-subcategory/{cat}', 'Api\ProductController@getSubCategory');
+Route::post('feedback', 'Api\ProductController@feedback');

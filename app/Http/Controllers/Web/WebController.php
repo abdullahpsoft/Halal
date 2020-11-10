@@ -5,12 +5,11 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Products;
+use App\Models\Admin\Manufacturer;
+use App\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
-
-use App\Models\Admin\Manufacturer;//new commit
-use App\User;//new commit
-use Illuminate\Support\Facades\Hash;//new commit
 
 class WebController extends Controller
 {
@@ -22,8 +21,12 @@ class WebController extends Controller
     public function index()
     {
         $categories = DB::table('h_category')->get();
+        $eat = DB::table('h_sub_categories')->where('category_slug',"eat")->get();
+        $drink = DB::table('h_sub_categories')->where('category_slug',"drink")->get();
+        $nf = DB::table('h_sub_categories')->where('category_slug',"nf")->get();
+        $stores = DB::table('stores')->get();
         $products = Products::orderBy('created_at', 'desc')->paginate(6);
-        return view('welcome', compact('products','categories'));
+        return view('welcome', compact('products','categories','stores','eat','drink','nf'));
         //
     }
 
@@ -97,19 +100,16 @@ class WebController extends Controller
     public function explore()
     {
         $categories = DB::table('h_category')->get();
-        return view('explore', compact(['categories']));
+        $products = Products::orderBy('created_at', 'desc')->paginate(6);
+        $news = DB::table('news')->get();
+        $faqs = DB::table('faq')->get();
+        return view('explore', compact(['categories','products','news','faqs']));
     }
     public function companies()
     {
         $categories = DB::table('h_category')->get();
         return view('companies', compact(['categories']));
     }
-    public function aboutUs()
-    {
-        $categories = DB::table('h_category')->get();
-        return view('about-us', compact(['categories']));
-    }
-    //new commit
     public function registerCompany(Request $request)
     {
       $company = new Manufacturer;
@@ -133,6 +133,12 @@ class WebController extends Controller
       $user->save();
 
       return redirect('/');
+      
+    }
 
+    public function aboutUs()
+    {
+        $categories = DB::table('h_category')->get();
+        return view('about-us', compact(['categories']));
     }
 }

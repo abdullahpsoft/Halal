@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
 Laravel\Passport\PassportServiceProvider::class,
+        Jorenvh\Share\Providers\ShareServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -228,7 +229,7 @@ Laravel\Passport\PassportServiceProvider::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Input' => Illuminate\Support\Facades\Input::class,
-
+        'Share' => Jorenvh\Share\ShareFacade::class,
 
     ],
 

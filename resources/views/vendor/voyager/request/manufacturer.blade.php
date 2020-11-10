@@ -36,42 +36,65 @@
           <!-- Adding / Editing -->
 
                   <!-- GET THE DISPLAY OPTIONS -->
+            <div class="row">
+                <div class="form-group col-md-4 "
+                >
 
-          <div class="form-group col-md-12 "
-          >
+                    <label class="control-label"
+                           for="product">Select Product</label>
+                    <select class=" form-control" name="product">
+                        @foreach($products as $product)
+                            <option value="{{$product->id}}">{{$product->name}}</option>
+                        @endforeach
+                    </select>
 
-          <label class="control-label"
-          for="product">Select Product</label>
-          <select class=" form-control" name="product">
-@foreach($products as $product)
-            <option value="{{$product->id}}">{{$product->name}}</option>
-@endforeach
-          </select>
+                </div>
+            </div>
 
-        </div>
         <!-- GET THE DISPLAY OPTIONS -->
+            <div class="row">
+                <div class="form-group col-md-4 "
+                >
 
-        <div class="form-group col-md-12 "
-        >
+                    <label class="control-label"
+                           for="manufacturer">Select Manufacturer</label>
+                    <select class=" form-control" name="manufacturer">
+                        @foreach($manufacturers as $manufactur)
+                            <option value="{{$manufactur->id}}">{{$manufactur->Name}}</option>
+                        @endforeach
 
-        <label class="control-label"
-        for="manufacturer">Select Manufacturer</label>
-        <select class=" form-control" name="manufacturer">
-          @foreach($manufacturers as $manufactur)
-                      <option value="{{$manufactur->id}}">{{$manufactur->Name}}</option>
-          @endforeach
+                    </select>
 
-        </select>
+                </div>
 
-      </div>
+            </div>
+
       <!-- GET THE DISPLAY OPTIONS -->
+            <div class="row">
+                <div class="form-group col-md-4 "
+                >
+
+                    <label class="control-label"
+                           for="manufacturer">Select Mail Template</label>
+                    <select class=" form-control" name="manufacturer">
+                        @foreach($mails as $mail)
+                            <option value="{{$manufactur->id}}">{{$mail->subject}}</option>
+                        @endforeach
+
+                    </select>
+
+                </div>
+
+            </div>
 
       <div class="form-group col-md-12 "
       >
 
       <label class="control-label"
       for="body">Write you request:</label>
-      <textarea class="form-control" name="body" rows="8" cols="80"></textarea>
+      <textarea class="form-control" name="body" rows="8" cols="80"> @foreach($mails as $mail)
+       {{$mail->body}}
+@endforeach</textarea>
 
     </div>
     <!-- GET THE DISPLAY OPTIONS -->

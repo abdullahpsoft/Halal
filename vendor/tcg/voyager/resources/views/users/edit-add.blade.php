@@ -118,6 +118,7 @@
             <button type="submit" class="btn btn-primary pull-right save">
                 {{ __('voyager::generic.save') }}
             </button>
+
         </form>
 
         <iframe id="form_target" name="form_target" style="display:none"></iframe>

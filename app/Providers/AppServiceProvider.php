@@ -26,8 +26,11 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         // Enable custom action for publish posts
-                Voyager::addAction(\TCG\Voyager\Actions\ApproveAction::class);
+                    Voyager::addAction(\TCG\Voyager\Actions\ApproveAction::class);
                   Voyager::addAction(\TCG\Voyager\Actions\PublishAction::class);
+                  Voyager::addAction(\TCG\Voyager\Actions\UserAction::class);
+                    Voyager::addAction(\TCG\Voyager\Actions\RequestAction::class);
+//             Voyager::addAction(\TCG\Voyager\Actions\AddProductAction::class);
 
     }
 }

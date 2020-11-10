@@ -3,13 +3,19 @@
 namespace App\Http\Controllers\Voyager;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Mail as AdminMail;
+use App\Models\Admin\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin\Products;
 use App\Models\Admin\Requests;
+use App\Models\Admin\SubCategory;
+use Illuminate\Support\Facades\Storage;
+
 
 use App\Models\Admin\Manufacturer;
 use Mail;
+//use Symfony\Component\Console\Input\Input;
 
 class RequestController extends Controller
 {
@@ -20,7 +26,13 @@ class RequestController extends Controller
      */
     public function index()
     {
-      $reqs = Requests::all();
+//      $reqs = Requests::orderBy('status', 'asc')->get();
+
+      $reqs = Requests::orderByRaw('case
+    when `status` LIKE "%untracked%" then 1
+    when `status` LIKE "%updated%"  then 2
+    when `status` LIKE "%published%"  then 3
+    else 4 end')->get();
 
   return view('vendor.voyager.request.index', compact(['reqs']));
         //
@@ -37,9 +49,187 @@ class RequestController extends Controller
       $id = Auth::user()->id;
       $products = Products::where('man_reply',NULL)->get();
       $manufacturers = Manufacturer::all();
-
-      return view('vendor.voyager.request.manufacturer', compact(['products','manufacturers']));
+      $mails = AdminMail::all();
+      return view('vendor.voyager.request.manufacturer', compact(['products','manufacturers','mails']));
         //
+    }
+    public function product()
+    {
+        $sub_categories = SubCategory::all();
+        $manufacturers =  Manufacturer::all();
+        $mails = \App\Models\Admin\Mail::all();
+
+        return view('vendor.voyager.request.product', compact('sub_categories','manufacturers','mails'));
+        //
+    }
+    public function store_product(Request $request)
+    {
+
+//        dd($request->all());
+        $product = new Products();
+        $product->name = $request->name;
+
+        $product->sub_category =  $request->subCategory;
+
+        $sub_category = SubCategory::where('name',$request->subCategory)->first();
+        $product->sub_category_slug =  $sub_category->sub_category_slug;
+
+        $product->ean =  $request->ean;
+        $product->company_name =  $request->company_name;
+        $product->title =  $request->title;
+
+
+        if($request->gujar == 'on'){
+
+
+        $product->manufacturer_id = $request->manufacturer2;
+        $product->alcohol_status = $request->alcohol2;
+        if($request->alcohol2 == 'no'){
+            $product->alcohol = 0;
+        } elseif ($request->alcohol2 == 'yes'){
+            $product->alcohol = 1;
+        } elseif ($request->alcohol2 == 'controversial'){
+            $product->alcohol = 2;
+        } elseif ($request->alcohol2 == 'no information'){
+            $product->alcohol = 3;
+        }else{
+
+        }
+
+        $product->animal_additive_status = $request->animal2;
+            if($request->animal2 == 'no'){
+                $product->animal_additive = 0;
+            } elseif ($request->animal2 == 'yes'){
+                $product->animal_additive = 1;
+            } elseif ($request->animal2 == 'controversial'){
+                $product->animal_additive = 2;
+            } elseif ($request->animal2 == 'no information'){
+                $product->animal_additive = 3;
+            }else{
+
+            }
+
+            $product->reason = $request->comment2;
+            $product->reason_title = $request->comment2title;
+            $product->man_reply = $request->mail2;
+
+
+
+
+
+            if ($request->hasFile('image')) {
+                //  Let's do everything here
+                if ($request->file('image')->isValid()) {
+                    //
+                    $validated = $request->validate([
+                        'name' => 'string|max:40',
+                        'image' => 'mimes:jpeg,png|max:1014',
+                    ]);
+
+                    $extension = $request->image->extension();
+                    $request->image->storeAs('/public/img', $validated['name'].".".$extension);
+//                    $url = Storage::url($validated['name'].".".$extension);
+//                    $file = File::create([
+//                        'name' => $validated['name'],
+//                        'url' => $url,
+//                    ]);
+                }
+            }
+
+
+
+
+            $product->image = $validated['name'].".".$extension;
+
+            $product->save();
+
+            $id = Auth::user()->id;
+            $name = Auth::user()->name;
+
+            $req = new Requests;
+            $req->product_id = $product->id;
+            $req->product_name = $request->name;
+
+            $req->manufacturer_id = $request->manufacturer2;
+            $req->manufacturer_name = $request->company_name;
+
+            $req->sent_by = $id;
+            $req->sent_by_name = $name;
+
+            $req->status = 'updated';
+
+            $req->save();
+
+            $reqs = Requests::orderByRaw('case
+    when `status` LIKE "%untracked%" then 1
+    when `status` LIKE "%updated%"  then 2
+    when `status` LIKE "%published%"  then 3
+    else 4 end')->get();
+            return view('vendor.voyager.request.index', compact(['reqs']))->with('message','Product Added Successfully');
+                                }
+        else{
+
+
+            $product->manufacturer_id = $request->manufacturer1;
+
+            $product->save();
+
+
+            $manufacturer = Manufacturer::where('id',$request->manufacturer1)->first();
+
+
+
+            $to_name = $manufacturer->Name;
+            $to_email = 'abdullahpsoft@gmail.com';
+            $subjects = 'Product: '.$request->name.' and Ean: '.$request->ean;
+            $link = 'Link: http://127.0.0.1:8000/admin/login';
+            $data = array('name'=>'Halal',
+                'body' => $request->mail1body.' '. $subjects.' '.$link);
+
+            Mail::send('emails.mail',
+                $data, function($message) use ($to_name, $to_email) {
+                    $message->to($to_email, $to_name)
+                        ->subject('Response for Product ');
+                    $message->from('abdullahsowebit@gmail.com','Title');
+                });
+
+
+
+            $id = Auth::user()->id;
+            $name = Auth::user()->name;
+
+            $req = new Requests;
+            $req->product_id = $product->id;
+            $req->product_name = $request->name;
+
+            $req->manufacturer_id = $request->manufacturer1;
+            $req->manufacturer_name = $request->company_name;
+
+            $req->sent_by = $id;
+            $req->sent_by_name = $name;
+
+            $req->status = 'untracked';
+
+            $req->save();
+
+            $reqs = Requests::orderByRaw('case
+    when `status` LIKE "%untracked%" then 1
+    when `status` LIKE "%updated%"  then 2
+    when `status` LIKE "%published%"  then 3
+    else 4 end')->get();
+            return view('vendor.voyager.request.index', compact(['reqs']))->with('message','Product Details Added & Mail Sent To Manufacturer Successfully ');
+
+        }
+
+
+
+
+        //
+    }
+    public static function get_requests(){
+        $requests =  Requests::where('status','untracked')->count();
+
+        return $requests;
     }
 
     /**
@@ -63,16 +253,17 @@ class RequestController extends Controller
 
 
 
-
         $to_name = $manufacturer->Name;
-        $to_email = 'danial.sowebit@gmail.com';
+        $to_email = 'abdullahpsoft@gmail.com';
+        $subjects = 'Product: '.$product->name.' and Ean: '.$product->ean;
+        $link = 'Link: http://127.0.0.1:8000/admin/login';
       $data = array('name'=>'Halal',
-       'body' => $request->body);
+       'body' => $request->body.' '. $subjects.' '.$link);
 
         Mail::send('emails.mail',
         $data, function($message) use ($to_name, $to_email) {
         $message->to($to_email, $to_name)
-        ->subject('Laravel Test Mail');
+        ->subject('Response for Product ');
         $message->from('abdullahsowebit@gmail.com','Title');
       });
 
@@ -106,7 +297,11 @@ if(Auth::user()->hasRole('super-analyst')){
 }
       $product->save();
 
-      $reqs = Requests::all();
+        $reqs = Requests::orderByRaw('case
+    when `status` LIKE "%untracked%" then 1
+    when `status` LIKE "%updated%"  then 2
+    when `status` LIKE "%published%"  then 3
+    else 4 end')->get();
 
   return view('vendor.voyager.request.index', compact(['reqs']));
         //
@@ -143,8 +338,11 @@ if(Auth::user()->hasRole('super-analyst')){
       $reqi = Requests::where('id', $id)->first();
 
       $product = Products::find($reqi->product_id);
+      $stores = Store::all();
+        $subCategories = SubCategory::all();
+
       // dd($product->name);
-      return view('vendor.voyager.product.edit',compact(['product']));
+      return view('vendor.voyager.product.edit',compact(['product','stores','subCategories']));
     }
 
     public function publish($id)
@@ -159,8 +357,11 @@ if(Auth::user()->hasRole('super-analyst')){
 $reqi->status = "published" ;
 $reqi->save();
 
-     $reqs = Requests::all();
-
+        $reqs = Requests::orderByRaw('case
+    when `status` LIKE "%untracked%" then 1
+    when `status` LIKE "%updated%"  then 2
+    when `status` LIKE "%published%"  then 3
+    else 4 end')->get();
  return view('vendor.voyager.request.index', compact(['reqs']));
        //
 
@@ -177,7 +378,7 @@ $reqi->save();
     public function update(Request $request, $id)
     {
 
-
+//dd($request->all());
       $id2 = Auth::user()->id;
       $name = Auth::user()->name;
 
@@ -204,7 +405,11 @@ $reqi->save();
 
       $addProduct->save();
 
-      $reqs = Requests::all();
+        $reqs = Requests::orderByRaw('case
+    when `status` LIKE "%untracked%" then 1
+    when `status` LIKE "%updated%"  then 2
+    when `status` LIKE "%published%"  then 3
+    else 4 end')->get();
 
     return view('vendor.voyager.request.index', compact(['reqs']));
         //

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3aee64ce143e611bf59719f145f5a01c",
+    "content-hash": "679c6ea9fde740efaccd81d0f11ddd09",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -1500,6 +1500,65 @@
             "time": "2019-11-02T09:15:47+00:00"
         },
         {
+            "name": "jorenvanhocht/laravel-share",
+            "version": "3.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jorenvh/laravel-share.git",
+                "reference": "1991e056fedd60a9e48e323b84a468a6335a7a2f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jorenvh/laravel-share/zipball/1991e056fedd60a9e48e323b84a468a6335a7a2f",
+                "reference": "1991e056fedd60a9e48e323b84a468a6335a7a2f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.5.0",
+                "phpunit/phpunit": "~6.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Jorenvh\\Share\\Providers\\ShareServiceProvider"
+                    ],
+                    "aliases": {
+                        "Share": "Jorenvh\\Share\\ShareFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jorenvh\\Share\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joren Van Hocht",
+                    "email": "joren@codeswitch.be",
+                    "homepage": "https://codeswitch.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Optional package for Laravel to generate social share links.",
+            "homepage": "https://github.com/jorenvh/laravel-share",
+            "keywords": [
+                "laravel",
+                "share",
+                "social links",
+                "social share links"
+            ],
+            "time": "2020-09-19T13:41:44+00:00"
+        },
+        {
             "name": "justinrainbow/json-schema",
             "version": "5.2.10",
             "source": {
@@ -2537,6 +2596,68 @@
                 "server"
             ],
             "time": "2020-07-01T11:33:50+00:00"
+        },
+        {
+            "name": "livewire/livewire",
+            "version": "v2.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/livewire/livewire.git",
+                "reference": "4dfc7752254eb316911dec13c57578768bd1b743"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/4dfc7752254eb316911dec13c57578768bd1b743",
+                "reference": "4dfc7752254eb316911dec13c57578768bd1b743",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^7.0|^8.0",
+                "illuminate/support": "^7.0|^8.0",
+                "illuminate/validation": "^7.0|^8.0",
+                "php": "^7.2.5",
+                "symfony/http-kernel": "^5.0"
+            },
+            "require-dev": {
+                "calebporzio/sushi": "^2.1",
+                "laravel/framework": "^7.0|^8.0",
+                "mockery/mockery": "^1.3.1",
+                "orchestra/testbench": "^5.0|^6.0",
+                "orchestra/testbench-dusk": "^5.2|^6.0",
+                "phpunit/phpunit": "^8.4|^9.0",
+                "psy/psysh": "@stable"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Livewire\\LivewireServiceProvider"
+                    ],
+                    "aliases": {
+                        "Livewire": "Livewire\\Livewire"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Livewire\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Caleb Porzio",
+                    "email": "calebporzio@gmail.com"
+                }
+            ],
+            "description": "A front-end framework for Laravel.",
+            "time": "2020-10-27T19:08:41+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -5759,6 +5880,34 @@
             "time": "2020-07-02T13:40:19+00:00"
         },
         {
+            "name": "test-hook",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/larapack/test-hook.git",
+                "reference": "v1.0.0"
+            },
+            "require": {
+                "larapack/hooks": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "hook": {
+                    "providers": [
+                        "TestHook\\TestHookServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TestHook\\": "src/"
+                }
+            },
+            "notification-url": "https://larapack.io/downloads",
+            "description": "This is my first hook.",
+            "time": "2020-11-03T08:11:41+00:00"
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "2.2.3",
             "source": {
@@ -6263,6 +6412,7 @@
                 "faker",
                 "fixtures"
             ],
+            "abandoned": true,
             "time": "2019-12-12T13:22:17+00:00"
         },
         {
@@ -7059,6 +7209,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2019-09-17T06:23:10+00:00"
         },
         {

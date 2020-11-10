@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Voyager;
 
 use App\Http\Controllers\Controller;
-
+use App\User;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 use TCG\Voyager\Models\Products;
 
@@ -26,6 +26,15 @@ class PostController extends VoyagerBaseController
         $post->published = $post->published=="unpublished"?"Publish":"unpublished";
         $post->save();
         return redirect(route('voyager.h-products.index'));
+    }
+    
+    public function publishuser(){
+
+        //Get post by id and toggle the status from PUBLISHED to PENDING and vice versa
+        $post = User::where('id', \request("id"))->first();
+        $post->approved = $post->approved=="pending"?"approved":"pending";
+        $post->save();
+        return redirect(route('voyager.users.index'));
     }
 
 }

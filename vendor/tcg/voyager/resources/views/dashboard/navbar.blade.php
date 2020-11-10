@@ -1,3 +1,8 @@
+<?php
+use App\Http\Controllers\Voyager\RequestController;
+$total_untrack_requests = RequestController::get_requests();
+
+?>
 <nav class="navbar navbar-default navbar-fixed-top navbar-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -34,9 +39,10 @@
         </div>
         <ul class="nav navbar-nav @if (__('voyager::generic.is_rtl') == 'true') navbar-left @else navbar-right @endif">
             <li class="dropdown profile">
+
                 <a href="#" class="dropdown-toggle text-right" data-toggle="dropdown" role="button"
                    aria-expanded="false"><img src="{{ $user_avatar }}" class="profile-img"> <span
-                            class="caret"></span></a>
+                        class="caret"></span></a>
                 <ul class="dropdown-menu dropdown-menu-animated">
                     <li class="profile-img">
                         <img src="{{ $user_avatar }}" class="profile-img">
@@ -48,31 +54,44 @@
                     <li class="divider"></li>
                     <?php $nav_items = config('voyager.dashboard.navbar_items'); ?>
                     @if(is_array($nav_items) && !empty($nav_items))
-                    @foreach($nav_items as $name => $item)
-                    <li {!! isset($item['classes']) && !empty($item['classes']) ? 'class="'.$item['classes'].'"' : '' !!}>
-                        @if(isset($item['route']) && $item['route'] == 'voyager.logout')
-                        <form action="{{ route('voyager.logout') }}" method="POST">
-                            {{ csrf_field() }}
-                            <button type="submit" class="btn btn-danger btn-block">
-                                @if(isset($item['icon_class']) && !empty($item['icon_class']))
-                                <i class="{!! $item['icon_class'] !!}"></i>
+                        @foreach($nav_items as $name => $item)
+                            <li {!! isset($item['classes']) && !empty($item['classes']) ? 'class="'.$item['classes'].'"' : '' !!}>
+                                @if(isset($item['route']) && $item['route'] == 'voyager.logout')
+                                    <form action="{{ route('voyager.logout') }}" method="POST">
+                                        {{ csrf_field() }}
+                                        <button type="submit" class="btn btn-danger btn-block">
+                                            @if(isset($item['icon_class']) && !empty($item['icon_class']))
+                                                <i class="{!! $item['icon_class'] !!}"></i>
+                                            @endif
+                                            {{__($name)}}
+                                        </button>
+                                    </form>
+                                @else
+                                    <a href="{{ isset($item['route']) && Route::has($item['route']) ? route($item['route']) : (isset($item['route']) ? $item['route'] : '#') }}" {!! isset($item['target_blank']) && $item['target_blank'] ? 'target="_blank"' : '' !!}>
+                                        @if(isset($item['icon_class']) && !empty($item['icon_class']))
+                                            <i class="{!! $item['icon_class'] !!}"></i>
+                                        @endif
+                                        {{__($name)}}
+                                    </a>
                                 @endif
-                                {{__($name)}}
-                            </button>
-                        </form>
-                        @else
-                        <a href="{{ isset($item['route']) && Route::has($item['route']) ? route($item['route']) : (isset($item['route']) ? $item['route'] : '#') }}" {!! isset($item['target_blank']) && $item['target_blank'] ? 'target="_blank"' : '' !!}>
-                            @if(isset($item['icon_class']) && !empty($item['icon_class']))
-                            <i class="{!! $item['icon_class'] !!}"></i>
-                            @endif
-                            {{__($name)}}
-                        </a>
-                        @endif
-                    </li>
-                    @endforeach
+                            </li>
+                        @endforeach
                     @endif
                 </ul>
             </li>
         </ul>
+        @if (Auth::user()->hasRole('super-user') || Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('super-analyst') )
+            <ul class="nav navbar-nav @if (__('voyager::generic.is_rtl') == 'true') navbar-left @else navbar-right @endif">
+                <li class="dropdown profile">
+                    <a href="/admin/request/manufacturer" class=" text-center"
+                       aria-expanded="false"><li class="active"><i class="voyager-bell" style="color: #2E9AC8"></i><span
+                        style="color: #2E9AC8">{{$total_untrack_requests }}</span></li> </a>
+
+                </li>
+            </ul>
+        @endif
+
+
+
     </div>
 </nav>
