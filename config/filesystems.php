@@ -50,11 +50,23 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'root' => public_path() . '/storage/img/fotos/thumb',
+            'url' => env('APP_URL').'/storage/img/fotos/thumb',
             'visibility' => 'public',
         ],
 
+        'custom' => [
+            'driver' => 'local',
+            'root' => public_path() . '/storage/img/fotos/thumb',
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+        ],
+            'custom-big' => [
+                'driver' => 'local',
+                'root' => public_path() . '/storage/img/fotos/big',
+                'url' => env('APP_URL').'/public',
+                'visibility' => 'public',
+            ],
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

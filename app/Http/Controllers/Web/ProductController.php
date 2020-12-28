@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use App\Models\Admin\Products;
 use App\Models\Admin\SubCategory;
@@ -78,6 +79,7 @@ return view('products.index', compact('products','categories'));
     // public function show($id)
     public function show($id)
     {
+        App::setlocale(session()->get('locale'));
         $categories = DB::table('h_category')->get();
 
         $product = Products::find($id);

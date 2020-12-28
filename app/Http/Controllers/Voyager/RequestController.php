@@ -5,13 +5,15 @@ namespace App\Http\Controllers\Voyager;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Mail as AdminMail;
 use App\Models\Admin\Store;
+use App\Models\Admin\Stores;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin\Products;
 use App\Models\Admin\Requests;
 use App\Models\Admin\SubCategory;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Admin\Manufacturer;
 use Mail;
@@ -58,8 +60,8 @@ class RequestController extends Controller
         $sub_categories = SubCategory::all();
         $manufacturers =  Manufacturer::all();
         $mails = \App\Models\Admin\Mail::all();
-
-        return view('vendor.voyager.request.product', compact('sub_categories','manufacturers','mails'));
+        $stores = Stores::all();
+        return view('vendor.voyager.request.product', compact('sub_categories','manufacturers','mails','stores'));
         //
     }
     public function store_product(Request $request)
@@ -72,11 +74,13 @@ class RequestController extends Controller
         $product->sub_category =  $request->subCategory;
 
         $sub_category = SubCategory::where('name',$request->subCategory)->first();
+//        dd($sub_category);
         $product->sub_category_slug =  $sub_category->sub_category_slug;
 
         $product->ean =  $request->ean;
         $product->company_name =  $request->company_name;
         $product->title =  $request->title;
+        $product->store_id =  $request->store_id;
 
 
         if($request->gujar == 'on'){
@@ -118,28 +122,38 @@ class RequestController extends Controller
 
 
             if ($request->hasFile('image')) {
-                //  Let's do everything here
-                if ($request->file('image')->isValid()) {
-                    //
-                    $validated = $request->validate([
-                        'name' => 'string|max:40',
-                        'image' => 'mimes:jpeg,png|max:1014',
-                    ]);
 
-                    $extension = $request->image->extension();
-                    $request->image->storeAs('/public/img', $validated['name'].".".$extension);
-//                    $url = Storage::url($validated['name'].".".$extension);
-//                    $file = File::create([
-//                        'name' => $validated['name'],
-//                        'url' => $url,
+                $cover = $request->file('image');
+                $extension = $cover->getClientOriginalExtension();
+                Storage::disk('custom')->put($request->name.'.'.$extension,  File::get($cover));
+                Storage::disk('custom-big')->put($request->name.'.'.$extension,  File::get($cover));
+//
+
+                    $product->image = $request->name.'.'.$extension;
+
+
+                //  Let's do everything here
+//                if ($request->file('image')->isValid()) {
+//                    //
+//                    $validated = $request->validate([
+//                        'name' => 'string|max:40',
+//                        'image' => 'mimes:jpeg,png|max:1014',
 //                    ]);
-                }
+//
+//                    $extension = $request->image->extension();
+//                    $request->image->storeAs('/public/uploads', $validated['name'].".".$extension);
+////                    $url = Storage::url($validated['name'].".".$extension);
+////                    $file = File::create([
+////                        'name' => $validated['name'],
+////                        'url' => $url,
+////                    ]);
+//
+//                }
             }
 
 
 
 
-            $product->image = $validated['name'].".".$extension;
 
             $product->save();
 
@@ -243,7 +257,28 @@ class RequestController extends Controller
         //
     }
 
+    public function delete($id)
+    {
+        DB::delete('delete from h_products where id = ?',[$id]);
+        DB::delete('delete from request_track where product_id = ?',[$id]);
 
+        return redirect()->back()->with('message', 'Successfully Deleted Product!');
+        //
+    }
+
+    public function deleteuser($id)
+    {
+
+        return redirect()->back()->with('message', 'Roles cannot be deleted!');
+        //
+    }
+
+    public function deletecategory($id)
+    {
+
+        return redirect()->back()->with('message', 'Categories cannot be deleted!');
+        //
+    }
 
     public function mail(Request $request)
     {

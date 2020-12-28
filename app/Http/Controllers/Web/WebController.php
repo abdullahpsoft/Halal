@@ -7,19 +7,29 @@ use Illuminate\Http\Request;
 use App\Models\Admin\Products;
 use App\Models\Admin\Manufacturer;
 use App\User;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-
 
 class WebController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
+     * @param $locale
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
+        App::setlocale(session()->get('locale'));
+
+//        App::setlocale($locale);
+//        session()->put('locale', $locale);
+
+//        App::setlocale($lang);
+
         $categories = DB::table('h_category')->get();
         $eat = DB::table('h_sub_categories')->where('category_slug',"eat")->get();
         $drink = DB::table('h_sub_categories')->where('category_slug',"drink")->get();
@@ -99,6 +109,10 @@ class WebController extends Controller
 
     public function explore()
     {
+        App::setlocale(session()->get('locale'));
+//        $locale = session()->get('locale');
+//        App::setlocale($locale);
+//        dd('sdsadsa');
         $categories = DB::table('h_category')->get();
         $products = Products::orderBy('created_at', 'desc')->paginate(6);
         $news = DB::table('news')->get();
@@ -107,6 +121,7 @@ class WebController extends Controller
     }
     public function companies()
     {
+        App::setlocale(session()->get('locale'));
         $categories = DB::table('h_category')->get();
         return view('companies', compact(['categories']));
     }
@@ -133,11 +148,12 @@ class WebController extends Controller
       $user->save();
 
       return redirect('/');
-      
+
     }
 
     public function aboutUs()
     {
+        App::setlocale(session()->get('locale'));
         $categories = DB::table('h_category')->get();
         return view('about-us', compact(['categories']));
     }

@@ -53,6 +53,50 @@
   font-size: 16px;
   padding: 16px 32px;
 }
+.dropbtn {
+    background-color: #2E9AC8;
+    color: white;
+    padding: 2px;
+    border: none;
+    cursor: pointer;
+    width: 100% !important;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100% !important;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 170px;
+    box-shadow: 0px 8px 16px
+    0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px ;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: gray;
+    width: 100% !important;
+}
 </style>
 </head>
 
@@ -74,17 +118,48 @@
 		<div class="nav-wraper">
 			<div class="navbar">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> home</a></li>
-					<li class="nav-item"><a class="nav-link" href="/categories"><i class="fa fa-home" aria-hidden="true">&nbsp;</i>categories</a></li>					
-					<li class="nav-item"><a class="nav-link active" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>explore</a></li>
-					<li class="nav-item"><a class="nav-link" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>about us</a></li>
+					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> {{ __('lang.home')}}</a></li>
+					<li class="nav-item"><a class="nav-link" href="/categories"><i class="fa fa-home" aria-hidden="true">&nbsp;</i>{{ __('lang.category')}}</a></li>
+					<li class="nav-item"><a class="nav-link active" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>{{ __('lang.explore')}}</a></li>
+					<li class="nav-item"><a class="nav-link" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>{{ __('lang.aboutus')}}</a></li>
 					<li class="nav-item"><a class="nav-link" href="/companies"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
-					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>					
+					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>
 					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-phone" aria-hidden="true">&nbsp;</i>contact</a></li>
 					<li class="nav-item"><a class="nav-link" href="/admin"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
 					<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-twitter" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-instagram" aria-hidden="true"></i></a></li>
 
 				</ul>
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        Select {{ __('lang.language')}}
+                    </button>
+
+                    <div class="dropdown-content">
+
+                        <a href="/setLanguage/en">
+                            <img src=
+                                 "/img/flags/usa.png"
+                                 width="16" height="16"> English</a>
+                        <a href="/setLanguage/de">
+                            <img src=
+                                 "/img/flags/germany.png"
+                                 width="16" height="16"> Deutsche
+                        </a>
+                        <a href="#">
+                            <img src=
+                                 "/img/flags/saudi-arabia.png"
+                                 width="20" height="15"> عربى</a>
+                        <a href="#">
+                            <img src=
+                                 "/img/flags/turkey.png"
+                                 width="20" height="15">Türk</a>
+                        <a href="#">
+                            <img src=
+                                 "/img/flags/france.png"
+                                 width="20" height="15">français</a>
+
+                    </div>
+                </div>
 			</div>
 		</div>
 	</header>
@@ -94,11 +169,12 @@
 		<!--================ Start Home Banner Area =================-->
 		<section class="home_banner_area">
 			<div class="banner_inner">
-				<div class="container-fluid no-padding">				
+				<div class="container-fluid no-padding">
 					<img src="img/slider/01x.jpg" class="col-md-12">
 				</div>
 			</div>
 		</section>
+
 		<!-- Start banner bottom -->
 		<br>
 		<!-- End banner bottom -->
@@ -106,7 +182,7 @@
 			<div class="container">
 				<section class="section_gap_top food-gallery-area">
 					<div class="main_title">
-						<h1>Most Scanned Products</h1>						
+						<h1>Most Scanned {{ __('lang.product')}}</h1>
 					</div>
 					<div class="container-fluid no-padding">
 						<div class="row owl-carousel active-food-gallery">
@@ -129,7 +205,7 @@
 														@if($product->alcohol == 0 && $product->animal_additive == 0 )
 															<div class="row" style="">
 																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Alcohol: no</label>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">{{ __('lang.alcohol')}}: {{ __('lang.no')}}</label>
 																</div>
 																<div style="padding-left:85%; position:absolute; padding-top:5px">
 																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
@@ -138,7 +214,7 @@
 
 															<div class="row" style="">
 																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Animal Product: no</label>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">{{ __('lang.animalproduct')}}: {{ __('lang.no')}}</label>
 																</div>
 																<div style="padding-left:85%; position:absolute; padding-top:5px">
 																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
@@ -148,7 +224,7 @@
 														@if($product->alcohol != 0 && $product->animal_additive == 0 )
 															<div class="row" style="">
 																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Alcohol: yes</label>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">{{ __('lang.alcohol')}}: {{ __('lang.yes')}}</label>
 																</div>
 																<div style="padding-left:85%; position:absolute;">
 																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
@@ -157,7 +233,7 @@
 
 															<div class="row" style="">
 																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Animal Product: no</label>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">{{ __('lang.animalproduct')}}: {{ __('lang.no')}}</label>
 																</div>
 																<div style="padding-left:85%; position:absolute; padding-top:5px">
 																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
@@ -167,7 +243,7 @@
 														@if($product->alcohol == 0 && $product->animal_additive != 0 )
 															<div class="row" style="">
 																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Alcohol: no</label>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">{{ __('lang.alcohol')}}: {{ __('lang.no')}}</label>
 																</div>
 																<div style="padding-left:85%; position:absolute; padding-top:5px">
 																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
@@ -176,7 +252,7 @@
 
 															<div class="row" style="">
 																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Animal Product: yes</label>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">{{ __('lang.animalproduct')}}: {{ __('lang.yes')}}</label>
 																</div>
 
 																<div style="padding-left:85%; position:absolute;">
@@ -187,7 +263,7 @@
 														@if($product->alcohol != 0 && $product->animal_additive != 0 )
 															<div class="row" style="">
 																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Alcohol: yes</label>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">{{ __('lang.alcohol')}}: {{ __('lang.yes')}}</label>
 																</div>
 																<div style="padding-left:85%; position:absolute;">
 																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
@@ -196,7 +272,7 @@
 
 															<div class="row" style="">
 																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Animal Product: yes</label>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">animalproduct: {{ __('lang.yes')}}</label>
 																</div>
 
 																<div style="padding-left:85%; position:absolute;">
@@ -215,7 +291,7 @@
 					</div>
 					<br><br><br>
 					<div class="main_title">
-						<h1>Most Viewed Products</h1>						
+						<h1>Most Viewed {{ __('lang.product')}}</h1>
 					</div>
 					<div class="container-fluid no-padding">
 						<div class="row owl-carousel active-food-gallery">
@@ -238,7 +314,7 @@
 														@if($product->alcohol == 0 && $product->animal_additive == 0 )
 															<div class="row" style="">
 																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Alcohol: no</label>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">{{ __('lang.alcohol')}}: {{ __('lang.no')}}</label>
 																</div>
 																<div style="padding-left:85%; position:absolute; padding-top:5px">
 																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
@@ -247,7 +323,7 @@
 
 															<div class="row" style="">
 																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Animal Product: no</label>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">{{ __('lang.animalproduct')}}: {{ __('lang.no')}}</label>
 																</div>
 																<div style="padding-left:85%; position:absolute; padding-top:5px">
 																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
@@ -257,7 +333,7 @@
 														@if($product->alcohol != 0 && $product->animal_additive == 0 )
 															<div class="row" style="">
 																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Alcohol: yes</label>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">{{ __('lang.alcohol')}}: {{ __('lang.yes')}}</label>
 																</div>
 																<div style="padding-left:85%; position:absolute;">
 																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
@@ -266,7 +342,7 @@
 
 															<div class="row" style="">
 																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Animal Product: no</label>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">{{ __('lang.animalproduct')}}: {{ __('lang.no')}}</label>
 																</div>
 																<div style="padding-left:85%; position:absolute; padding-top:5px">
 																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
@@ -276,7 +352,7 @@
 														@if($product->alcohol == 0 && $product->animal_additive != 0 )
 															<div class="row" style="">
 																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">Alcohol: no</label>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:green">{{ __('lang.alcohol')}}: {{ __('lang.no')}}</label>
 																</div>
 																<div style="padding-left:85%; position:absolute; padding-top:5px">
 																	<i name="image1" id="image1" style="color: green; max-width: 30px !important; max-height: 30px !important;" class="fa fa-check-circle fa-2x"></i>
@@ -285,7 +361,7 @@
 
 															<div class="row" style="">
 																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Animal Product: yes</label>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">{{ __('lang.animalproduct')}}: {{ __('lang.yes')}}</label>
 																</div>
 
 																<div style="padding-left:85%; position:absolute;">
@@ -296,7 +372,7 @@
 														@if($product->alcohol != 0 && $product->animal_additive != 0 )
 															<div class="row" style="">
 																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Alcohol: yes</label>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">{{ __('lang.alcohol')}}: {{ __('lang.yes')}}</label>
 																</div>
 																<div style="padding-left:85%; position:absolute;">
 																	<img id='image1' name="image1"	style="max-width: 25px !important; max-height: 40px !important;" src="img/prohibitted.jpeg"/>
@@ -305,7 +381,7 @@
 
 															<div class="row" style="">
 																<div>
-																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">Animal Product: yes</label>
+																	<label for="image1" style="padding-left: 0px; padding-top: 5px; color:red">{{ __('lang.animalproduct')}}: {{ __('lang.yes')}}</label>
 																</div>
 
 																<div style="padding-left:85%; position:absolute;">
@@ -324,24 +400,24 @@
 					</div>
 					<br><br><br>
 					<div class="main_title">
-						<h1>News Section</h1>						
+						<h1>{{ __('lang.news')}} Section</h1>
 					</div>
 					<div class="slideshow-container-news">
-						@foreach ($news as $news)													
+						@foreach ($news as $news)
 							<div class="mySlides-news">
 								<p>{{$news->Title}}</p>
 								<p>BY</p>
 								<p>{{$news->Author}}</p>
-								<q>{{$news->Summary}}</q>						  	
-							</div>						
+								<q>{{$news->Summary}}</q>
+							</div>
 							<a class="prev-news" onclick="plusSlides(-1)">❮</a>
 							<a class="next-news" onclick="plusSlides(1)">❯</a>
 						@endforeach
 					</div>
-					
+
 				</section>
 				<div class="main_title">
-					<h1>Meet Our Team</h1>						
+					<h1>Meet Our Team</h1>
 				</div>
 				<div class="row-team" style="padding-bottom: 50px;">
 					<div class="column-team">
@@ -365,11 +441,11 @@
 							<p class="title-team">Founder</p>
 							<p>Some text that describes me lorem ipsum ipsum lorem.</p>
 							<p>example@example.com</p>
-  
+
 						  </div>
 						</div>
 					</div>
-				  
+
 					<div class="column-team">
 					  <div class="card-team">
 						<img src="img/team/team2.jpg" alt="Mike" style="width:100%;height:300px">
@@ -382,7 +458,7 @@
 						</div>
 					  </div>
 					</div>
-					
+
 					<div class="column-team">
 					  <div class="card-team">
 						<img src="img/team/team3.jpg" alt="John" style="width:100%;height:300px">
@@ -398,30 +474,30 @@
 				</div>
 				<br><br><br>
 				<div class="main_title">
-					<h1>FAQ's Section</h1>						
+					<h1>{{ __('lang.faq')}}'s Section</h1>
 				</div>
 				<div>
 					@foreach ($faqs as $faq)
-						
+
 					<h4>{{$faq->Question}}</h4>
 					<p>{{$faq->Answer}}</p>
-					
+
 					@endforeach
 				</div>
-			</div>	
-		</div>	
+			</div>
+		</div>
 		<!--================ End Breakfast Area =================-->
 
-		
 
-    
+
+
     <!--================ Start Footer Area =================-->
 		<footer class="footer-area overlay">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-2 col-md-4 col-sm-6">
 						<div class="single-footer-widget">
-							<h6>Top Products</h6>
+							<h6>Top {{ __('lang.product')}}</h6>
 							<div class="row">
 								<div class="col">
 									<ul class="list">
@@ -555,15 +631,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		var i;
 		var slides = document.getElementsByClassName("mySlides-news");
 		var dots = document.getElementsByClassName("dot-news");
-		if (n > slides.length) {slideIndex = 1}    
+		if (n > slides.length) {slideIndex = 1}
 		if (n < 1) {slideIndex = slides.length}
 		for (i = 0; i < slides.length; i++) {
-			slides[i].style.display = "none";  
+			slides[i].style.display = "none";
 		}
 		for (i = 0; i < dots.length; i++) {
 			dots[i].className = dots[i].className.replace(" active-news", "");
 		}
-		slides[slideIndex-1].style.display = "block";  
+		slides[slideIndex-1].style.display = "block";
 		dots[slideIndex-1].className += " active-news";
 		}
 	</script>

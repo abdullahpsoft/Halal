@@ -392,8 +392,14 @@ Route::group(['prefix' => 'admin'], function () {
 
 
    Route::get('request/manufacturer','Voyager\RequestController@index')->name('request.manu');
+
    Route::get('request','Voyager\RequestController@index');
-    Route::get('add/product','Voyager\RequestController@product')->name('add.product');
+//    Route::get('request','Voyager\RequestController@index');
+    Route::get('request/super','Voyager\RequestController@index');//add this
+    Route::get('request/super/view','Voyager\RequestController@index');//add this
+
+
+    Route::get('add/product','Voyager\RequestController@product')->name('add.product');//DAR
 
    Route::get('request/manufacturer/create','Voyager\RequestController@create');
 
@@ -409,8 +415,13 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::post('h-products/store','Voyager\RequestController@store_product');
     Voyager::routes();
-    Route::get('h-products/create', ['uses' => 'Voyager\RequestController@product', 'as'      => 'voyager.h-products.create']);
+    Route::get('h-products/create', ['uses' => 'Voyager\RequestController@product', 'as'      => 'voyager.h-products.create']);//DAR
+    Route::delete('h-products/{id}', ['uses' => 'Voyager\RequestController@delete', 'as'      => 'voyager.h-products.destroy']);//DAR
+    Route::delete('roles/{id}', ['uses' => 'Voyager\RequestController@deleteuser', 'as'      => 'voyager.roles.destroy']);//DAR
+    Route::delete('h-category/{id}', ['uses' => 'Voyager\RequestController@deletecategory', 'as'      => 'voyager.h-category.destroy']);//DAR
 
+
+//    Route::delete('{id}', ['uses' => $namespacePrefix.'VoyagerBreadController@destroy', 'as' => 'delete']);
 // Route::get('admin/h-products/create','Voyager\RequestController@create');
 
 });
@@ -420,8 +431,14 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('categories/{slug}', 'Web\CategoryController@index');
 Route::get('/', 'Web\WebController@index');//landing page
 Route::get('/product-detail/{id}', 'Web\ProductController@show');
+Route::get('/setLanguage/{lang}', function ($lang) {
 
+});
+Route::get('/setLanguage/{lang}', function ($lang) {
+    session()->put('locale', $lang);
+    return redirect()->back();
 
+});
 Route::get('/categories', 'Web\CategoryController@categories');
 
 

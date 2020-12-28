@@ -51,6 +51,50 @@
   font-size: 16px;
   padding: 16px 32px;
 }
+ .dropbtn {
+     background-color: #2E9AC8;
+     color: white;
+     padding: 2px;
+     border: none;
+     cursor: pointer;
+     width: 100% !important;
+ }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100% !important;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 170px;
+    box-shadow: 0px 8px 16px
+    0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px ;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: gray;
+    width: 100% !important;
+}
 </style>
 </head>
 
@@ -71,27 +115,49 @@
 		</div>
 		<div class="nav-wraper">
 			<div class="navbar">
-				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> home</a></li>
-					<li class="nav-item"><a class="nav-link" href="/categories"><i class="fa fa-home" aria-hidden="true">&nbsp;</i>categories</a></li>
-					{{-- <li class="nav-item submenu dropdown">
-						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-						 aria-expanded="false"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>Categories</a>
-						<ul class="dropdown-menu">
-							@foreach ($categories as $category)
-								<li class="nav-item"><a class="nav-link" href="categories/{{$category->slug}}"><i class="fa fa-list" aria-hidden="true">&nbsp;</i>{{$category->name}}</a>	</li>
-							@endforeach
-						</ul>
-					</li> --}}
-					<li class="nav-item"><a class="nav-link" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>explore</a></li>
-					<li class="nav-item"><a class="nav-link" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>about us</a></li>
-					<li class="nav-item"><a class="nav-link active" href="/companies"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
-					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>
-					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-phone" aria-hidden="true">&nbsp;</i>contact</a></li>
-					<li class="nav-item"><a class="nav-link" href="/admin"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
-					<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-twitter" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> {{ __('lang.home')}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/categories"><i class="fa fa-home" aria-hidden="true">&nbsp;</i>{{ __('lang.category')}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>{{ __('lang.explore')}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>{{ __('lang.aboutus')}}</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/companies"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-phone" aria-hidden="true">&nbsp;</i>contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
+                    <li class="nav-item"><a class="nav-link" href=""><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-twitter" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-instagram" aria-hidden="true"></i></a></li>
 
-				</ul>
+                </ul>
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        Select {{ __('lang.language')}}
+                    </button>
+
+                    <div class="dropdown-content">
+
+                        <a href="/setLanguage/en">
+                            <img src=
+                                 "/img/flags/usa.png"
+                                 width="16" height="16"> English</a>
+                        <a href="/setLanguage/de">
+                            <img src=
+                                 "/img/flags/germany.png"
+                                 width="16" height="16"> Deutsche
+                        </a>
+                        <a href="#">
+                            <img src=
+                                 "/img/flags/saudi-arabia.png"
+                                 width="20" height="15"> عربى</a>
+                        <a href="#">
+                            <img src=
+                                 "/img/flags/turkey.png"
+                                 width="20" height="15">Türk</a>
+                        <a href="#">
+                            <img src=
+                                 "/img/flags/france.png"
+                                 width="20" height="15">français</a>
+
+                    </div>
+                </div>
 			</div>
 		</div>
 	</header>
@@ -134,10 +200,10 @@
 							<form method="POST" action="/register-company" class="contact-form-area contact-page-form contact-form text-right">
 								@csrf
 								<div class="form-group col-md-12">
-									<input type="text" class="form-control" id="name" name="name" placeholder="Enter Company Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Company Name'" style="padding: unset" required>
+									<input type="text" class="form-control" id="name" name="name" placeholder="Enter Company {{ __('lang.name')}}" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Company Name'" style="padding: unset" required>
 								</div>
 								<div class="form-group col-md-12">
-									<input type="email" class="form-control" id="email" name="email" placeholder="Enter Company Email Address" onfocus="this.placeholder = ''"
+									<input type="email" class="form-control" id="email" name="email" placeholder="Enter Company {{ __('lang.email')}} {{ __('lang.address')}}" onfocus="this.placeholder = ''"
 									 onblur="this.placeholder = 'Enter Company Email Address'" style="padding: unset" required>
 								</div>
 								<div class="form-group col-md-12">

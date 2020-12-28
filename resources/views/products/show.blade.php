@@ -22,6 +22,53 @@
 	<!-- main css -->
 	<link rel="stylesheet" href="{{asset('css/style.css')}}">
 	<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5f881c4943bd26001418de68&product=inline-share-buttons" async="async"></script>
+    <style>
+
+        .dropbtn {
+            background-color: #2E9AC8;
+            color: white;
+            padding: 2px;
+            border: none;
+            cursor: pointer;
+            width: 100% !important;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            width: 100% !important;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 170px;
+            box-shadow: 0px 8px 16px
+            0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px ;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: gray;
+            width: 100% !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -41,18 +88,49 @@
 		</div>
 		<div class="nav-wraper">
 			<div class="navbar">
-				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> home</a></li>
-					<li class="nav-item"><a class="nav-link active" href="/categories"><i class="fa fa-home" aria-hidden="true">&nbsp;</i>categories</a></li>
-					<li class="nav-item"><a class="nav-link" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>explore</a></li>
-					<li class="nav-item"><a class="nav-link" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>about us</a></li>
-					<li class="nav-item"><a class="nav-link" href="/companies"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
-					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>
-					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-phone" aria-hidden="true">&nbsp;</i>contact</a></li>
-					<li class="nav-item"><a class="nav-link" href="/admin"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
-					<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-twitter" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> {{ __('lang.home')}}</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/categories"><i class="fa fa-home" aria-hidden="true">&nbsp;</i>{{ __('lang.category')}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>{{ __('lang.explore')}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>{{ __('lang.aboutus')}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/companies"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-phone" aria-hidden="true">&nbsp;</i>contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
+                    <li class="nav-item"><a class="nav-link" href=""><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-twitter" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-instagram" aria-hidden="true"></i></a></li>
 
-				</ul>
+                </ul>
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        Select {{ __('lang.language')}}
+                    </button>
+
+                    <div class="dropdown-content">
+
+                        <a href="/setLanguage/en">
+                            <img src=
+                                 "/img/flags/usa.png"
+                                 width="16" height="16"> English</a>
+                        <a href="/setLanguage/de">
+                            <img src=
+                                 "/img/flags/germany.png"
+                                 width="16" height="16"> Deutsche
+                        </a>
+                        <a href="#">
+                            <img src=
+                                 "/img/flags/saudi-arabia.png"
+                                 width="20" height="15"> عربى</a>
+                        <a href="#">
+                            <img src=
+                                 "/img/flags/turkey.png"
+                                 width="20" height="15">Türk</a>
+                        <a href="#">
+                            <img src=
+                                 "/img/flags/france.png"
+                                 width="20" height="15">français</a>
+
+                    </div>
+                </div>
 			</div>
 		</div>
 	</header>
@@ -68,7 +146,7 @@
 						<div class="product_description">
 							<nav>
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="#">{{$product->title}}</a></li>
+									<li class="breadcrumb-item"><a href="#">{{$product->company_name}}</a></li>
 								</ol>
 							</nav>
 							<div class="product_name">{{$product->name}}</div>
@@ -86,8 +164,8 @@
 							@endif
 							<hr class="singleline">
 							<div>
-								<span class="product_info">Barcode number: <b>{{$product->ean}}</b><span><br>
-								<span class="product_info">Category: <b>{{$subCategory->name}}</b><span><br>
+								<span class="product_info"> {{ __('lang.barcode')}}: <b>{{$product->ean}}</b><span><br>
+								<span class="product_info"> {{ __('lang.category')}}: <b>{{$subCategory->name}}</b><span><br>
 								<span class="product_info">Registered: <b> {{$product->created_at}}</b><span><br>
 								{{-- <span class="product_info">Answer received on: <b>LOOK FOR</b><span><br>   --}}
 							</div>
@@ -121,7 +199,7 @@
 																</div>
 																<div class="col-md-9 col-xs-9">
 																	<div class="pr-info col-md-12">
-																		<span class=""><b style="color: green">Alcohol: No</b></span>
+																		<span class=""><b style="color: green"> {{ __('lang.alcohol')}}: {{ __('lang.no')}}</b></span>
 																	</div>
 																	<div class="pr-info col-md-12">
 																		<span><b style="color:black">Free From Alcoholic Ingredients</b></span>
@@ -134,7 +212,7 @@
 																</div>
 																<div class="col-md-9 col-xs-9">
 																	<div class="pr-info col-md-12">
-																		<span class=""><b style="color: red">Alcohol: Yes</b></span>
+																		<span class=""><b style="color: red">{{ __('lang.alcohol')}}: {{ __('lang.yes')}}</b></span>
 																	</div>
 																</div>
 															@endif
@@ -144,7 +222,7 @@
 																</div>
 																<div class="col-md-9 col-xs-9">
 																	<div class="pr-info col-md-12">
-																		<span class=""><b style="color: orange">Alcohol: Controversial</b></span>
+																		<span class=""><b style="color: orange">{{ __('lang.alcohol')}}: {{ __('lang.controversial')}}</b></span>
 																	</div>
 																	<div class="pr-info col-md-12">
 																		<span><b style="color:black">{{$reason->Text}}&nbsp &#x25BC</b></span>
@@ -162,7 +240,7 @@
 																</div>
 																<div class="col-md-9 col-xs-9">
 																	<div class="pr-info col-md-12">
-																		<span class=""><b style="color: #2E9AC8">Alcohol: No Information</b></span>
+																		<span class=""><b style="color: #2E9AC8">{{ __('lang.alcohol')}}: {{ __('lang.no')}} Information</b></span>
 																	</div>
 																</div>
 															@endif
@@ -185,7 +263,7 @@
 																</div>
 																<div class="col-md-9 col-xs-9">
 																	<div class="pr-info col-md-12">
-																		<span class=""><b style="color: green">Animal Additive: No</b></span>
+																		<span class=""><b style="color: green">Animal Additive: {{ __('lang.no')}}</b></span>
 																	</div>
 																	<div class="pr-info col-md-12">
 																		<span><b style="color:black">Free From Animal Additives</b></span>
@@ -198,7 +276,7 @@
 																</div>
 																<div class="col-md-9 col-xs-9">
 																	<div class="pr-info col-md-12">
-																		<span class=""><b style="color: red">Animal Additive: Yes</b></span>
+																		<span class=""><b style="color: red">Animal Additive: {{ __('lang.yes')}}</b></span>
 																	</div>
 																</div>
 															@endif
@@ -208,7 +286,7 @@
 																</div>
 																<div class="col-md-9 col-xs-9">
 																	<div class="pr-info col-md-12">
-																		<span class=""><b style="color: orange">Animal Additive: Controversial</b></span>
+																		<span class=""><b style="color: orange">Animal Additive: {{ __('lang.controversial')}}</b></span>
 																	</div>
                                                                     @if($product->reason_id != "")
                                                                         <div class="pr-info col-md-12">
@@ -238,7 +316,7 @@
 																</div>
 																<div class="col-md-9 col-xs-9">
 																	<div class="pr-info col-md-12">
-																		<span class=""><b style="color: #2E9AC8">Animal Additive: No Information</b></span>
+																		<span class=""><b style="color: #2E9AC8">Animal Additive: {{ __('lang.no')}} Information</b></span>
 																	</div>
 																</div>
 															@endif
@@ -251,7 +329,7 @@
 												</div>
 												{{-- <div class="col-md-3"> --}}
 												<div class="col-md-3">
-													<h3>Recommended Products</h3>
+													<h3>Recommended {{ __('lang.product')}}</h3>
 													<ul class="image_list">
 														<li><img src="/img/placeholder-product.jpg"></li>
 														<li><img src="/img/placeholder-product.jpg"></li>
@@ -309,7 +387,7 @@
 		                </div>
 					</div> --}}
 					<div class="row row-underline">
-						<div class="col-md-6"> <span class=" deal-text">Manufacturer's Answer</span> </div>
+						<div class="col-md-6"> <span class=" deal-text">{{ __('lang.manufacturer')}}'s Answer</span> </div>
 						<div class="col-md-6"> <a href="#" data-abc="true"> <span class="ml-auto view-all"></span> </a> </div>
 					</div>
 					<div class="row">
@@ -343,7 +421,7 @@
 				<div class="row">
 					<div class="col-lg-2 col-md-4 col-sm-6">
 						<div class="single-footer-widget">
-							<h6>Top Products</h6>
+							<h6>Top {{ __('lang.product')}}</h6>
 							<div class="row">
 								<div class="col">
 									<ul class="list">

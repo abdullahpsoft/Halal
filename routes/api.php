@@ -50,7 +50,7 @@ Route::any ( '/search/{name}', function (Request $request, $name) {
     // $q = Request::get ( 'q' );
     $filter = $request->filter;
     // $q = $request->q;
-    
+
     // if($q == "")
     // {
     //   return response()->json(NULL, 401);
@@ -125,3 +125,5 @@ Route::get('get-products-id/{id}', 'Api\ProductController@show');
 Route::post('product-request', 'Api\ProductController@newrequest');
 
 Route::post('feedback', 'Api\ProductController@feedback');
+
+Route::post('image-request', 'Api\ProductController@imagerequest');//dar

@@ -89,12 +89,16 @@
                         <input type="checkbox" name="remember" id="remember" value="1"><label for="remember" class="remember-me-text">{{ __('voyager::generic.remember_me') }}</label>
                         </div>
                     </div>
-                    
+
                     <button type="submit" class="btn btn-block login-button">
                         <span class="signingin hidden"><span class="voyager-refresh"></span> {{ __('voyager::login.loggingin') }}...</span>
                         <span class="signin">{{ __('voyager::generic.login') }}</span>
                     </button>
-
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="" class="btn btn-block login-button ">Sign Up</a>
               </form>
 
               <div style="clear:both"></div>

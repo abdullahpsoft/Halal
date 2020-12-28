@@ -92,7 +92,7 @@
         <label class="control-label"
         for="name">Sub
         Category</label>
-            <select name="store_id" class="form-control" id="">
+            <select name="sub_category_slug" class="form-control" id="">
                 @foreach($subCategories as $cat)
                     <option value="{{$cat->name}}" @if($product->sub_category_slug == $cat->sub_category_slug) selected @endif >{{$cat->name}}</option>
                 @endforeach
@@ -124,31 +124,55 @@
     </div>
     <!-- GET THE DISPLAY OPTIONS -->
 
-    <div class="form-group col-md-6 "
-    >
+{{--    <div class="form-group col-md-6 "--}}
+{{--    >--}}
 
-    <label class="control-label" for="name">Alcohol</label>
-    <input type="text"
-    class="form-control"
-    name="alcohol"
-    placeholder="Alcohol"
+{{--    <label class="control-label" for="name">Alcohol</label>--}}
+{{--    <input type="text"--}}
+{{--    class="form-control"--}}
+{{--    name="alcohol"--}}
+{{--    placeholder="Alcohol"--}}
 
-    value="{{$product->alcohol_status}}" >
+{{--    value="{{$product->alcohol_status}}" >--}}
 
 
-  </div>
+{{--  </div>--}}
+            <div class="form-group col-md-6 ">
+
+                <label class="control-label" for="alcohol">Alcohol</label>
+                <select class="form-control" name="alcohol">
+                    <option value="yes" @if($product->alcohol_status == 'yes') selected @endif>Yes</option>
+                    <option value="no" @if($product->alcohol_status == 'no') selected @endif>No</option>
+                    <option value="controversial" @if($product->alcohol_status == 'controversial') selected @endif>Controversial</option>
+                    <option value="no information" @if($product->alcohol_status == 'no information') selected @endif>No Information</option>
+
+                </select>      </div>
+
+
   <!-- GET THE DISPLAY OPTIONS -->
 
-  <div class="form-group col-md-6 " >
+{{--  <div class="form-group col-md-6 " >--}}
 
-    <label class="control-label" for="name">Animal Additive</label>
-    <input type="text" class="form-control" name="animal_additive"
-    placeholder="Animal Additive"
+{{--    <label class="control-label" for="name">Animal Additive</label>--}}
+{{--    <input type="text" class="form-control" name="animal_additive"--}}
+{{--    placeholder="Animal Additive"--}}
 
-    value="{{$product->animal_additive_status}}" >
+{{--    value="{{$product->animal_additive_status}}" >--}}
 
 
-  </div>
+{{--  </div>--}}
+
+
+            <div class="form-group col-md-6 ">
+
+                <label class="control-label" for="animal_additive">Animal Additive</label>
+                <select class="form-control" name="animal_additive">
+                    <option value="yes" @if($product->animal_additive_status == 'yes') selected @endif>Yes</option>
+                    <option value="no" @if($product->animal_additive_status == 'no') selected @endif>No</option>
+                    <option value="controversial" @if($product->animal_additive_status == 'controversial') selected @endif>Controversial</option>
+                    <option value="no information" @if($product->animal_additive_status == 'no information') selected @endif>No Information</option>
+
+                </select>      </div>
   <!-- GET THE DISPLAY OPTIONS -->
 
   <div class="form-group col-md-6 " >
@@ -185,7 +209,7 @@
 
       <select name="store_id" class="form-control" id="">
       @foreach($stores as $store)
-          <option value="{{$store->name}}" @if($product->store_id == $store->id) selected @endif >{{$store->name}}</option>
+          <option value="{{$store->id}}" @if($product->store_id == $store->id) selected @endif >{{$store->name}}</option>
       @endforeach
       </select>
 
@@ -214,7 +238,7 @@
             <div class="form-group col-md-12 " >
 
                 <label class="control-label" for="name">Manufacturer Reply</label>
-                <textarea name="" id="" cols="200" rows="10" disabled>{{$product->title}}</textarea>
+                <textarea name="" id="" cols="200" rows="10" disabled>{{$product->man_reply}}</textarea>
 
 
             </div>

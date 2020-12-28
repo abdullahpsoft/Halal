@@ -92,7 +92,13 @@
 
                                 </div>
                                 <!-- GET THE DISPLAY OPTIONS -->
+    <div class="form-group  col-md-6 ">
 
+        <label class="control-label" for="name">Title</label>
+        <input type="text" class="form-control" name="title" placeholder="Title" value="">
+
+
+    </div>
                                 <div class="form-group  col-md-6 ">
 
                                     <label class="control-label" for="subCategory">Sub Category</label>
@@ -128,22 +134,28 @@
                                 <div class="form-group  col-md-6 ">
 
                                     <label class="control-label" for="name">Image</label>
-                                    <input type="file" name="image" id="image" accept="image/*">
+                                    <input type="file"  class="form-control" name="image" id="image" accept="image/*">
                                     <img id="blah" style="width: 170px; height: 140px;"  src="/img/no-image.png" alt="your image" />
 
 
                                 </div>
                                 <!-- GET THE DISPLAY OPTIONS -->
+    <div class="form-group  col-md-6 ">
 
+        <label class="control-label" for="store_id">Store</label>
+
+        <select class=" form-control" name="store_id">
+
+            <option value="all">All Stores</option>
+            @foreach($stores as $store)
+                <option value="{{$store->id}}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$store->name}}</font></font></option>
+            @endforeach
+        </select>
+
+    </div>
                                 <!-- GET THE DISPLAY OPTIONS -->
 
-                                <div class="form-group  col-md-6 ">
 
-                                    <label class="control-label" for="name">Title</label>
-                                    <input type="text" class="form-control" name="title" placeholder="Title" value="">
-
-
-                                </div>
 
     <div class="form-group  col-md-7 " style="text-align: center">
 
@@ -151,10 +163,10 @@
         <br>
         <div id="console-event"></div>                                        <br>
 
-        <div class="row">
+        <div class="row" >
 <div class="col col-md-2">            <input type="radio" name="gujar" id="gujar" value="on" onclick="change();"><label for="gujar">Yes</label>
 </div>
-            <div class="col col-md-2">            <input type="radio" name="gujar" id="gil" value="offky" onclick="change2();"><label for="gujar">No</label>
+            <div class="col col-md-2">            <input type="radio"   name="gujar" id="gil" value="offky" onclick="change2();" checked><label for="gujar">No</label>
             </div>
 
 

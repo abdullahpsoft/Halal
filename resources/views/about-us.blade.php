@@ -19,6 +19,52 @@
 	<link rel="stylesheet" href="vendors/animate-css/animate.css">
 	<!-- main css -->
 	<link rel="stylesheet" href="css/style.css">
+    <style>
+        .dropbtn {
+            background-color: #2E9AC8;
+            color: white;
+            padding: 2px;
+            border: none;
+            cursor: pointer;
+            width: 100% !important;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            width: 100% !important;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 170px;
+            box-shadow: 0px 8px 16px
+            0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px ;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: gray;
+            width: 100% !important;
+        }
+    </style>
 </head>
 
 <body class="container-fluid">
@@ -38,18 +84,50 @@
 		</div>
 		<div class="nav-wraper">
 			<div class="navbar">
-				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> home</a></li>
-					<li class="nav-item"><a class="nav-link" href="/categories"><i class="fa fa-home" aria-hidden="true">&nbsp;</i>categories</a></li>					
-					<li class="nav-item"><a class="nav-link" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>explore</a></li>
-					<li class="nav-item"><a class="nav-link active" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>about us</a></li>
-					<li class="nav-item"><a class="nav-link" href="/companies"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
-					<li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>					
-					<li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-phone" aria-hidden="true">&nbsp;</i>contact</a></li>
-					<li class="nav-item"><a class="nav-link" href="/admin"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
-					<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-twitter" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> {{ __('lang.home')}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/categories"><i class="fa fa-home" aria-hidden="true">&nbsp;</i>{{ __('lang.category')}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>{{ __('lang.explore')}}</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>{{ __('lang.aboutus')}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/companies"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-phone" aria-hidden="true">&nbsp;</i>contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin"><i class="fa fa-sign-in" aria-hidden="true"> &nbsp;login</i></a></li>
+                    <li class="nav-item"><a class="nav-link" href=""><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-twitter" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-instagram" aria-hidden="true"></i></a></li>
 
-				</ul>
+                </ul>
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        Select {{ __('lang.language')}}
+                    </button>
+
+                    <div class="dropdown-content">
+
+                        <a href="/setLanguage/en">
+                            <img src=
+                                 "/img/flags/usa.png"
+                                 width="16" height="16"> English</a>
+                        <a href="/setLanguage/de">
+                            <img src=
+                                 "/img/flags/germany.png"
+                                 width="16" height="16"> Deutsche
+                        </a>
+                        <a href="#">
+                            <img src=
+                                 "/img/flags/saudi-arabia.png"
+                                 width="20" height="15"> عربى</a>
+                        <a href="#">
+                            <img src=
+                                 "/img/flags/turkey.png"
+                                 width="20" height="15">Türk</a>
+                        <a href="#">
+                            <img src=
+                                 "/img/flags/france.png"
+                                 width="20" height="15">français</a>
+
+                    </div>
+                </div>
+
 			</div>
 		</div>
 	</header>
@@ -103,7 +181,7 @@
 								gewährt nicht nur dem Verbraucher mit besonderen Vorstellungen oder religiöser
 								Vorschriften mehr Transparenz und Erleichterung beim Einkaufen und im Alltag, sondern
 								werden auch gleichzeitig Unternehmen entlastet und können mit einmaliger Angabe alle
-								Nutzer dieser Plattform erreichen.</p>	
+								Nutzer dieser Plattform erreichen.</p>
 							<p>HalalCheck ist ein unabhängiges Projekt, welches sich ausschließlich um mehr
 								Transparenz für die eigene Community und allen Verbrauchern, die sich bewusst ernähren
 								wollen, kümmert. </p>
@@ -189,7 +267,7 @@
 								Lösung überlegt: eine online Datenbank mit allen nötigen Informationen, die für den
 								Konsumenten sowohl übersichtlich, als auch aktuell sind. Nach zehn jähriger intensiver
 								Arbeit erhält der Verbraucher mit nur einem Scan des Barcodes Informationen zu über
-								7000 Produkten samt Erläuterungen der bedenklichen Inhaltsstoffe. Auch werden die 
+								7000 Produkten samt Erläuterungen der bedenklichen Inhaltsstoffe. Auch werden die
 								komplexen islamrechtlichen Ansichten in kompakter und verständlicher Form auf
 								www.Halalwiki.net unserer Community zur Verfügung gestellt. Wer weiterreichende
 								Informationen benötigt, kann diese in der print Version als Halal-Lexikon (Link!) finden.  </p>
@@ -199,7 +277,7 @@
 				</div>
 			</div>
 		</div><!--================ End Food Gallery Area =================-->
-				
+
 
 		<div class="row col-md-12">
 			<div class="col-md-4"></div>
@@ -268,7 +346,7 @@
 			</div>
 		</div><!--================ End Food Gallery Area =================-->
 
-		
+
 
 		<!--================ Start Breakfast Area =================-->
 		<div class="breakfast-area section_gap_top">
@@ -437,7 +515,7 @@
 							nach bestem Wissen und Gewissen analysiert und in die Datenbank aufgenommen. Falls
 							sich jedoch trotzdem ein Fehler oder veraltete Angaben zeigen sollten, so bitten wir Euch,
 							uns schnellstmöglich zu kontaktieren, damit wir die Daten aktualisieren können.
-							Änderungen durch den Hersteller sind vorbehalten. 
+							Änderungen durch den Hersteller sind vorbehalten.
 						</p>
 					</div>
 				</div>
@@ -451,8 +529,8 @@
 			<div class="breakfast-area section_gap_top">
 				<div class="container">
 					<div class="row  ">
-						<div class="col-lg-12" style=" left:1px;">							
-							
+						<div class="col-lg-12" style=" left:1px;">
+
 							<div class="row col-md-12">
 								<div class="col-md-3"></div>
 								<div class="col-md-6">
@@ -467,18 +545,18 @@
 							<br>
 							<p>Isa, unser Gründer und Chef ist als Senior IT-Projektmanager seit über zehn Jahren für die
 								komplette Projektführung zuständig und kümmert sich um die technischen
-								Angelegenheiten und Entwicklungen. Er ist der Held im Hintergrund. 
+								Angelegenheiten und Entwicklungen. Er ist der Held im Hintergrund.
 							</p>
 							<p>Dilara ist unser Gesicht nach Außen. Sie ist zuständig für die Produktanalyse und das
 								Marketing. Zudem ist sie als angehende islamische Theologin unsere Expertin für
 								islamrechtliche Themen in Bezug auf Speise. Sie ist Autorin diverser Artikel und des Halal
-								Lexikons - das Nachschlagewerk rund um Halal-Ernährung.  
+								Lexikons - das Nachschlagewerk rund um Halal-Ernährung.
 							</p>
 							<p>Rümeysa ist Teil des Produktanalyse-Teams und Moderatorin unserer Instagram Seite. Sie
-								füllt es mit Leben und nimmt sich viel Zeit um jeder Nachricht ausführlich zu antworten.   
+								füllt es mit Leben und nimmt sich viel Zeit um jeder Nachricht ausführlich zu antworten.
 							</p>
 							<p>Feyza stellt als gelernte Mediendesignerin unsere hervorragenden Grafiken her und greift
-								uns bei allen Themen rund um das Design immer wieder unter die Arme.  
+								uns bei allen Themen rund um das Design immer wieder unter die Arme.
 							</p>
 							<p>Viele Fachleute aus den Bereichen Lebensmittelwissenschaft, Food Science, Islamische
 								Jurisprudenz, Medizin und weiteren Gebieten stehen uns immer wieder mit Tat und Rat
@@ -498,7 +576,7 @@
 		</div>
 		<!--================ End Lunch Area =================-->
 		<br>
-		<br>	
+		<br>
 		<!--================ Start Brands Area =================-->
 		{{-- <section class="brands-area section_gap">
 			<div class="container">

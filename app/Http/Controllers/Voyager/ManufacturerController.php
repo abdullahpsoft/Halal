@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Voyager;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use TCG\Voyager\Models\Products;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin\Requests;
@@ -64,27 +66,53 @@ class ManufacturerController extends Controller
         $addProduct->sub_category_slug =  $sub_category->sub_category_slug;
       $addProduct->alcohol_status = $request->alcohol;
       $addProduct->company_name = $request->company_name;
+
+
+
       $addProduct->store_id = $request->store_id;
+
+
+
       $addProduct->animal_additive_status = $request->animal_additive;
 
-        if ($request->hasFile('image') && $request->image != '') {
-            //  Let's do everything here
-            if ($request->file('image')->isValid()) {
-                //
-                $validated = $request->validate([
-                    'name' => 'string|max:40',
-                    'image' => 'mimes:jpeg,png|max:1014',
-                ]);
+        if($request->alcohol == 'no'){
+            $addProduct->alcohol = 0;
+        } elseif ($request->alcohol == 'yes'){
+            $addProduct->alcohol = 1;
+        } elseif ($request->alcohol == 'controversial'){
+            $addProduct->alcohol = 2;
+        } elseif ($request->alcohol == 'no information'){
+            $addProduct->alcohol = 3;
+        }else{
 
-                $extension = $request->image->extension();
-                $request->image->storeAs('/public/img', $validated['name'].".".$extension);
-//                    $url = Storage::url($validated['name'].".".$extension);
-//                    $file = File::create([
-//                        'name' => $validated['name'],
-//                        'url' => $url,
-//                    ]);
-            }
-                    $addProduct->image = $validated['name'].".".$extension;
+        }
+
+        if($request->animal_additive == 'no'){
+            $addProduct->animal_additive = 0;
+        } elseif ($request->animal_additive == 'yes'){
+            $addProduct->animal_additive = 1;
+        } elseif ($request->animal_additive == 'controversial'){
+            $addProduct->animal_additive = 2;
+        } elseif ($request->animal_additive == 'no information'){
+            $addProduct->animal_additive = 3;
+        }else{
+
+        }
+
+
+
+
+        if ($request->hasFile('image') && $request->image != '') {
+
+            $cover = $request->file('image');
+            $extension = $cover->getClientOriginalExtension();
+            Storage::disk('custom')->put($request->name.'.'.$extension,  File::get($cover));
+            Storage::disk('custom-big')->put($request->name.'.'.$extension,  File::get($cover));
+//
+
+            $addProduct->image = $request->name.'.'.$extension;
+
+//            $addProduct->image = $validated['name'].".".$extension;
 
         }
 

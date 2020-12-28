@@ -60,6 +60,54 @@
             font-size: 16px;
             padding: 16px 32px;
         }
+        .ch:hover {
+            background: white !important;
+            color: #2E9AC8 !important;
+        }
+        .dropbtn {
+            background-color: #2E9AC8;
+            color: white;
+            padding: 2px;
+            border: none;
+            cursor: pointer;
+            width: 100% !important;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            width: 100% !important;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 170px;
+            box-shadow: 0px 8px 16px
+            0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px ;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: gray;
+            width: 100% !important;
+        }
     </style>
 </head>
 
@@ -81,10 +129,10 @@
     <div class="nav-wraper">
         <div class="navbar">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link active" href="/"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/categories"><i class="fa fa-list" aria-hidden="true">&nbsp;</i> Categories</a></li>
-                <li class="nav-item"><a class="nav-link" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>explore</a></li>
-                <li class="nav-item"><a class="nav-link" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>about us</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/"><i class="fa fa-home" aria-hidden="true">&nbsp;</i> {{ __('lang.home')}}</a></li>
+                <li class="nav-item"><a class="nav-link" href="/categories"><i class="fa fa-list" aria-hidden="true">&nbsp;</i> {{ __('lang.category')}}</a></li>
+                <li class="nav-item"><a class="nav-link" href="/explore"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;</i>{{ __('lang.explore')}}</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about-us"><i class="fa fa-info" aria-hidden="true">&nbsp;</i>{{ __('lang.aboutus')}}</a></li>
                 <li class="nav-item"><a class="nav-link" href="/companies"><i class="fa fa-industry" aria-hidden="true">&nbsp;</i>companies</a></li>
                 <li class="nav-item"><a class="nav-link" href="http://www.halalwiki.net/"><i class="fa fa-wikipedia-w" aria-hidden="true">&nbsp;</i>Halal Wiki</a></li>
                 <li class="nav-item"><a class="nav-link" href="/"><i class="fa fa-phone" aria-hidden="true">&nbsp;</i>contact</a></li>
@@ -92,6 +140,37 @@
                 <li class="nav-item"><a class="nav-link" href=""><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-twitter" aria-hidden="true"></i>&nbsp; &nbsp; &nbsp;<i class="fa fa-instagram" aria-hidden="true"></i></a></li>
 
             </ul>
+            <div class="dropdown">
+                <button class="dropbtn">
+                    Select {{ __('lang.language')}}
+                </button>
+
+                <div class="dropdown-content">
+
+                    <a href="/setLanguage/en">
+                        <img src=
+                             "/img/flags/usa.png"
+                             width="16" height="16"> English</a>
+                    <a href="/setLanguage/de">
+                        <img src=
+                             "/img/flags/germany.png"
+                             width="16" height="16"> Deutsche
+                    </a>
+                    <a href="/setLanguage/ar">
+                        <img src=
+                             "/img/flags/saudi-arabia.png"
+                             width="20" height="15"> عربى</a>
+                    <a href="#">
+                        <img src=
+                             "/img/flags/turkey.png"
+                             width="20" height="15">Türk</a>
+                    <a href="#">
+                        <img src=
+                             "/img/flags/france.png"
+                             width="20" height="15">français</a>
+
+                </div>
+            </div>
         </div>
     </div>
 </header>
@@ -115,7 +194,7 @@
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
+                    <span class="sr-only">{{ __('lang.previous')}}</span>
                 </a>
                 <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
@@ -134,7 +213,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-1" style="padding-left: 0px">
-                    <h3>Filters:</h3>
+                    <h3>{{ __('lang.filter')}}:</h3>
                 </div>
                 <div class="col-md-10">
 
@@ -149,14 +228,14 @@
                                 </select>
                             </div>
                             <select class="col-md-2" id="filter1" name="filter1" style="height: 40px;">
-                                <option value="">Select Filter:</option>
-                                <option value="All Products">All Products</option>
+                                <option value="">Select {{ __('lang.filter')}}:</option>
+                                <option value="All Products">{{ __('lang.allproduct')}}</option>
                                 {{-- <option value="Categories">Categories</option> --}}
                                 {{-- <option value="Shops">Shops</option> --}}
-                                <option value="Certified">Certified</option>
-                                <option value="Controversial">Controversial</option>
-                                <option value="Harmless">Harmless</option>
-                                <option value="UnKnown">UnKnown</option>
+                                <option value="Certified">{{ __('lang.iscertified')}}</option>
+                                <option value="Controversial">{{ __('lang.controversial')}}</option>
+                                <option value="Harmless">{{ __('lang.harmless')}}</option>
+                                <option value="UnKnown">{{ __('lang.unknown')}}</option>
 
                             </select>
 
@@ -171,7 +250,7 @@
 
                             <div class="" id="d3" name="d3">
                                 <select class="" id="filter3" name="filter3" style="height: 40px;" onchange="check1()">
-                                    <option value="">Select Category:</option>
+                                    <option value="">Select {{ __('lang.category')}}:</option>
                                     @foreach($categories as $cat)
                                         <option value="{{$cat->name}}">{{$cat->name}}</option>
                                     @endforeach
@@ -180,7 +259,7 @@
 
                             <div class="hidden" id="d4" name="d4">
                                 <select class="" id="filter4" name="filter4" style="height: 40px;">
-                                    <option value="">Select Sub-Category</option>
+                                    <option value="">Select Sub-{{ __('lang.category')}}</option>
                                     @foreach($eat as $eat)
                                         <option value="{{$eat->name}}">{{$eat->name}}</option>
                                     @endforeach
@@ -189,7 +268,7 @@
 
                             <div class="hidden" id="d5" name="d5">
                                 <select class="" id="filter5" name="filter5" style="height: 40px;">
-                                    <option value="">Select Sub-Category</option>
+                                    <option value="">Select Sub-{{ __('lang.category')}}</option>
                                     @foreach($drink as $drink)
                                         <option value="{{$drink->name}}">{{$drink->name}}</option>
                                     @endforeach
@@ -198,7 +277,7 @@
 
                             <div class="hidden" id="d6" name="d6" style="height: 40px;">
                                 <select class="" id="filter6" name="filter6">
-                                    <option value="">Select Sub-Category</option>
+                                    <option value="">Select Sub-{{ __('lang.category')}}</option>
                                     @foreach($nf as $nf)
                                         <option value="{{$nf->name}}">{{$nf->name}}</option>
                                     @endforeach
@@ -209,7 +288,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="input-group">
-                                    <input type="text" name="q" id="q"class="form-control" placeholder="Search Products here">
+                                    <input type="text" name="q" id="q"class="form-control" placeholder="{{ __('lang.search')}} {{ __('lang.product')}} here">
                                     <div class="input-group-append">
                                         <button class="btn btn-secondary" type="submit">
                                             <i class="fa fa-search"></i>
@@ -232,7 +311,7 @@
     </div>
     <section class="section_gap_top food-gallery-area">
         <div class="main_title">
-            <h1>New Product Analayzes</h1>
+            <h1>{{ __('lang.newproduct')}} Analayzes</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore
                 magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -259,38 +338,38 @@
                                             <h4 class="card-title" style="height: 50px;"><a href="product-detail/{{$product->id}}"  class="c-title" title="View Product">{{$product->name}}</a></h4>
                                             <div class="row" style="">
                                                 @if($product->alcohol == 0)
-                                                    <label for="image1" style="padding-left: 0px; color:green">Alcohol: No</label>
+                                                    <label for="image1" style="padding-left: 0px; color:green">{{ __('lang.alcohol')}}: {{ __('lang.no')}}</label>
                                                     <img src="/img/no.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
                                                 @endif
                                                 @if($product->alcohol == 1)
-                                                    <label for="image1" style="padding-left: 0px; color: red">Alcohol: Yes</label>
+                                                    <label for="image1" style="padding-left: 0px; color: red">{{ __('lang.alcohol')}}: {{ __('lang.yes')}}</label>
                                                     <img src="/img/yes.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
                                                 @endif
                                                 @if($product->alcohol == 2)
-                                                    <label for="image1" style="padding-left: 0px; color: orange">Alcohol: Controversial</label>
+                                                    <label for="image1" style="padding-left: 0px; color: orange">{{ __('lang.alcohol')}}: {{ __('lang.controversial')}}</label>
                                                     <img src="/img/controversial.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
                                                 @endif
                                                 @if($product->alcohol == 3)
-                                                    <label for="image1" style="padding-left: 0px; color: #25b7d3">Alcohol: No Information</label>
+                                                    <label for="image1" style="padding-left: 0px; color: #25b7d3">{{ __('lang.alcohol')}}: No Information</label>
                                                     <img src="/img/unknown.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
                                                 @endif
                                             </div>
 
                                             <div class="row" style="">
                                                 @if($product->animal_additive == 0)
-                                                    <label for="image1" style="padding-left: 0px; color:green">Animal Add: No</label>
+                                                    <label for="image1" style="padding-left: 0px; color:green">Animal Add: {{ __('lang.no')}}</label>
                                                     <img src="/img/no.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
                                                 @endif
                                                 @if($product->animal_additive == 1)
-                                                    <label for="image1" style="padding-left: 0px; color: red">Animal Add: Yes</label>
+                                                    <label for="image1" style="padding-left: 0px; color: red">Animal Add: {{ __('lang.no')}}</label>
                                                     <img src="/img/yes.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
                                                 @endif
                                                 @if($product->animal_additive == 2)
-                                                    <label for="image1" style="padding-left: 0px; color: orange">Animal Add: Controversial</label>
+                                                    <label for="image1" style="padding-left: 0px; color: orange">Animal Add: {{ __('lang.controversial')}}</label>
                                                     <img src="/img/controversial.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
                                                 @endif
                                                 @if($product->animal_additive == 3)
-                                                    <label for="image1" style="padding-left: 0px; color: #25b7d3">Animal Add: No Information</label>
+                                                    <label for="image1" style="padding-left: 0px; color: #25b7d3">Animal Add: {{ __('lang.no')}} Information</label>
                                                     <img src="/img/unknown.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
                                                 @endif
                                             </div>
@@ -307,7 +386,7 @@
         <br>
         <br>
         <div class="main_title">
-            <h1>Recommended Products</h1>
+            <h1>Recommended {{ __('lang.product')}}</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore
                 magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -333,38 +412,38 @@
                                             <h4 class="card-title" style="height: 50px;"><a href="product-detail/{{$product->id}}" class="c-title" title="View Product">{{$product->name}}</a></h4>
                                             <div class="row" style="">
                                                 @if($product->alcohol == 0)
-                                                    <label for="image1" style="padding-left: 0px; color:green">Alcohol: No</label>
+                                                    <label for="image1" style="padding-left: 0px; color:green">{{ __('lang.alcohol')}}: {{ __('lang.no')}}</label>
                                                     <img src="/img/no.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
                                                 @endif
                                                 @if($product->alcohol == 1)
-                                                    <label for="image1" style="padding-left: 0px; color: red">Alcohol: Yes</label>
+                                                    <label for="image1" style="padding-left: 0px; color: red">{{ __('lang.alcohol')}}: {{ __('lang.yes')}}</label>
                                                     <img src="/img/yes.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
                                                 @endif
                                                 @if($product->alcohol == 2)
-                                                    <label for="image1" style="padding-left: 0px; color: orange">Alcohol: Controversial</label>
+                                                    <label for="image1" style="padding-left: 0px; color: orange">{{ __('lang.alcohol')}}: {{ __('lang.controversial')}}</label>
                                                     <img src="/img/controversial.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
                                                 @endif
                                                 @if($product->alcohol == 3)
-                                                    <label for="image1" style="padding-left: 0px; color: #25b7d3">Alcohol: No Information</label>
+                                                    <label for="image1" style="padding-left: 0px; color: #25b7d3">{{ __('lang.alcohol')}}: {{ __('lang.no')}} Information</label>
                                                     <img src="/img/unknown.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
                                                 @endif
                                             </div>
 
                                             <div class="row" style="">
                                                 @if($product->animal_additive == 0)
-                                                    <label for="image1" style="padding-left: 0px; color:green">Animal Add: No</label>
+                                                    <label for="image1" style="padding-left: 0px; color:green">Animal Add: {{ __('lang.no')}}</label>
                                                     <img src="/img/no.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
                                                 @endif
                                                 @if($product->animal_additive == 1)
-                                                    <label for="image1" style="padding-left: 0px; color: red">Animal Add: Yes</label>
+                                                    <label for="image1" style="padding-left: 0px; color: red">Animal Add: {{ __('lang.yes')}}</label>
                                                     <img src="/img/yes.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
                                                 @endif
                                                 @if($product->animal_additive == 2)
-                                                    <label for="image1" style="padding-left: 0px; color: orange">Animal Add: Controversial</label>
+                                                    <label for="image1" style="padding-left: 0px; color: orange">Animal Add: {{ __('lang.controversial')}}</label>
                                                     <img src="/img/controversial.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
                                                 @endif
                                                 @if($product->animal_additive == 3)
-                                                    <label for="image1" style="padding-left: 0px; color: #25b7d3">Animal Add: No Information</label>
+                                                    <label for="image1" style="padding-left: 0px; color: #25b7d3">Animal Add: {{ __('lang.no')}} Information</label>
                                                     <img src="/img/unknown.png" name="image1" style="padding-left:90%; position:absolute; padding-top:5px max-width: 30px !important; max-height: 30px !important;">
                                                 @endif
                                             </div>
@@ -474,7 +553,7 @@
                         <img src="img/bl-logo.png" style="height:50px; width:50px;">
                         <p class="count-text ">More Than</p>
                         <h2 class="timer count-title count-number" data-to="1700" data-speed="1500" style="color:white;"></h2>
-                        <p class="count-text ">Verified Products</p>
+                        <p class="count-text ">Verified {{ __('lang.product')}}</p>
                     </div>
                 </div>
                 <div class="col top">
@@ -562,7 +641,7 @@
             <div class="row">
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="single-footer-widget">
-                        <h6>Top Products</h6>
+                        <h6>Top {{ __('lang.product')}}</h6>
                         <div class="row">
                             <div class="col">
                                 <ul class="list">

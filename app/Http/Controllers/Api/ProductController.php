@@ -14,6 +14,8 @@ use App\Models\Admin\Feedback;
 use App\Models\Admin\Faq;
 use App\Models\Admin\Category;
 use App\Models\Admin\SubCategory;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -25,27 +27,27 @@ class ProductController extends Controller
     public function index()
     {
     //   $products = Products::all();
-        $products = Products::paginate(12); 
+        $products = Products::paginate(12);
         return response()->json($products, 401);
     }
 
     public function news()
     {
       $news = News::paginate(12);
-      return response()->json($news, 401);        
+      return response()->json($news, 401);
     }
 
     public function faqs()
     {
-      $faqs = Faq::paginate(12); 
-      return response()->json($faqs, 401);        
+      $faqs = Faq::paginate(12);
+      return response()->json($faqs, 401);
     }
 
     public function new()
     {
       $products = Products::orderBy('id', 'DESC')->paginate(12);
       return response()->json($products, 401);
-    }  
+    }
 
     public function recommended()
     {
@@ -81,31 +83,45 @@ class ProductController extends Controller
 
     public function getCategory()
     {
-        $categories = Category::paginate(12); 
+        $categories = Category::paginate(12);
         return response()->json($categories, 401);
     }
 
     public function newrequest(Request $request)
     {
-
+//dd($request->all());
         $store_id = null;
         if($request->store != null){
 
             $store = new Stores();
             $store->name = $request->store;
             $store->save();
-            $store_id = $store->id; 
+            $store_id = $store->id;
         }
-
+$name = $request->name;
         $product = new Products();
-      
+
       $product->name = $request->name;
       $product->company_name = $request->company;
       $product->ean = $request->ean;
 
+
       if($request->name != null){
-      $product->image = $request->image;
+
+          if ($request->hasFile('image')) {
+
+              $cover = $request->file('image');
+              $extension = $cover->getClientOriginalExtension();
+              Storage::disk('custom')->put($request->name.'.'.$extension,  File::get($cover));
+              Storage::disk('custom-big')->put($request->name.'.'.$extension,  File::get($cover));
+              $product->image = $request->name.'.'.$extension;
+          }
+
+
       }
+
+
+
 
     if($store_id != null){
       $product->store_id  = $store_id;
@@ -118,8 +134,33 @@ class ProductController extends Controller
        $requests->sent_by_name = "unregistered user";
        $requests->status = "untracked";
        $requests->save();
-      return response()->json("Success", 401);
+
+
+       if($request->hasFile('image')){
+           return response()->json("Success Uploaded with image", 401);
+            }else{
+           return response()->json("Success! Image was not attached", 401);
+
+       }
+
     }
+
+    public function imagerequest(Request $request)
+    {
+        if($request->id != null){
+
+            if ($request->hasFile('image')) {
+
+                $cover = $request->file('image');
+                $extension = $cover->getClientOriginalExtension();
+                Storage::disk('custom')->put($request->id.'.'.$extension,  File::get($cover));
+                Storage::disk('custom-big')->put($request->id.'.'.$extension,  File::get($cover));
+            }
+        }
+        return response()->json("Success Uploaded with image", 200);
+
+    }
+
 
     public function feedback(Request $request)
     {
@@ -141,11 +182,11 @@ class ProductController extends Controller
 
         foreach($s_cat as $sub){
             // $count[] = Products::where('sub_category', '=', $sub->name)->count();
-            
+
             $merge[$sub->name] = Products::where('sub_category', '=', $sub->name)->count();
-                          
-        } 
-        
+
+        }
+
         // dd($merge);
         // return response()->json($sub_categories, 401);
         // return response()->json($merge, $sub_categories, 401);
@@ -181,7 +222,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
 
     /**
      * Show the form for editing the specified resource.
